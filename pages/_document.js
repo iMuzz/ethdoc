@@ -15,6 +15,7 @@ export default class MyDocument extends Document {
           <style>{`body { margin: 0; background-color: #f5f5fc; } /* custom! */`}</style>
           <link href="https://unpkg.com/@blueprintjs/core@^1.11.0/dist/blueprint.css" rel="stylesheet" />
           <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/flexboxgrid/6.3.1/flexboxgrid.min.css" type="text/css" />
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css" type="text/css" />
         </Head>
         <body>
           {this.props.customValue}

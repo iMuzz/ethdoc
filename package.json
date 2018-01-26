@@ -4,18 +4,16 @@
   "description": "Documentation Generation from contract ABI",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "next",
+    "build": "next build",
+    "start": "next start"
   },
   "author": "Faraaz Nishtar",
   "license": "ISC",
   "dependencies": {
+    "classnames": "^2.2.5",
     "next": "^4.2.3",
     "react": "^16.2.0",
     "react-dom": "^16.2.0"
-  },
-  "scripts": {
-    "dev": "next",
-    "build": "next build",
-    "start": "next start"
   }
 }

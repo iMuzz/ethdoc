@@ -1,7 +1,19 @@
 import React from 'react';
 
-import EndpointRow from '../components/endpointRow';
+import FunctionRow from '../components/endpointRow';
 import SimpleCard from '../components/simpleCard';
+
+const steps = [
+  {
+    content: 'Endpoint 1'
+  },
+  {
+    content: 'Endpoint 2'
+  },
+  {
+    content: 'Endpoint 3'
+  },
+]
 
 class DocumentationCtrl extends React.Component {
   constructor() {
@@ -15,31 +27,40 @@ class DocumentationCtrl extends React.Component {
 
   }
 
-  clickHandler() {
-    console.log('The click has happened!');
+  clickHandler(i) {
+    this.setState({ fadeOut: true });
+    setTimeout(() => {
+      this.setState({ stepIndex: i, fadeOut: false });
+    }, 150);
   }
 
   render() {
     return (
-      <div className="row doc-container">
+      <div className="row doc-container around-xs">
         <div className="col-xs-2">
-          <EndpointRow onClick={this.clickHandler} />
-          <EndpointRow onClick={this.clickHandler} />
-          <EndpointRow onClick={this.clickHandler} />
+          <FunctionRow onClick={() => {this.clickHandler(0)}} />
+          <FunctionRow onClick={() => {this.clickHandler(1)}} />
+          <FunctionRow onClick={() => {this.clickHandler(2)}} />
         </div>
         <div className="col-xs-6">
-          <SimpleCard>
-            <div> Welcome to next.js! </div>
-          </SimpleCard>
+          <SimpleCard
+            content={steps[this.state.stepIndex].content}
+            fadeOut={this.state.fadeOut}
+          />
         </div>
-        <div className="col-xs-4 response-container">
-          Code responseses!
+        <div className="col-xs-3 response-container">
+          <SimpleCard>
+            Code responseses!
+          </SimpleCard>
         </div>
         <style>
           {`
-            .doc-container { padding: 50px 20px }
+            .doc-container {
+              padding: 50px 50px;
+              overflow: hidden;
+            }
             .response-container {
-              height: 100vh
+              height: 80vh
             }
           `}
 

@@ -1,6 +1,6 @@
-export default ({ title, isActive }) => {
+export default ({ title, isActive, onClick }) => {
   return (
-    <div className="endpoint">
+    <div className="endpoint" onClick={onClick}>
       Title
       <style>
         {`

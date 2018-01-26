@@ -2,18 +2,9 @@ import React from 'react';
 
 import FunctionRow from '../components/endpointRow';
 import SimpleCard from '../components/simpleCard';
+import data from '../data.js'
 
-const steps = [
-  {
-    content: 'Endpoint 1'
-  },
-  {
-    content: 'Endpoint 2'
-  },
-  {
-    content: 'Endpoint 3'
-  },
-]
+const steps = data['abi'];
 
 class DocumentationCtrl extends React.Component {
   constructor() {
@@ -24,6 +15,7 @@ class DocumentationCtrl extends React.Component {
     }
 
     this.clickHandler = this.clickHandler.bind(this);
+    this.renderEndpoints = this.renderEndpoints.bind(this);
 
   }
 
@@ -34,17 +26,28 @@ class DocumentationCtrl extends React.Component {
     }, 150);
   }
 
+  renderEndpoints() {
+    return steps.map((step, i) => {
+      return (
+        <FunctionRow
+          key={i}
+          title={step.name}
+          isActive={i === this.state.stepIndex}
+          onClick={() => {this.clickHandler(i)}}
+        />
+      );
+    }); 
+  }
+
   render() {
     return (
       <div className="row doc-container around-xs">
         <div className="col-xs-2">
-          <FunctionRow onClick={() => {this.clickHandler(0)}} />
-          <FunctionRow onClick={() => {this.clickHandler(1)}} />
-          <FunctionRow onClick={() => {this.clickHandler(2)}} />
+          { this.renderEndpoints() }
         </div>
         <div className="col-xs-6">
           <SimpleCard
-            content={steps[this.state.stepIndex].content}
+            content={steps[this.state.stepIndex].name}
             fadeOut={this.state.fadeOut}
           />
         </div>

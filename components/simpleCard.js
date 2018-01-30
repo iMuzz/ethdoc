@@ -16,14 +16,14 @@ class SimpleCard extends React.Component {
   }
 
   render() {
-    const { content } = this.props;
+    const { content, body } = this.props;
 
     return (
       <div className={classNames('simple-card animated', { fadeIn: this.state.addClass, fadeOut: this.props.fadeOut })} >
         <SimpleHeader
           functionName={content}
         />
-        { content }
+        { body }
         <style>
           {`
             .simple-card {

@@ -1,6 +1,7 @@
 import classNames from 'classnames';
+import { Spinner } from '@blueprintjs/core';
 
-export default ({ title, isActive, onClick }) => {
+export default ({ loading }) => {
 
   const answer = `
   {
@@ -10,11 +11,15 @@ export default ({ title, isActive, onClick }) => {
   }
   `
   return (
-    <div className="error-card">
-      <pre>
-        <code>
-          { answer }
-        </code>
+    <div className="error-card row center-xs middle-xs">
+      <pre className={classNames('row', { middle: loading })}>
+        {loading ? (
+          <Spinner />
+        ) : (
+          <code className="animated fadeIn">
+            { answer }
+          </code>
+        )}
       </pre>
       <style>
         {`
@@ -31,6 +36,19 @@ export default ({ title, isActive, onClick }) => {
             height: 100%;
             border-radius: 0px;
             color: #7aff97;
+          }
+
+          .error-card pre.middle {
+            align-items: center;
+          }
+
+          .error-card code {
+            display: block;
+            text-align: left;
+          }
+
+          .pt-spinner .pt-spinner-track {
+            stroke: rgb(113, 237, 144);
           }
         `}
       </style>

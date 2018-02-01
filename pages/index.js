@@ -20,6 +20,7 @@ class DocumentationCtrl extends React.Component {
 
     this.clickHandler = this.clickHandler.bind(this);
     this.renderEndpoints = this.renderEndpoints.bind(this);
+    this.sendTransaction = this.sendTransaction.bind(this);
 
   }
 
@@ -36,7 +37,9 @@ class DocumentationCtrl extends React.Component {
   }
 
   sendTransaction() {
+    this.setState({ isLoading: true });
     web3.eth.sendTransaction({from:'0x9b073D121AAF5e18BfbD8f17ed79728BBB30fc7e', to:'0xfbc07a051755823b10ca0cb9a14fb25d13a86791', value: 1}, (d) => {
+      this.setState({ isLoading: false });
       console.log(d);
     });
   }
@@ -124,8 +127,9 @@ OwlCoin.${steps[this.state.stepIndex].name}().then(console.log)
         </div>
         <div className="col-xs-4 response-container">
           <SimpleCard
+            fadeOut={this.state.fadeOut}
           >
-            <ErrorCard />
+            <ErrorCard loading={this.state.isLoading}/>
           </SimpleCard>
         </div>
         <style>

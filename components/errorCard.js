@@ -1,11 +1,19 @@
 import classNames from 'classnames';
 
 export default ({ title, isActive, onClick }) => {
+
+  const answer = `
+  {
+    blockHash: "0x5090c1a25a2accf4cb47a...",
+    blockNumber: 2561557,
+    totalSupply: 1000000,
+  }
+  `
   return (
     <div className="error-card">
       <pre>
         <code>
-          console.log('hello, world')
+          { answer }
         </code>
       </pre>
       <style>
@@ -21,9 +29,8 @@ export default ({ title, isActive, onClick }) => {
             margin: 0;
             background: none;
             height: 100%;
-            border: 1px solid #eaeaea;
             border-radius: 0px;
-            color: white
+            color: #7aff97;
           }
         `}
       </style>

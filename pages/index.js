@@ -15,6 +15,7 @@ class DocumentationCtrl extends React.Component {
 
     this.state = {
       stepIndex: 0,
+      isLoading: false,
     }
 
     this.clickHandler = this.clickHandler.bind(this);

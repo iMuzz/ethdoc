@@ -16,14 +16,33 @@ class SimpleCard extends React.Component {
   }
 
   render() {
-    const { content, body } = this.props;
+    const { content, body, description, children } = this.props;
 
     return (
       <div className={classNames('simple-card animated', { fadeIn: this.state.addClass, fadeOut: this.props.fadeOut })} >
-        <SimpleHeader
-          functionName={content}
-        />
-        { body }
+        {content && (
+          <SimpleHeader
+            functionName={content}
+          />
+        )}
+
+        {description && (
+          <div className="content-padding">
+              <p className=''>
+                { description }
+              </p>
+            { body }
+            <style>
+            {`
+              .content-padding {
+                padding: 20px;
+              }
+            `}
+            </style>
+          </div>
+        )}
+
+        { children }
         <style>
           {`
             .simple-card {

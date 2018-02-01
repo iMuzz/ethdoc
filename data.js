@@ -21,7 +21,8 @@ export default  {
       ],
       "payable": false,
       "stateMutability": "nonpayable",
-      "type": "function"
+      "type": "function",
+      description: "Allow `spender` to withdraw from your account, multiple times, up to the `tokens` amount. If this function is called again it overwrites the current allowance with _value."
     },
     {
       "constant": true,
@@ -35,7 +36,8 @@ export default  {
       ],
       "payable": false,
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      description: "Returns the token transfers made to or from a specific Ethereum address.",
     },
     {
       "constant": false,
@@ -62,7 +64,8 @@ export default  {
       ],
       "payable": false,
       "stateMutability": "nonpayable",
-      "type": "function"
+      "type": "function",
+      description: "Send `tokens` amount of tokens from address `from` to address `to` The transferFrom method is used for a withdraw workflow, allowing contracts to send tokens on your behalf, for example to \"deposit\" to a contract address and/or to charge fees in sub-currencies; the command should fail unless the _from account has deliberately authorized the sender of the message via some mechanism; we propose these standardized APIs for approval:",
     },
     {
       "constant": true,
@@ -81,7 +84,8 @@ export default  {
       ],
       "payable": false,
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      description: "Get the token balance for account `tokenOwner`",
     },
     {
       "constant": false,
@@ -104,7 +108,8 @@ export default  {
       ],
       "payable": false,
       "stateMutability": "nonpayable",
-      "type": "function"
+      "type": "function",
+      description: "Transfer the balance from token owner's account to `to` account.",
     },
     {
       "constant": true,

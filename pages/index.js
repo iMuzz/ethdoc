@@ -1,8 +1,10 @@
 import React from 'react';
 import { highlight } from 'highlight.js'
+import Web3 from 'web3'
 
 import FunctionRow from '../components/endpointRow';
 import SimpleCard from '../components/simpleCard';
+import ErrorCard from '../components/errorCard';
 import data from '../data.js'
 
 const steps = data['abi'];
@@ -20,11 +22,22 @@ class DocumentationCtrl extends React.Component {
 
   }
 
+  componentDidMount() {
+    const { web3 } = window;
+    console.log({ web3 });
+  }
+
   clickHandler(i) {
     this.setState({ fadeOut: true });
     setTimeout(() => {
       this.setState({ stepIndex: i, fadeOut: false });
     }, 150);
+  }
+
+  sendTransaction() {
+    web3.eth.sendTransaction({from:'0x9b073D121AAF5e18BfbD8f17ed79728BBB30fc7e', to:'0xfbc07a051755823b10ca0cb9a14fb25d13a86791', value: 1}, (d) => {
+      console.log(d);
+    });
   }
 
   renderEndpoints() {
@@ -42,19 +55,18 @@ class DocumentationCtrl extends React.Component {
 
   render() {
     const code = `
-const api = require('api').config('demo_j2k3jklz');
+import OwlCoinABI from './OwlCoinABI.json';
 
-api('${steps[this.state.stepIndex].name}').run('send', {
-  to: '+1514-651-4227',
-  message: 'Your package has been delivered!'
-}, (err, response) => {
-  console.log(response);
-});
+const OwlCoinContract = web3.eth.contract(OwlCoinABI);
+
+const OwlCoin = OwlCoinContract.at('0x78570cf7E9db80D03A9A5B6A9..');
+
+OwlCoin.${steps[this.state.stepIndex].name}().then(console.log)
     `;
 
     const codeSample = (
       <div className="code-highlighting">
-        <pre onCopy={this.onCopy}>
+        <pre className="code-highlight">
           <code className={`hljs lang-javascript`}
             dangerouslySetInnerHTML={{ __html: highlight('javascript', code).value}
           }
@@ -63,16 +75,37 @@ api('${steps[this.state.stepIndex].name}').run('send', {
 
         <style>
           {`
-            .code-highlighting {
-              padding: 0px 10px;
-            }
-            pre {
+            .code-highlight {
               color: #b8bff2;
               background-color: #0a1a36;
               padding-top: 0px;
             }
           `}
         </style>
+        <button onClick={this.sendTransaction}>
+          Run Code
+          <style>
+            {`
+              button { 
+                background-color: #4762ff;
+                padding: 10px;
+                border: none;
+                color: white;
+                border-radius: 3px;
+                transition: all .3s;
+                position: relative;
+                top: 0px;
+              }
+
+              button:hover {
+                background-color: #6078FF;
+                padding: 10px;
+                cursor: pointer;
+                top: -1px;
+              }
+            `}
+          </style>
+        </button>
       </div>
     );
     return (
@@ -84,12 +117,14 @@ api('${steps[this.state.stepIndex].name}').run('send', {
           <SimpleCard
             content={steps[this.state.stepIndex].name}
             body={codeSample}
+            description={steps[this.state.stepIndex].description}
             fadeOut={this.state.fadeOut}
           />
         </div>
-        <div className="col-xs-3 response-container">
-          <SimpleCard>
-            Responses;
+        <div className="col-xs-4 response-container">
+          <SimpleCard
+          >
+            <ErrorCard />
           </SimpleCard>
         </div>
         <style>

@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 import { Spinner } from '@blueprintjs/core';
 
-export default ({ loading }) => {
+export default ({ loading, button, didRun }) => {
 
   const answer = `
   {
@@ -17,7 +17,22 @@ export default ({ loading }) => {
           <Spinner />
         ) : (
           <code className="animated fadeIn">
-            { answer }
+            { didRun ? (
+              <div>
+                { answer }
+              </div>
+            ) : (
+            <div className="row middle-xs btc">
+              { button }
+              <style>
+                {`
+                  .btc {
+                    height: 100%;
+                  }
+                `}
+              </style>
+            </div>
+            )}
           </code>
         )}
       </pre>

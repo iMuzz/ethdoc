@@ -5,6 +5,7 @@ import Web3 from 'web3'
 import FunctionRow from '../components/endpointRow';
 import SimpleCard from '../components/simpleCard';
 import ErrorCard from '../components/errorCard';
+// import data from '../tictactoe.js'
 import data from '../data.js'
 
 const steps = data['abi'];
@@ -16,6 +17,7 @@ class DocumentationCtrl extends React.Component {
     this.state = {
       stepIndex: 0,
       isLoading: false,
+      didRun: false,
     }
 
     this.clickHandler = this.clickHandler.bind(this);
@@ -39,7 +41,7 @@ class DocumentationCtrl extends React.Component {
   sendTransaction() {
     this.setState({ isLoading: true });
     web3.eth.sendTransaction({from:'0x9b073D121AAF5e18BfbD8f17ed79728BBB30fc7e', to:'0xfbc07a051755823b10ca0cb9a14fb25d13a86791', value: 1}, (d) => {
-      this.setState({ isLoading: false });
+      this.setState({ isLoading: false, didRun: true });
       console.log(d);
     });
   }
@@ -58,7 +60,36 @@ class DocumentationCtrl extends React.Component {
   }
 
   render() {
+
+    const button = (
+      <button onClick={this.sendTransaction}>
+          Try It Now
+          <style>
+            {`
+              button { 
+                background-color: #4762ff;
+                padding: 10px;
+                border: none;
+                color: white;
+                border-radius: 3px;
+                transition: all .3s;
+                position: relative;
+                top: 0px;
+              }
+
+              button:hover {
+                background-color: #6078FF;
+                padding: 10px;
+                cursor: pointer;
+                top: -1px;
+              }
+            `}
+          </style>
+        </button>
+      );
+
     const code = `
+import { web3 } from 'web3';
 import OwlCoinABI from './OwlCoinABI.json';
 
 const OwlCoinContract = web3.eth.contract(OwlCoinABI);
@@ -126,10 +157,8 @@ OwlCoin.${steps[this.state.stepIndex].name}().then(console.log)
           />
         </div>
         <div className="col-xs-4 response-container">
-          <SimpleCard
-            fadeOut={this.state.fadeOut}
-          >
-            <ErrorCard loading={this.state.isLoading}/>
+          <SimpleCard>
+            <ErrorCard loading={this.state.isLoading} didRun={this.state.didRun} button={button}/>
           </SimpleCard>
         </div>
         <style>

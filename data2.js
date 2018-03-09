@@ -1,5 +1,7 @@
+/* eslint-disable */
+
 export default {
-    "_id" : ObjectId("5a9ce561c1ddd44848455ebd"),
+    "_id" : "5a9ce561c1ddd44848455ebd",
     "contracts" : {
         "../../blockchain/incentive-layer/contracts/DepositsManager.sol:DepositsManager" : {
             "abi" : [ 

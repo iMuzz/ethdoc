@@ -1,14 +1,49 @@
 import React from 'react';
-import { highlight } from 'highlight.js'
-import Web3 from 'web3'
+import { highlight } from 'highlight.js';
+import Web3 from 'web3';
 
 import FunctionRow from '../components/endpointRow';
 import SimpleCard from '../components/simpleCard';
 import ErrorCard from '../components/errorCard';
-// import data from '../tictactoe.js'
-import data from '../data.js'
+// import data from '../data';
+import data2 from '../data2';
 
-const steps = data['abi'];
+function parseFunctionName(name) {
+  return name.split('(')[0];
+}
+
+const steps = data2.contracts['../../blockchain/incentive-layer/contracts/IncentiveLayer.sol:IncentiveLayer'].abi;
+let contractAbi = data2.contracts['../../blockchain/incentive-layer/contracts/IncentiveLayer.sol:IncentiveLayer'].abi;
+const devdoc = data2.contracts['../../blockchain/incentive-layer/contracts/IncentiveLayer.sol:IncentiveLayer'].devdoc;
+
+const methodNames = Object.keys(devdoc.methods).map(parseFunctionName);
+
+// console.log(contractAbi);
+
+contractAbi = contractAbi.map((meth) => {
+  const methodDevdoc = getMethodDevdoc(meth.name, devdoc.methods);
+
+  if (methodDevdoc) {
+    meth.devdoc = methodDevdoc;
+  }
+  return meth;
+}).filter(abi => abi.devdoc)
+
+
+console.log(contractAbi);
+
+function getMethodDevdoc(methodName, devDocMethods) {
+  let answer;
+
+  Object.keys(devDocMethods).forEach((key) => {
+    if (parseFunctionName(key) === methodName) {
+      // console.log(`key: ${key}, methodName: ${methodName}`, devDocMethods[key]);
+      answer = devDocMethods[key];
+    }
+  });
+
+  return answer;
+  }
 
 class DocumentationCtrl extends React.Component {
   constructor() {
@@ -28,7 +63,7 @@ class DocumentationCtrl extends React.Component {
 
   componentDidMount() {
     const { web3 } = window;
-    console.log({ web3 });
+    // console.log({ web3 });
   }
 
   clickHandler(i) {
@@ -40,7 +75,7 @@ class DocumentationCtrl extends React.Component {
 
   sendTransaction() {
     this.setState({ isLoading: true });
-    web3.eth.sendTransaction({from:'0x9b073D121AAF5e18BfbD8f17ed79728BBB30fc7e', to:'0xfbc07a051755823b10ca0cb9a14fb25d13a86791', value: 1}, (d) => {
+    web3.eth.sendTransaction({from:'0x9b073D121AAF5e18BfbD8f17ed79728BBB30fc7e', to:'0xfbc07a051755823b10ca0cb9a14fb25d13a86791', value: 1 }, (d) => {
       this.setState({ isLoading: false, didRun: true });
       console.log(d);
     });
@@ -48,19 +83,20 @@ class DocumentationCtrl extends React.Component {
 
   renderEndpoints() {
     return steps.map((step, i) => {
-      return (
-        <FunctionRow
-          key={i}
-          title={step.name}
-          isActive={i === this.state.stepIndex}
-          onClick={() => {this.clickHandler(i)}}
-        />
-      );
-    }); 
+      if (methodNames.filter(name => steps[i].name === name).length > 0) {
+        return (
+          <FunctionRow
+            key={i}
+            title={step.name}
+            isActive={i === this.state.stepIndex}
+            onClick={() => { this.clickHandler(i); }}
+          />
+        );
+      }
+    });
   }
 
   render() {
-
     const button = (
       <button onClick={this.sendTransaction}>
           Try It Now
@@ -143,6 +179,7 @@ OwlCoin.${steps[this.state.stepIndex].name}().then(console.log)
         </button>
       </div>
     );
+
     return (
       <div className="row doc-container around-xs">
         <div className="col-xs-2">
@@ -158,7 +195,7 @@ OwlCoin.${steps[this.state.stepIndex].name}().then(console.log)
         </div>
         <div className="col-xs-4 response-container">
           <SimpleCard>
-            <ErrorCard loading={this.state.isLoading} didRun={this.state.didRun} button={button}/>
+            <ErrorCard loading={this.state.isLoading} didRun={this.state.didRun} button={button} />
           </SimpleCard>
         </div>
         <style>

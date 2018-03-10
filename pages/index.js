@@ -12,25 +12,22 @@ function parseFunctionName(name) {
   return name.split('(')[0];
 }
 
-const steps = data2.contracts['../../blockchain/incentive-layer/contracts/IncentiveLayer.sol:IncentiveLayer'].abi;
+let steps = data2.contracts['../../blockchain/incentive-layer/contracts/IncentiveLayer.sol:IncentiveLayer'].abi;
 let contractAbi = data2.contracts['../../blockchain/incentive-layer/contracts/IncentiveLayer.sol:IncentiveLayer'].abi;
 const devdoc = data2.contracts['../../blockchain/incentive-layer/contracts/IncentiveLayer.sol:IncentiveLayer'].devdoc;
 
 const methodNames = Object.keys(devdoc.methods).map(parseFunctionName);
 
-// console.log(contractAbi);
-
-contractAbi = contractAbi.map((meth) => {
+steps = contractAbi.map((meth) => {
   const methodDevdoc = getMethodDevdoc(meth.name, devdoc.methods);
 
   if (methodDevdoc) {
     meth.devdoc = methodDevdoc;
   }
   return meth;
-}).filter(abi => abi.devdoc)
+}).filter(abi => abi.devdoc).filter(abi => abi.devdoc.details)
 
-
-console.log(contractAbi);
+console.log(steps);
 
 function getMethodDevdoc(methodName, devDocMethods) {
   let answer;
@@ -63,7 +60,6 @@ class DocumentationCtrl extends React.Component {
 
   componentDidMount() {
     const { web3 } = window;
-    // console.log({ web3 });
   }
 
   clickHandler(i) {
@@ -83,16 +79,14 @@ class DocumentationCtrl extends React.Component {
 
   renderEndpoints() {
     return steps.map((step, i) => {
-      if (methodNames.filter(name => steps[i].name === name).length > 0) {
-        return (
-          <FunctionRow
-            key={i}
-            title={step.name}
-            isActive={i === this.state.stepIndex}
-            onClick={() => { this.clickHandler(i); }}
-          />
-        );
-      }
+      return (
+        <FunctionRow
+          key={i}
+          title={step.name}
+          isActive={i === this.state.stepIndex}
+          onClick={() => { this.clickHandler(i); }}
+        />
+      );
     });
   }
 
@@ -189,7 +183,7 @@ OwlCoin.${steps[this.state.stepIndex].name}().then(console.log)
           <SimpleCard
             content={steps[this.state.stepIndex].name}
             body={codeSample}
-            description={steps[this.state.stepIndex].description}
+            description={steps[this.state.stepIndex].devdoc.details}
             fadeOut={this.state.fadeOut}
           />
         </div>

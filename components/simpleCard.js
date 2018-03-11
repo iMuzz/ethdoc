@@ -20,28 +20,6 @@ class SimpleCard extends React.Component {
 
     return (
       <div className={classNames('simple-card animated', { fadeIn: this.state.addClass, fadeOut: this.props.fadeOut })} >
-        {content && (
-          <SimpleHeader
-            functionName={content}
-          />
-        )}
-
-        {description && (
-          <div className="content-padding">
-              <p className=''>
-                { description }
-              </p>
-            { body }
-            <style>
-            {`
-              .content-padding {
-                padding: 20px;
-              }
-            `}
-            </style>
-          </div>
-        )}
-
         { children }
         <style>
           {`

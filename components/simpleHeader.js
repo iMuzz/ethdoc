@@ -1,16 +1,8 @@
-import classNames from 'classnames';
-
 class SimpleHeader extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
-    const { functionName } = this.props;
-
     return (
       <div className="simple-header">
-        { functionName }
+        { this.props.children }
       <style>
         {`
           .simple-header{ 

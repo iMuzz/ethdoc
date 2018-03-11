@@ -5,6 +5,7 @@ import Web3 from 'web3';
 import FunctionRow from '../components/endpointRow';
 import SimpleCard from '../components/simpleCard';
 import ErrorCard from '../components/errorCard';
+import FunctionContent from '../components/functionContent';
 // import data from '../data';
 import data2 from '../data2';
 
@@ -12,9 +13,9 @@ function parseFunctionName(name) {
   return name.split('(')[0];
 }
 
-let steps = data2.contracts['../../blockchain/incentive-layer/contracts/IncentiveLayer.sol:IncentiveLayer'].abi;
-let contractAbi = data2.contracts['../../blockchain/incentive-layer/contracts/IncentiveLayer.sol:IncentiveLayer'].abi;
-const devdoc = data2.contracts['../../blockchain/incentive-layer/contracts/IncentiveLayer.sol:IncentiveLayer'].devdoc;
+let steps = data2.contracts['KittyOwnership.sol:KittyOwnership'].abi;
+let contractAbi = data2.contracts['KittyOwnership.sol:KittyOwnership'].abi;
+const devdoc = data2.contracts['KittyOwnership.sol:KittyOwnership'].devdoc;
 
 const methodNames = Object.keys(devdoc.methods).map(parseFunctionName);
 
@@ -27,7 +28,7 @@ steps = contractAbi.map((meth) => {
   return meth;
 }).filter(abi => abi.devdoc).filter(abi => abi.devdoc.details)
 
-console.log(steps);
+// console.log(steps);
 
 function getMethodDevdoc(methodName, devDocMethods) {
   let answer;
@@ -174,7 +175,7 @@ OwlCoin.${steps[this.state.stepIndex].name}().then(console.log)
       </div>
     );
 
-    return (
+     return (
       <div className="row doc-container around-xs">
         <div className="col-xs-2">
           { this.renderEndpoints() }
@@ -185,7 +186,11 @@ OwlCoin.${steps[this.state.stepIndex].name}().then(console.log)
             body={codeSample}
             description={steps[this.state.stepIndex].devdoc.details}
             fadeOut={this.state.fadeOut}
-          />
+          >
+            <FunctionContent
+              method={steps[this.state.stepIndex]}
+            />
+          </SimpleCard>
         </div>
         <div className="col-xs-4 response-container">
           <SimpleCard>

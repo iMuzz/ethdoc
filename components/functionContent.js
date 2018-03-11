@@ -24,7 +24,7 @@ class FunctionContent extends React.Component {
 
           <style>{`
             .content-padding {
-              padding: 15px;
+              padding: 23px;
             }
           `}</style>
         </div>

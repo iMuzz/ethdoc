@@ -6,7 +6,7 @@ class SimpleHeader extends React.Component {
       <style>
         {`
           .simple-header{ 
-            padding: 15px;
+            padding: 20px;
             border-bottom: 1px solid #ebebf3;
             font-size: 18px;
           }

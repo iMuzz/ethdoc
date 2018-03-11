@@ -182,7 +182,6 @@ OwlCoin.${steps[this.state.stepIndex].name}().then(console.log)
         </div>
         <div className="col-xs-6">
           <SimpleCard
-            content={steps[this.state.stepIndex].name}
             body={codeSample}
             description={steps[this.state.stepIndex].devdoc.details}
             fadeOut={this.state.fadeOut}
@@ -200,7 +199,7 @@ OwlCoin.${steps[this.state.stepIndex].name}().then(console.log)
         <style>
           {`
             .doc-container {
-              padding: 50px 50px;
+              padding: 50px 25px;
               overflow: hidden;
             }
             .response-container {

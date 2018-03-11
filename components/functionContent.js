@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import FunctionTitle from './functionTitle';
 import FunctionParamTable from './functionParamTable';
+import FunctionDescription from './functionDescription';
 
 class FunctionContent extends React.Component {
   render() {
@@ -14,10 +15,13 @@ class FunctionContent extends React.Component {
           inputs={method.inputs}
         />
         <div className="content-padding">
+          <FunctionDescription />
+
           <FunctionParamTable
             inputs={method.inputs}
             params={method.devdoc.params}
           />
+
           <style>{`
             .content-padding {
               padding: 15px;

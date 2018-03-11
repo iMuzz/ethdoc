@@ -6,7 +6,7 @@ import FunctionDescription from './functionDescription';
 class FunctionContent extends React.Component {
   render() {
     const { method } = this.props;
-    // console.log(method);
+    console.log(method);
 
     return (
       <div>
@@ -15,7 +15,7 @@ class FunctionContent extends React.Component {
           inputs={method.inputs}
         />
         <div className="content-padding">
-          <FunctionDescription />
+          <FunctionDescription details={method.devdoc.details}/>
 
           <FunctionParamTable
             inputs={method.inputs}

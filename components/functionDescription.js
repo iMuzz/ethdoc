@@ -2,9 +2,10 @@ import PropTypes from 'prop-types';
 
 class FunctionDescription extends React.Component {
   render() {
+    const { details } = this.props;
     return (
       <div>
-        this is going to be a really long FunctionDescription
+        { details }
       </div>
     );
   }

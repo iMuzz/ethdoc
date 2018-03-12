@@ -1,5 +1,4 @@
 // import classNames from 'classnames';
-
 import PropTypes from 'prop-types';
 
 class FunctionParamTable extends React.Component {
@@ -46,6 +45,7 @@ class FunctionParamTable extends React.Component {
 
   render() {
     const { inputs, params } = this.props;
+    if (inputs.length === 0 || params === undefined) { return (<span />)}
     return (
       <div>
         <div className="params-table">

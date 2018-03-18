@@ -6,7 +6,7 @@ import FunctionRow from '../components/endpointRow';
 import SimpleCard from '../components/simpleCard';
 import ErrorCard from '../components/errorCard';
 import FunctionContent from '../components/functionContent';
-// import data from '../data';
+import Web3Container from '../lib/web3Container';
 import data2 from '../data2';
 
 function parseFunctionName(name) {
@@ -225,4 +225,11 @@ OwlCoin.${steps[this.state.stepIndex].name}().then(console.log)
   }
 }
 
-export default DocumentationCtrl;
+export default () => (
+  <Web3Container
+    renderLoading={() => <div>Loading dApp</div>}
+    render={() => (
+      <DocumentationCtrl />
+    )}
+  />
+)

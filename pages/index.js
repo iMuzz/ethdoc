@@ -5,9 +5,11 @@ import Web3 from 'web3';
 import FunctionRow from '../components/endpointRow';
 import SimpleCard from '../components/simpleCard';
 import ErrorCard from '../components/errorCard';
+import Runkit from '../components/runkit';
 import FunctionContent from '../components/functionContent';
 import Web3Container from '../lib/web3Container';
 import data2 from '../data2';
+import contractInformation from './test';
 
 function parseFunctionName(name) {
   return name.split('(')[0];
@@ -59,10 +61,6 @@ class DocumentationCtrl extends React.Component {
 
   }
 
-  componentDidMount() {
-    const { web3 } = window;
-  }
-
   clickHandler(i) {
     this.setState({ fadeOut: true });
     setTimeout(() => {
@@ -71,11 +69,15 @@ class DocumentationCtrl extends React.Component {
   }
 
   sendTransaction() {
+    const { contractAbi, contractAddress } = contractInformation;
+    const { web3 } = this.props;
     this.setState({ isLoading: true });
-    web3.eth.sendTransaction({from:'0x9b073D121AAF5e18BfbD8f17ed79728BBB30fc7e', to:'0xfbc07a051755823b10ca0cb9a14fb25d13a86791', value: 1 }, (d) => {
-      this.setState({ isLoading: false, didRun: true });
-      console.log(d);
-    });
+    const ZeroXContract = new web3.eth.Contract(contractAbi, contractAddress);
+    ZeroXContract.methods.balanceOf("0x5049152044B3b4dAbA58479B6fF54346f8e60EAe").call().then((t) => {
+      console.log("balance Acquired!");
+      console.log(t)
+      this.setState({ isLoading: false });
+    })
   }
 
   renderEndpoints() {
@@ -119,61 +121,50 @@ class DocumentationCtrl extends React.Component {
         </button>
       );
 
-    const code = `
-import { web3 } from 'web3';
-import OwlCoinABI from './OwlCoinABI.json';
+    // let codeSample = (
+    //   <div className="code-highlighting">
+    //     <pre className="code-highlight">
+    //       <code className={`hljs lang-javascript`}
+    //         dangerouslySetInnerHTML={{ __html: highlight('javascript', code).value}
+    //       }
+    //       />
+    //     </pre>
 
-const OwlCoinContract = web3.eth.contract(OwlCoinABI);
+    //     <style>
+    //       {`
+    //         .code-highlight {
+    //           color: #b8bff2;
+    //           background-color: #0a1a36;
+    //           padding-top: 0px;
+    //         }
+    //       `}
+    //     </style>
+    //     <button onClick={this.sendTransaction}>
+    //       Run Code
+    //       <style>
+    //         {`
+    //           button { 
+    //             background-color: #4762ff;
+    //             padding: 10px;
+    //             border: none;
+    //             color: white;
+    //             border-radius: 3px;
+    //             transition: all .3s;
+    //             position: relative;
+    //             top: 0px;
+    //           }
 
-const OwlCoin = OwlCoinContract.at('0x78570cf7E9db80D03A9A5B6A9..');
-
-OwlCoin.${steps[this.state.stepIndex].name}().then(console.log)
-    `;
-
-    const codeSample = (
-      <div className="code-highlighting">
-        <pre className="code-highlight">
-          <code className={`hljs lang-javascript`}
-            dangerouslySetInnerHTML={{ __html: highlight('javascript', code).value}
-          }
-          />
-        </pre>
-
-        <style>
-          {`
-            .code-highlight {
-              color: #b8bff2;
-              background-color: #0a1a36;
-              padding-top: 0px;
-            }
-          `}
-        </style>
-        <button onClick={this.sendTransaction}>
-          Run Code
-          <style>
-            {`
-              button { 
-                background-color: #4762ff;
-                padding: 10px;
-                border: none;
-                color: white;
-                border-radius: 3px;
-                transition: all .3s;
-                position: relative;
-                top: 0px;
-              }
-
-              button:hover {
-                background-color: #6078FF;
-                padding: 10px;
-                cursor: pointer;
-                top: -1px;
-              }
-            `}
-          </style>
-        </button>
-      </div>
-    );
+    //           button:hover {
+    //             background-color: #6078FF;
+    //             padding: 10px;
+    //             cursor: pointer;
+    //             top: -1px;
+    //           }
+    //         `}
+    //       </style>
+    //     </button>
+    //   </div>
+    // );
 
      return (
       <div className="row doc-container around-xs">
@@ -182,7 +173,7 @@ OwlCoin.${steps[this.state.stepIndex].name}().then(console.log)
         </div>
         <div className="col-xs-6">
           <SimpleCard
-            body={codeSample}
+            body={<div></div>}
             description={steps[this.state.stepIndex].devdoc.details}
             fadeOut={this.state.fadeOut}
           >
@@ -227,9 +218,9 @@ OwlCoin.${steps[this.state.stepIndex].name}().then(console.log)
 
 export default () => (
   <Web3Container
-    renderLoading={() => <div>Loading dApp</div>}
-    render={() => (
-      <DocumentationCtrl />
+    renderLoading={() => <div>Loading...</div>}
+    render={(props) => (
+      <DocumentationCtrl {...props} />
     )}
   />
 )

@@ -90,7 +90,7 @@ class FunctionParamTable extends React.Component {
           <style>
             {`
               .params-table {
-                margin: 25px 0px 0px 0px;
+                margin: 25px 0px 25px 0px;
               }
               .params-header {
                 border-bottom: 1px solid #ebebf3;

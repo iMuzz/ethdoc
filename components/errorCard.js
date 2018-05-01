@@ -1,4 +1,3 @@
-import classNames from 'classnames';
 import { Spinner } from '@blueprintjs/core';
 
 export default ({ loading, button, didRun }) => {
@@ -11,8 +10,8 @@ export default ({ loading, button, didRun }) => {
   }
   `
   return (
-    <div className="error-card row center-xs middle-xs">
-      <pre className={classNames('row', { middle: loading })}>
+    <div className="error-card">
+      <pre className="">
         {loading ? (
           <Spinner />
         ) : (
@@ -22,7 +21,7 @@ export default ({ loading, button, didRun }) => {
                 { answer }
               </div>
             ) : (
-            <div className="row middle-xs btc">
+            <div className="middle-xs btc">
               { button }
               <style>
                 {`
@@ -40,21 +39,17 @@ export default ({ loading, button, didRun }) => {
         {`
           .error-card {
             height: 100%;
-            background-color: #0a1a36;
+            background-color: #0f224a;
             color: white;
             font-family: monospace;
-            padding: 15px;
           }
           .error-card pre {
             margin: 0;
+            padding: 0px;
             background: none;
             height: 100%;
             border-radius: 0px;
             color: #7aff97;
-          }
-
-          .error-card pre.middle {
-            align-items: center;
           }
 
           .error-card code {

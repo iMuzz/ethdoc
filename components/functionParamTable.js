@@ -35,7 +35,11 @@ class FunctionParamTable extends React.Component {
           </div>
 
           <div className="col-xs-4 padding-override">
-            <input type="text" onChange={(e) => this.handleInputChange(e, input)} />
+            <input
+              className="eth-input"
+              type="text"
+              placeholder={input.name}
+              onChange={(e) => this.handleInputChange(e, input)} />
           </div>
 
           <style>{`
@@ -46,6 +50,24 @@ class FunctionParamTable extends React.Component {
 
             .param-row:last-child {
               border-bottom: none;
+            }
+
+            .eth-input {
+              border: 1px solid #f2f5f6;
+              border-bottom: none;
+              box-shadow: 0 1px 2px -1px #a9bdc2;
+              font-size: 14px;
+              transition: .2s ease-out;
+              border-radius: 3px;
+              min-height: 25px;
+              padding: 0px 10px;
+            }
+            .eth-input::placeholder {
+              color: #dadee3;
+            }
+
+            .eth-input:focus {
+              outline: none;
             }
           `}</style>
         </div>

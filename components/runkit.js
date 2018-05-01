@@ -16,8 +16,13 @@ class Runkit extends React.Component {
 
     this.sendTransaction = this.sendTransaction.bind(this);
   }
+
   run() {
     this.refs.embed.evaluate()
+  }
+
+  componentWillReceiveProps(pre, next) {
+    this.setState({ isOpen: false })
   }
 
   sendTransaction() {
@@ -62,7 +67,7 @@ class Runkit extends React.Component {
             `}
           </style>
           <AnimateHeight
-            duration={ 500 }
+            duration={ 300 }
             height={ this.state.isOpen ? 'auto' : 0 }
           >
             <ResultView didRun answer={this.state.answer}/>

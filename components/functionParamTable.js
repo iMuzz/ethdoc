@@ -24,7 +24,11 @@ class FunctionParamTable extends React.Component {
             { input.type }
           </div>
 
-          <div className="col-xs-8 padding-override">
+          <div className="col-xs-4 padding-override">
+            { params[input.name] }
+          </div>
+
+          <div className="col-xs-4 padding-override">
             { params[input.name] }
           </div>
 
@@ -65,10 +69,17 @@ class FunctionParamTable extends React.Component {
                   </strong>
                 </div>
               </div>
-              <div className="col-xs-8 padding-override">
+              <div className="col-xs-4 padding-override">
                 <div className="title">
                   <strong>
                     Description
+                  </strong>
+                </div>
+              </div>
+              <div className="col-xs-4 padding-override">
+                <div className="title">
+                  <strong>
+                    Input
                   </strong>
                 </div>
               </div>
@@ -97,7 +108,7 @@ class FunctionParamTable extends React.Component {
                 padding-bottom: 10px;
               }
               .padding-override {
-                padding: 0px;
+                padding-left: 0px;
               }
               .margin-override {
                 margin: 0px;

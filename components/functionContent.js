@@ -22,7 +22,7 @@ class FunctionContent extends React.Component {
             params={method.devdoc.params}
           />
 
-          <Runkit />
+          <Runkit method={method} />
 
 
           <style>{`

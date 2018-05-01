@@ -1,5 +1,4 @@
 import React from 'react';
-import { highlight } from 'highlight.js';
 import Web3 from 'web3';
 
 import FunctionRow from '../components/endpointRow';
@@ -126,7 +125,7 @@ class DocumentationCtrl extends React.Component {
         <div className="col-xs-2">
           { this.renderEndpoints() }
         </div>
-        <div className="col-xs-6">
+        <div className="col-xs">
           <SimpleCard
             body={<div></div>}
             description={steps[this.state.stepIndex].devdoc.details}
@@ -137,15 +136,17 @@ class DocumentationCtrl extends React.Component {
             />
           </SimpleCard>
         </div>
+      {/*
         <div className="col-xs-4 response-container">
           <SimpleCard>
             <ErrorCard loading={this.state.isLoading} didRun={this.state.didRun} button={button} />
           </SimpleCard>
         </div>
+      */}
         <style>
           {`
             .doc-container {
-              padding: 50px 25px;
+              padding: 50px 200px;
               overflow: hidden;
             }
             .response-container {

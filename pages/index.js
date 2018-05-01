@@ -72,12 +72,15 @@ class DocumentationCtrl extends React.Component {
     const { contractAbi, contractAddress } = contractInformation;
     const { web3 } = this.props;
     this.setState({ isLoading: true });
-    const ZeroXContract = new web3.eth.Contract(contractAbi, contractAddress);
-    ZeroXContract.methods.balanceOf("0x5049152044B3b4dAbA58479B6fF54346f8e60EAe").call().then((t) => {
-      console.log("balance Acquired!");
-      console.log(t)
-      this.setState({ isLoading: false });
-    })
+    const ZRXContractInstance = new web3.eth.Contract(contractAbi, contractAddress);
+
+    ZRXContractInstance.methods.getTokenAddresses().call().then((res) => {
+      console.log("get Token Addresses!");
+      console.log(res);
+    });
+    // ZeroXContract.methods.balanceOf("0x5049152044B3b4dAbA58479B6fF54346f8e60EAe").call().then((t) => {
+    //   this.setState({ isLoading: false });
+    // })
   }
 
   renderEndpoints() {
@@ -143,6 +146,7 @@ class DocumentationCtrl extends React.Component {
             <FunctionContent
               method={steps[this.state.stepIndex]}
               updateMethod={this.updateMethod}
+              cta={this.sendTransaction}
             />
           </SimpleCard>
         </div>

@@ -26,7 +26,7 @@ class FunctionContent extends React.Component {
             updateMethod={this.props.updateMethod}
           />
 
-          <Runkit method={method} />
+          <Runkit method={method} cta={this.props.cta}/>
 
           <style>{`
             .content-padding {

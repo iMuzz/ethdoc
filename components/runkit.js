@@ -21,6 +21,7 @@ class Runkit extends React.Component {
 
   sendTransaction() {
     this.setState({ isOpen: true })
+    this.props.cta();
   }
   
   render() {

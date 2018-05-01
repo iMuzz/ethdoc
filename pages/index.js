@@ -29,7 +29,6 @@ steps = contractAbi.map((meth) => {
   return meth;
 }).filter(abi => abi.devdoc).filter(abi => abi.devdoc.details)
 
-// console.log(steps);
 
 function getMethodDevdoc(methodName, devDocMethods) {
   let answer;
@@ -52,12 +51,13 @@ class DocumentationCtrl extends React.Component {
       stepIndex: 0,
       isLoading: false,
       didRun: false,
+      steps: steps,
     }
 
     this.clickHandler = this.clickHandler.bind(this);
     this.renderEndpoints = this.renderEndpoints.bind(this);
+    this.updateMethod = this.updateMethod.bind(this);
     this.sendTransaction = this.sendTransaction.bind(this);
-
   }
 
   clickHandler(i) {
@@ -80,7 +80,7 @@ class DocumentationCtrl extends React.Component {
   }
 
   renderEndpoints() {
-    return steps.map((step, i) => {
+    return this.state.steps.map((step, i) => {
       return (
         <FunctionRow
           key={i}
@@ -90,6 +90,15 @@ class DocumentationCtrl extends React.Component {
         />
       );
     });
+  }
+
+  updateMethod(method) {
+    const currStep = this.state.steps[this.state.stepIndex];
+
+    // This is really hacky. But it works for now!
+    const copy = JSON.parse(JSON.stringify(this.state.steps));
+
+    this.setState({ steps: copy });
   }
 
   render() {
@@ -119,7 +128,6 @@ class DocumentationCtrl extends React.Component {
           </style>
         </button>
       );
-
      return (
       <div className="row doc-container around-xs">
         <div className="col-xs-2">
@@ -133,16 +141,11 @@ class DocumentationCtrl extends React.Component {
           >
             <FunctionContent
               method={steps[this.state.stepIndex]}
+              updateMethod={this.updateMethod}
             />
           </SimpleCard>
         </div>
-      {/*
-        <div className="col-xs-4 response-container">
-          <SimpleCard>
-            <ErrorCard loading={this.state.isLoading} didRun={this.state.didRun} button={button} />
-          </SimpleCard>
-        </div>
-      */}
+
         <style>
           {`
             .doc-container {

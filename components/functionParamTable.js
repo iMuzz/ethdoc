@@ -7,6 +7,12 @@ class FunctionParamTable extends React.Component {
     super(props);
 
     this.renderParamRows = this.renderParamRows.bind(this);
+    this.handleInputChange = this.handleInputChange.bind(this);
+  }
+
+  handleInputChange(e, i) {
+    i.value = e.target.value;
+    this.props.updateMethod(e.target.value);
   }
 
   renderParamRows() {
@@ -29,7 +35,7 @@ class FunctionParamTable extends React.Component {
           </div>
 
           <div className="col-xs-4 padding-override">
-            { params[input.name] }
+            <input type="text" onChange={(e) => this.handleInputChange(e, input)} />
           </div>
 
           <style>{`

@@ -5,6 +5,9 @@ import FunctionDescription from './functionDescription';
 import Runkit from './runkit';
 
 class FunctionContent extends React.Component {
+  constructor(props) {
+    super(props);
+  }
   render() {
     const { method } = this.props;
 
@@ -20,10 +23,10 @@ class FunctionContent extends React.Component {
           <FunctionParamTable
             inputs={method.inputs}
             params={method.devdoc.params}
+            updateMethod={this.props.updateMethod}
           />
 
           <Runkit method={method} />
-
 
           <style>{`
             .content-padding {

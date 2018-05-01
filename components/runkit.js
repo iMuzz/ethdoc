@@ -20,7 +20,6 @@ class Runkit extends React.Component {
   }
 
   sendTransaction() {
-    console.log('sendTransaction!');
     this.setState({ isOpen: true })
   }
   

@@ -7,20 +7,22 @@ import ErrorCard from '../components/errorCard';
 import Runkit from '../components/runkit';
 import FunctionContent from '../components/functionContent';
 import Web3Container from '../lib/web3Container';
-import data2 from '../data2';
+// import data2 from '../data2.js';
+import data2 from './0x.js';
 import contractInformation from './test';
 
 function parseFunctionName(name) {
   return name.split('(')[0];
 }
 
-let steps = data2.contracts['KittyOwnership.sol:KittyOwnership'].abi;
-let contractAbi = data2.contracts['KittyOwnership.sol:KittyOwnership'].abi;
-const devdoc = data2.contracts['KittyOwnership.sol:KittyOwnership'].devdoc;
+contractFileName = 'Exchange.sol:Exchange';
+
+const contractAbi = JSON.parse(data2.contracts[contractFileName].abi);
+const devdoc = JSON.parse(data2.contracts[contractFileName].devdoc);
 
 const methodNames = Object.keys(devdoc.methods).map(parseFunctionName);
 
-steps = contractAbi.map((meth) => {
+const steps = contractAbi.map((meth) => {
   const methodDevdoc = getMethodDevdoc(meth.name, devdoc.methods);
 
   if (methodDevdoc) {
@@ -149,7 +151,7 @@ class DocumentationCtrl extends React.Component {
         <style>
           {`
             .doc-container {
-              padding: 50px 200px;
+              padding: 50px 150px;
               overflow: hidden;
             }
             .response-container {

@@ -4,9 +4,15 @@ class FunctionDescription extends React.Component {
   render() {
     const { details } = this.props;
     return (
-      <div>
+      <div className="details">
         { details }
+          <style>{`
+            .details {
+              margin-bottom: 15px;
+            }
+          `}</style>
       </div>
+
     );
   }
 }

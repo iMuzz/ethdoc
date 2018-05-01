@@ -57,7 +57,6 @@ class DocumentationCtrl extends React.Component {
     this.clickHandler = this.clickHandler.bind(this);
     this.renderEndpoints = this.renderEndpoints.bind(this);
     this.updateMethod = this.updateMethod.bind(this);
-    this.sendTransaction = this.sendTransaction.bind(this);
   }
 
   clickHandler(i) {
@@ -65,17 +64,6 @@ class DocumentationCtrl extends React.Component {
     setTimeout(() => {
       this.setState({ stepIndex: i, fadeOut: false });
     }, 150);
-  }
-
-  sendTransaction(cb) {
-    const { contractAbi, contractAddress } = contractInformation;
-    const { web3 } = this.props;
-    const ZRXContractInstance = new web3.eth.Contract(contractAbi, contractAddress);
-
-    ZRXContractInstance.methods.getTokenAddresses().call().then((res) => {
-      console.log(res);
-      cb(res);
-    });
   }
 
   renderEndpoints() {
@@ -101,32 +89,6 @@ class DocumentationCtrl extends React.Component {
   }
 
   render() {
-    const button = (
-      <button onClick={this.sendTransaction}>
-          Try It Now
-          <style>
-            {`
-              button { 
-                background-color: #4762ff;
-                padding: 10px;
-                border: none;
-                color: white;
-                border-radius: 3px;
-                transition: all .3s;
-                position: relative;
-                top: 0px;
-              }
-
-              button:hover {
-                background-color: #6078FF;
-                padding: 10px;
-                cursor: pointer;
-                top: -1px;
-              }
-            `}
-          </style>
-        </button>
-      );
      return (
       <div className="row doc-container around-xs">
         <div className="col-xs-3 sidebar-container">
@@ -141,7 +103,9 @@ class DocumentationCtrl extends React.Component {
             <FunctionContent
               method={steps[this.state.stepIndex]}
               updateMethod={this.updateMethod}
-              cta={this.sendTransaction}
+              web3={this.props.web3}
+              contractAddress={contractInformation.contractAddress}
+              contractAbi={contractInformation.contractAbi}
             />
           </SimpleCard>
         </div>

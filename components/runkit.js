@@ -1,5 +1,5 @@
 import { highlight } from 'highlight.js';
-import { Collapse } from '@blueprintjs/core';
+import AnimateHeight from 'react-animate-height';
 import generateCodeSample from '../lib/generateCodeSample';
 import ResultView from './errorCard';
 // const Embed = require('react-runkit')
@@ -55,9 +55,12 @@ class Runkit extends React.Component {
               }
             `}
           </style>
-          <Collapse isOpen={this.state.isOpen}>
+          <AnimateHeight
+            duration={ 500 }
+            height={ this.state.isOpen ? 'auto' : 0 }
+          >
             <ResultView didRun />
-          </Collapse>
+          </AnimateHeight>
           <div className="runkit-footer row end-xs">
             <button onClick={this.sendTransaction}>
               Run Code

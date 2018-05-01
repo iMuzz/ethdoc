@@ -15,7 +15,7 @@ function parseFunctionName(name) {
   return name.split('(')[0];
 }
 
-const contractFileName = 'Exchange.sol:Exchange';
+const contractFileName = 'TokenRegistry.sol:TokenRegistry';
 const contractAbi = JSON.parse(data2.contracts[contractFileName].abi);
 const devdoc = JSON.parse(data2.contracts[contractFileName].devdoc);
 

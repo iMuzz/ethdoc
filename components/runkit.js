@@ -11,6 +11,7 @@ class Runkit extends React.Component {
 
     this.state = {
       isOpen: false,
+      answer: undefined,
     }
 
     this.sendTransaction = this.sendTransaction.bind(this);
@@ -20,8 +21,13 @@ class Runkit extends React.Component {
   }
 
   sendTransaction() {
-    this.setState({ isOpen: true })
-    this.props.cta();
+    this.props.cta((answer) => {
+      this.setState({
+        answer: answer,
+      }, () => {
+        this.setState({ isOpen: true });
+      });
+    });
   }
   
   render() {
@@ -59,7 +65,7 @@ class Runkit extends React.Component {
             duration={ 500 }
             height={ this.state.isOpen ? 'auto' : 0 }
           >
-            <ResultView didRun />
+            <ResultView didRun answer={this.state.answer}/>
           </AnimateHeight>
           <div className="runkit-footer row end-xs">
             <button onClick={this.sendTransaction}>

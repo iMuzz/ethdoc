@@ -50,7 +50,6 @@ class DocumentationCtrl extends React.Component {
 
     this.state = {
       stepIndex: 0,
-      isLoading: false,
       didRun: false,
       steps: steps,
     }
@@ -68,19 +67,15 @@ class DocumentationCtrl extends React.Component {
     }, 150);
   }
 
-  sendTransaction() {
+  sendTransaction(cb) {
     const { contractAbi, contractAddress } = contractInformation;
     const { web3 } = this.props;
-    this.setState({ isLoading: true });
     const ZRXContractInstance = new web3.eth.Contract(contractAbi, contractAddress);
 
     ZRXContractInstance.methods.getTokenAddresses().call().then((res) => {
-      console.log("get Token Addresses!");
       console.log(res);
+      cb(res);
     });
-    // ZeroXContract.methods.balanceOf("0x5049152044B3b4dAbA58479B6fF54346f8e60EAe").call().then((t) => {
-    //   this.setState({ isLoading: false });
-    // })
   }
 
   renderEndpoints() {

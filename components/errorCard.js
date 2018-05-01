@@ -1,14 +1,6 @@
 import { Spinner } from '@blueprintjs/core';
 
-export default ({ loading, button, didRun }) => {
-
-  const answer = `
-  {
-    blockHash: "0x5090c1a25a2accf4cb47a...",
-    blockNumber: 2561557,
-    totalSupply: 1000000,
-  }
-  `
+export default ({ loading, button, didRun, answer }) => {
   return (
     <div className="error-card">
       <pre className="">
@@ -18,7 +10,7 @@ export default ({ loading, button, didRun }) => {
           <code className="animated fadeIn">
             { didRun ? (
               <div>
-                { answer }
+                { JSON.stringify(answer, null, 2) }
               </div>
             ) : (
             <div className="middle-xs btc">
@@ -45,7 +37,7 @@ export default ({ loading, button, didRun }) => {
           }
           .error-card pre {
             margin: 0;
-            padding: 0px;
+            padding: 10px;
             background: none;
             height: 100%;
             border-radius: 0px;

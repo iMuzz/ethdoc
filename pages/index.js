@@ -131,10 +131,10 @@ class DocumentationCtrl extends React.Component {
       );
      return (
       <div className="row doc-container around-xs">
-        <div className="col-xs-2">
+        <div className="col-xs-3 sidebar-container">
           { this.renderEndpoints() }
         </div>
-        <div className="col-xs">
+        <div className="col-xs-9">
           <SimpleCard
             body={<div></div>}
             description={steps[this.state.stepIndex].devdoc.details}
@@ -149,9 +149,15 @@ class DocumentationCtrl extends React.Component {
 
         <style>
           {`
+            .sidebar-container {
+              position: fixed;
+              top: 50px;
+              left: 20px;
+            }
             .doc-container {
               padding: 50px 150px;
               overflow: hidden;
+              position: relative;
             }
             .response-container {
               height: 80vh

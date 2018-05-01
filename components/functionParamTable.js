@@ -21,7 +21,7 @@ class FunctionParamTable extends React.Component {
     return this.props.inputs.map((input) => {
       return (
         <div className="row param-row margin-override" key={input.name}>
-          <div className="col-xs-2 padding-override">
+          <div className="col-xs-3 padding-override">
             <strong>
               { input.name }
             </strong>
@@ -34,7 +34,7 @@ class FunctionParamTable extends React.Component {
             { params[input.name] }
           </div>
 
-          <div className="col-xs-4 padding-override">
+          <div className="col-xs-3 padding-override">
             <input
               className="eth-input"
               type="text"
@@ -46,6 +46,10 @@ class FunctionParamTable extends React.Component {
             .param-row {
               padding: 15px 0px;
               border-bottom: 1px solid #ebebf3;
+            }
+
+            .param-row strong {
+              word-wrap: break-word;
             }
 
             .param-row:last-child {
@@ -61,6 +65,7 @@ class FunctionParamTable extends React.Component {
               border-radius: 3px;
               min-height: 25px;
               padding: 0px 10px;
+              width: 100%;
             }
             .eth-input::placeholder {
               color: #dadee3;
@@ -83,7 +88,7 @@ class FunctionParamTable extends React.Component {
         <div className="params-table">
           <div className="params-header">
             <div className="row margin-override">
-              <div className="col-xs-2 padding-override">
+              <div className="col-xs-3 padding-override">
                 <div className="title">
                   <strong>
                     Name
@@ -104,7 +109,7 @@ class FunctionParamTable extends React.Component {
                   </strong>
                 </div>
               </div>
-              <div className="col-xs-4 padding-override">
+              <div className="col-xs-3 padding-override">
                 <div className="title">
                   <strong>
                     Input

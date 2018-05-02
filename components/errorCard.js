@@ -4,26 +4,9 @@ export default ({ loading, button, didRun, answer }) => {
   return (
     <div className="error-card">
       <pre className="">
-        {loading ? (
-          <Spinner />
-        ) : (
+        { didRun && (
           <code className="animated fadeIn">
-            { didRun ? (
-              <div>
-                { JSON.stringify(answer, null, 2) }
-              </div>
-            ) : (
-            <div className="middle-xs btc">
-              { button }
-              <style>
-                {`
-                  .btc {
-                    height: 100%;
-                  }
-                `}
-              </style>
-            </div>
-            )}
+            { answer }
           </code>
         )}
       </pre>

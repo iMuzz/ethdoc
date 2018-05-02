@@ -5,6 +5,33 @@ import ResultView from './errorCard';
 // const Embed = require('react-runkit')
 // return (<Embed source={ source } ref='embed' onLoad={ this.run.bind(this) }/>);
  
+const buttonStyles = (
+  <style>
+  {`
+    button {
+      background-color: #4762ff;
+      padding: 10px 15px;
+      border: none;
+      color: white;
+      border-radius: 3px;
+      transition: all .3s;
+      font-size: 14px;
+      position: relative;
+    }
+
+    button:hover {
+      background-color: #6078FF;
+      padding: 10px 15px;
+      cursor: pointer;
+      top: -1px;
+    }
+    button:focus {
+      outline: none;
+    }
+  `}
+</style>
+);
+
 class Runkit extends React.Component {
   constructor(props) {
     super(props);
@@ -15,6 +42,7 @@ class Runkit extends React.Component {
     }
 
     this.sendTransaction = this.sendTransaction.bind(this);
+    this.renderAnswer = this.renderAnswer.bind(this);
   }
 
   run() {
@@ -25,10 +53,31 @@ class Runkit extends React.Component {
     this.setState({ isOpen: false })
   }
 
+  renderAnswer({ answer, isTransaction, transactionHash }) {
+    if (isTransaction) {
+      return (
+        <div className="transaction">
+          <a href="https://ropsten.etherscan.io/tx/0x5927bbabd5d8d0cc3ab4743fc74fe90c8648f4f74d082a4a5b35a0961dc03b13" target="_blank">
+            <button style={{ width: "100%" }}>
+              View Transaction
+            </button>
+          </a>
+          { buttonStyles }
+        </div>
+      );
+    } else {
+      return (
+        <div>
+          { JSON.stringify(answer, null, 2) }
+        </div>
+      );
+    }
+  }
+
   sendTransaction() {
-    this.props.cta((answer) => {
+    this.props.cta((response) => {
       this.setState({
-        answer: answer,
+        answer: this.renderAnswer(response),
       }, () => {
         this.setState({ isOpen: true });
       });
@@ -75,26 +124,8 @@ class Runkit extends React.Component {
           <div className="runkit-footer row end-xs">
             <button onClick={this.sendTransaction}>
               Run Code
-              <style>
-                {`
-                  button {
-                    background-color: #4762ff;
-                    padding: 10px;
-                    border: none;
-                    color: white;
-                    border-radius: 3px;
-                    transition: all .3s;
-                  }
-
-                  button:hover {
-                    background-color: #6078FF;
-                    padding: 10px;
-                    cursor: pointer;
-                    top: -1px;
-                  }
-                `}
-              </style>
             </button>
+            { buttonStyles }
             <style>
               {`
                 .runkit-footer {

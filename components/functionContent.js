@@ -17,15 +17,26 @@ class FunctionContent extends React.Component {
     const isConstant = this.props.method.constant;
     const args = this.props.method.inputs.map(i => i.value).filter(i => i !== undefined)
 
-    const invokeTransaction = isConstant ? 'call' : 'send';
-
     web3.eth.getAccounts().then((account) => {
-      return ContractInstance.methods[methodName](...args)[invokeTransaction]({
-        from: account[0],
-      }).then((res) => {
-        console.log(res);
-        cb(res);
-      });
+      let prom;
+
+      if (isConstant) {
+         prom = ContractInstance.methods[methodName](...args).call({
+          from: account[0],
+        })
+      } else {
+        prom = ContractInstance.methods[methodName](...args).send({
+          from: account[0],
+        }).on('transactionHash', (hash) => {
+          cb({ isTransaction: true, transactionHash: hash });
+        })
+      }
+
+      prom.then((res) => {
+        cb({ answer: res });
+      })
+
+      return prom;
     })
   }
 

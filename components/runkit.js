@@ -57,7 +57,7 @@ class Runkit extends React.Component {
     if (isTransaction) {
       return (
         <div className="transaction">
-          <a href="https://ropsten.etherscan.io/tx/0x5927bbabd5d8d0cc3ab4743fc74fe90c8648f4f74d082a4a5b35a0961dc03b13" target="_blank">
+          <a href={`https://ropsten.etherscan.io/tx/${transactionHash}`} target="_blank">
             <button style={{ width: "100%" }}>
               View Transaction
             </button>

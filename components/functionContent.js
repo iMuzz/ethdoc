@@ -13,12 +13,25 @@ class FunctionContent extends React.Component {
   sendTransaction(cb) {
     const { web3, contractAbi, contractAddress } = this.props;
     const ContractInstance = new web3.eth.Contract(contractAbi, contractAddress);
+
     const methodName = this.props.method.name;
     const args = this.props.method.inputs.map(i => i.value);
+    const invokeTransaction = isConstant ? 'call' : 'send';
+    const isConstant = this.props.method.constant;
 
-    ContractInstance.methods[methodName](...args).call().then((res) => {
-      console.log(res);
-      cb(res);
+    // const _token = "0xa5C7EdCa55aE70C315ea9Bd14f881ed84C6CFd42"; 
+    // const _name = "Faraaz Token"; 
+    // const _symbol = "FFF"; 
+    // const _decimals = 0; 
+    // const _ipfsHash = web3.utils.asciiToHex("random");
+    // const _swarmHash = web3.utils.asciiToHex("random");
+
+    web3.eth.getAccounts().then((account) => {
+      return ContractInstance.methods[methodName](...args)[invokeTransaction]({
+        from: account[0],
+      }).then((res) => {
+        cb(res);
+      });
     });
   }
 

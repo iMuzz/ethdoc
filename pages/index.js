@@ -147,7 +147,7 @@ class DocumentationCtrl extends React.Component {
 
 export default () => (
   <Web3Container
-    renderLoading={() => <div>Loading...</div>}
+    renderLoading={() => <div></div>}
     render={(props) => (
       <DocumentationCtrl {...props} />
     )}

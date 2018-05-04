@@ -9,6 +9,10 @@ app.prepare()
 .then(() => {
   const server = express()
 
+  server.get('/home', (req, res) => {
+    app.render(req, res, '/home')
+  })
+
   server.get('/*', (req, res) => {
     const actualPage = '/'
     app.render(req, res, actualPage)

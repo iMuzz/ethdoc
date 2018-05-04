@@ -19,8 +19,10 @@
     "react": "^16.2.0",
     "react-addons-css-transition-group": "^15.6.2",
     "react-animate-height": "^1.0.2",
+    "react-anime": "^2.1.0",
     "react-dom": "^16.2.0",
     "react-runkit": "^0.9.0",
+    "react-window-ui": "^1.0.3",
     "web3": "^1.0.0-beta.29"
   },
   "devDependencies": {

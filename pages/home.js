@@ -24,6 +24,10 @@ class HomePage extends React.Component {
         fadeOutLeft: true
       })
     });
+
+    setTimeout(() => {
+      this.videoElement.play();
+    }, 3000)
   }
 
   render() {
@@ -31,8 +35,8 @@ class HomePage extends React.Component {
       <div className="homepage row middle-xs center-xs">
         <div className="window-container row center-xs">
           <Terminal className={classNames('terminal animated', { fadeOutLeft: this.state.fadeOutLeft })}>
-            <video controls width="1000" height="650" ref={el => this.videoElement = el}>
-              <source src="https://dzwonsemrish7.cloudfront.net/items/1I2c110W2W050y2k110v/terminal.mp4?X-CloudApp-Visitor-Id=2790687" type="video/mp4" />
+            <video width="1000" height="650" ref={el => this.videoElement = el}>
+              <source src="https://dzwonsemrish7.cloudfront.net/items/0e3P1A1k3t3l433y0x03/deom.mov?X-CloudApp-Visitor-Id=2790687" type="video/mp4" />
             </video>
           </Terminal>
 
@@ -48,7 +52,7 @@ class HomePage extends React.Component {
             .homepage {
               padding: 25px;
               height: 100vh;
-              background-color: white;
+              background-color: black;
             }
             .terminal, .browser {
               position: absolute;
@@ -58,6 +62,13 @@ class HomePage extends React.Component {
 
             .terminal {
               z-index: 3;
+              border: 1px solid #6f6f6f;
+              padding-top: 40px;
+            }
+
+            video {
+              position: relative;
+              left: -12px;
             }
 
             .embedded {

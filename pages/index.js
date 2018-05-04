@@ -1,5 +1,6 @@
 import React from 'react';
 import Web3 from 'web3';
+import Link from 'next/link'
 
 import FunctionRow from '../components/endpointRow';
 import SimpleCard from '../components/simpleCard';
@@ -35,12 +36,15 @@ class DocumentationCtrl extends React.Component {
   renderEndpoints() {
     return this.state.steps.map((step, i) => {
       return (
-        <FunctionRow
-          key={i}
-          title={step.name}
-          isActive={i === this.state.stepIndex}
-          onClick={() => { this.clickHandler(i); }}
-        />
+        <div onClick={() => { this.clickHandler(i); }}>
+          <Link as={`/${step.name}`} href={`/`} >
+            <FunctionRow
+              key={i}
+              title={step.name}
+              isActive={i === this.state.stepIndex}
+            />
+          </Link>
+        </div>
       );
     });
   }
@@ -90,18 +94,6 @@ class DocumentationCtrl extends React.Component {
             }
             .response-container {
               height: 80vh
-            }
-            .hljs-keyword, .hljs-selector-tag {
-              color: #3296d3
-            }
-            .hljs-number {
-              color: #fa755a
-            }
-            .hljs-built_in, .hljs-builtin-name, .hljs-literal, .hljs-type, .hljs-params, .hljs-meta, .hljs-link {
-              color: #e39f48
-            }
-            .hljs-string, .hljs-symbol, .hljs-bullet, .hljs-addition {
-              color: #20b57e
             }
           `}
 

@@ -109,7 +109,18 @@ class Runkit extends React.Component {
                 border-bottom-left-radius: 0px;
                 border-bottom-right-radius: 0px;
               }
-
+              .hljs-keyword, .hljs-selector-tag {
+                color: #3296d3
+              }
+              .hljs-number {
+                color: #fa755a
+              }
+              .hljs-built_in, .hljs-builtin-name, .hljs-literal, .hljs-type, .hljs-params, .hljs-meta, .hljs-link {
+                color: #e39f48
+              }
+              .hljs-string, .hljs-symbol, .hljs-bullet, .hljs-addition {
+                color: #20b57e
+              }
               pre {
                 font-size: 15px;
               }

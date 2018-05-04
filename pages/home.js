@@ -79,7 +79,7 @@ class HomePage extends React.Component {
             }
             .window-container {
               position: relative;
-              width: 1050px;
+              width: 1100px;
               height: 700px;
             }
           `}

@@ -1,13 +1,24 @@
 // import classNames from 'classnames';
 import PropTypes from 'prop-types';
+import { Popover } from '@blueprintjs/core'
 
 class FunctionParamTable extends React.Component {
 
   constructor(props) {
     super(props);
 
+    this.state = {
+      isPopoverOpen: false,
+    }
     this.renderParamRows = this.renderParamRows.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);
+    this.disablePopover = this.disablePopover.bind(this);
+  }
+
+  disablePopover() {
+    this.setState({
+      isPopoverOpen: true
+    });
   }
 
   handleInputChange(e, i) {
@@ -18,7 +29,17 @@ class FunctionParamTable extends React.Component {
   renderParamRows() {
     const { params } = this.props;
 
-    return this.props.inputs.map((input) => {
+    return this.props.inputs.map((input, i) => {
+      const argumentInput = (
+        <input
+          className="eth-input"
+          type="text"
+          placeholder={input.name}
+          onChange={(e) => this.handleInputChange(e, input)}
+          onClick={this.disablePopover}
+        />
+      );
+
       return (
         <div className="row param-row margin-override" key={input.name}>
           <div className="col-xs-3 padding-override">
@@ -35,14 +56,32 @@ class FunctionParamTable extends React.Component {
           </div>
 
           <div className="col-xs-3 padding-override">
-            <input
-              className="eth-input"
-              type="text"
-              placeholder={input.name}
-              onChange={(e) => this.handleInputChange(e, input)} />
+            { i === 0 ? (
+            <Popover content={
+                <div className='popover-content'>
+                  Fill out these fields to run the code below!
+                </div>
+              }
+              className='popover-override'
+              defaultIsOpen
+              autoFocus={false}
+              enforceFocus={false}
+              isOpen={!this.state.isPopoverOpen}
+              >
+              { argumentInput }
+            </Popover>
+
+            ) : argumentInput }
           </div>
 
           <style>{`
+            .popover-override {
+              width: 100%;
+            }
+            .popover-content {
+              padding: 10px;
+              max-width: 250px;
+            }
             .param-row {
               padding: 15px 0px;
               border-bottom: 1px solid #ebebf3;

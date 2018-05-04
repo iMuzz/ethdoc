@@ -8,7 +8,7 @@ class FunctionParamTable extends React.Component {
     super(props);
 
     this.state = {
-      isPopoverOpen: false,
+      isPopoverOpen: true,
     }
     this.renderParamRows = this.renderParamRows.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);

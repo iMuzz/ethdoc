@@ -88,7 +88,7 @@ class DocumentationCtrl extends React.Component {
               left: 20px;
             }
             .doc-container {
-              padding: 50px 150px;
+              padding: 50px 75px;
               overflow: hidden;
               position: relative;
             }

@@ -1,8 +1,9 @@
 import { Spinner } from '@blueprintjs/core';
 
-export default ({ children  }) => {
+export default ({ children, className }) => {
+  console.log(className)
   return (
-    <div className="macwindow">
+    <div className={`macwindow ${className}`}>
       <div className="header">
         <div className="row center-xs middle-xs">
           <div className="row circ-container">
@@ -57,7 +58,6 @@ export default ({ children  }) => {
             background-color: #DCDCDC;
             border-top-right-radius: .5rem;
             border-top-left-radius: .5rem;
-            min-width: 1000px;
             position: relative;
           }
           .circ-container {

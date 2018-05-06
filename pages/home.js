@@ -40,12 +40,7 @@ class HomePage extends React.Component {
               <source src="https://dzwonsemrish7.cloudfront.net/items/0e3P1A1k3t3l433y0x03/deom.mov?X-CloudApp-Visitor-Id=2790687" type="video/mp4" />
             </video>
           </Terminal>
-          {
-          // <Browser className={classNames('browser animated fadeInRight', { fadeInRight: this.state.fadeOutLeft })} >
-          // </Browser>
-          }
-
-          <MacWindow classNames="terminal">
+          <MacWindow className={classNames('browser animated fadeInRight', { fadeInRight: this.state.fadeOutLeft })}>
             <iframe className="embedded" src="http://localhost:3000"></iframe>
           </MacWindow>
         </div>

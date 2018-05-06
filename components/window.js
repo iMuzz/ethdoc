@@ -4,23 +4,46 @@ export default ({ children  }) => {
   return (
     <div className="macwindow">
       <div className="header">
-        <div className="row center-xs">
+        <div className="row center-xs middle-xs">
           <div className="row circ-container">
             <div className="circle red"></div>
             <div className="circle yellow"></div>
             <div className="circle green"></div>
           </div>
-          <span className="url">
-            https://google.com
-          </span>
+          <div className="url">
+            <span className="secure">
+              <span className="pt-icon-standard pt-icon-lock" />
+              Secure
+            </span>
+            <span className="domain">
+              https://google.com
+            </span>
+          </div>
         </div>
       </div>
       { children }
       <style>
         {`
+          .domain {
+            padding-right: 100px;
+            padding-left: 8px;
+            color: #000000;
+          }
+          .secure {
+            color: #4D7B47;
+            font-size: 12px;
+          }
+          span.pt-icon-lock {
+            margin-right: 4px;
+            font-size: 12px;
+            position: relative;
+            top: -1px;
+          }
           .url {
             border-radius: 5px;
-            padding: 5px 100px;
+            border: 1px solid #b1b1b1;
+            padding: 5px 8px;
+            paddin-right: 25px;
           }
           .circle {
             height: 10px;

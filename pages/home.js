@@ -3,6 +3,7 @@ import { Terminal, Browser } from 'react-window-ui'
 import classNames from 'classnames';
 import Anime from 'react-anime';
 import DocumentationCtrl from './index';
+import MacWindow from '../components/window';
 
 class HomePage extends React.Component {
   constructor() {
@@ -27,22 +28,26 @@ class HomePage extends React.Component {
 
     setTimeout(() => {
       this.videoElement.play();
-    }, 3000)
+    }, 4000)
   }
 
   render() {
      return (
       <div className="homepage row middle-xs center-xs">
         <div className="window-container row center-xs">
-          <Terminal className={classNames('terminal animated', { fadeOutLeft: this.state.fadeOutLeft })}>
+          <Terminal className={classNames('terminal animated fadeOutLeft', { fadeOutLeft: this.state.fadeOutLeft })}>
             <video width="1000" height="650" ref={el => this.videoElement = el}>
               <source src="https://dzwonsemrish7.cloudfront.net/items/0e3P1A1k3t3l433y0x03/deom.mov?X-CloudApp-Visitor-Id=2790687" type="video/mp4" />
             </video>
           </Terminal>
+          {
+          // <Browser className={classNames('browser animated fadeInRight', { fadeInRight: this.state.fadeOutLeft })} >
+          // </Browser>
+          }
 
-          <Browser className={classNames('browser animated', { fadeInRight: this.state.fadeOutLeft })} >
+          <MacWindow classNames="terminal">
             <iframe className="embedded" src="http://localhost:3000"></iframe>
-          </Browser>
+          </MacWindow>
         </div>
         <style>
           {`  
@@ -76,6 +81,8 @@ class HomePage extends React.Component {
               height: 100%;
               border: none;
               border-radius: .5rem;
+              border-top-left-radius: 0px;
+              border-top-right-radius: 0px;
             }
             
             .browser::before {

@@ -17,7 +17,7 @@ export default ({ children, className }) => {
               Secure
             </span>
             <span className="domain">
-              https://google.com
+              https://ethdocs.io/tokenregistry
             </span>
           </div>
         </div>
@@ -43,7 +43,7 @@ export default ({ children, className }) => {
           .url {
             border-radius: 5px;
             border: 1px solid #b1b1b1;
-            padding: 5px 8px;
+            padding: 6px 8px;
             paddin-right: 25px;
           }
           .circle {

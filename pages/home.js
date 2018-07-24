@@ -36,8 +36,8 @@ class HomePage extends React.Component {
       <div className="homepage row middle-xs center-xs">
         <div className="window-container row center-xs">
           <Terminal className={classNames('terminal animated', { fadeOutLeft: this.state.fadeOutLeft })}>
-            <video width="1000" height="650" ref={el => this.videoElement = el}>
-              <source src="https://dzwonsemrish7.cloudfront.net/items/0e3P1A1k3t3l433y0x03/deom.mov?X-CloudApp-Visitor-Id=2790687" type="video/mp4" />
+            <video width="980"  ref={el => this.videoElement = el}>
+              <source src="https://dzwonsemrish7.cloudfront.net/items/253n140R1N0E32100s1p/term.mp4?X-CloudApp-Visitor-Id=2790687" type="video/mp4" />
             </video>
           </Terminal>
           <MacWindow className={classNames('browser animated', { fadeInRight: this.state.fadeOutLeft })}>
@@ -68,7 +68,8 @@ class HomePage extends React.Component {
 
             video {
               position: relative;
-              left: -12px;
+              left: 8px;
+              top: 4px;
             }
 
             .embedded {

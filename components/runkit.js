@@ -86,7 +86,7 @@ class Runkit extends React.Component {
   
   render() {
     const { method } = this.props;
-    const source = generateCodeSample({ contractName: 'ZRXContract', method})
+    const source = generateCodeSample({ contractName: 'TokenRegistry', method})
     return (
       <div>
         <div className="code-highlighting">

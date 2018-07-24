@@ -1,6 +1,6 @@
 import React from 'react';
 import Web3 from 'web3';
-import Link from 'next/link'
+// import Link from 'next/link'
 
 import FunctionRow from '../components/endpointRow';
 import SimpleCard from '../components/simpleCard';
@@ -10,6 +10,11 @@ import FunctionContent from '../components/functionContent';
 import Web3Container from '../lib/web3Container';
 import steps from '../lib/hacks';
 import contractInformation from './test.js';
+
+// TESTING
+import InfiniteScroll from 'react-infinite-scroll-component';
+import { Element, Link } from 'react-scroll';
+
 
 class DocumentationCtrl extends React.Component {
   constructor() {
@@ -37,7 +42,7 @@ class DocumentationCtrl extends React.Component {
     return this.state.steps.map((step, i) => {
       return (
         <div onClick={() => { this.clickHandler(i); }}>
-          <Link as={`/${step.name}`} href={`/`} >
+          <Link to={`${i}`} spy={true} smooth={true}>
             <FunctionRow
               key={i}
               title={step.name}
@@ -46,6 +51,28 @@ class DocumentationCtrl extends React.Component {
           </Link>
         </div>
       );
+    });
+  }
+
+  getItems() {
+    return this.state.steps.map((step, i) => {
+      return (
+        <Element name={`${i}`}>
+          <SimpleCard
+            body={<div></div>}
+            description={this.state.steps[i].devdoc.details}
+            fadeOut={this.state.fadeOut}
+          >
+            <FunctionContent
+              method={steps[i]}
+              updateMethod={this.updateMethod}
+              web3={this.props.web3}
+              contractAddress={contractInformation.contractAddress}
+              contractAbi={contractInformation.contractAbi}
+            />
+          </SimpleCard>
+        </Element>
+      )
     });
   }
 
@@ -61,23 +88,16 @@ class DocumentationCtrl extends React.Component {
   render() {
      return (
       <div className="row doc-container around-xs">
-        <div className="col-xs-3 sidebar-container">
+        <div className="col-xs-3 sidebar-container sticky-top">
           { this.renderEndpoints() }
         </div>
         <div className="col-xs-9 content-container">
-          <SimpleCard
-            body={<div></div>}
-            description={steps[this.state.stepIndex].devdoc.details}
-            fadeOut={this.state.fadeOut}
+          <InfiniteScroll
+            dataLength={this.state.steps.length}
+            hasMore={false}
           >
-            <FunctionContent
-              method={steps[this.state.stepIndex]}
-              updateMethod={this.updateMethod}
-              web3={this.props.web3}
-              contractAddress={contractInformation.contractAddress}
-              contractAbi={contractInformation.contractAbi}
-            />
-          </SimpleCard>
+            {this.getItems()}
+          </InfiniteScroll>
         </div>
 
         <style>
@@ -85,16 +105,18 @@ class DocumentationCtrl extends React.Component {
             .sidebar-container {
               top: 50px;
               left: 20px;
+              position: sticky;
             }
             .content-container {
-              max-height: calc(100vh - 100px);
+              height: 100%;
             }
             .doc-container {
               padding: 50px 10px;
-              overflow: hidden;
               position: relative;
               max-width: 1200px;
               margin: auto;
+              display: flex;
+              align-items: flex-start
             }
             .response-container {
               height: 80vh

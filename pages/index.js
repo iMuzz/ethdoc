@@ -13,23 +13,32 @@ import contractInformation from './test.js';
 
 // TESTING
 import InfiniteScroll from 'react-infinite-scroll-component';
-import { Element, Link } from 'react-scroll';
+import { Element, Link, scrollSpy } from 'react-scroll';
 
 
 class DocumentationCtrl extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
       stepIndex: 0,
       didRun: false,
       steps: steps,
       active: 0,
+      connected: this.props.connected,
     }
 
     this.clickHandler = this.clickHandler.bind(this);
     this.renderEndpoints = this.renderEndpoints.bind(this);
     this.updateMethod = this.updateMethod.bind(this);
+  }
+
+  componentDidUpdate() {
+
+  }  
+
+  componentDidMount() {
+    scrollSpy.update();
   }
 
   clickHandler(i) {
@@ -43,7 +52,7 @@ class DocumentationCtrl extends React.Component {
     return this.state.steps.map((step, i) => {
       return (
         <div onClick={() => { this.clickHandler(i); }}>
-          <Link to={`${i}`} spy={true} smooth={true} onClick={() => { this.setState({ active: i }) }}>
+          <Link to={`${i}`} spy={true} smooth={true} onSetActive={() => { this.setState({ active: i})}} >
             <FunctionRow
               key={i}
               title={step.name}
@@ -96,6 +105,7 @@ class DocumentationCtrl extends React.Component {
           <InfiniteScroll
             dataLength={this.state.steps.length}
             hasMore={false}
+
           >
             {this.getItems()}
           </InfiniteScroll>
@@ -110,6 +120,7 @@ class DocumentationCtrl extends React.Component {
             }
             .content-container {
               height: 100%;
+              margin-bottom: 25%;
             }
             .doc-container {
               padding: 50px 10px;

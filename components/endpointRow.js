@@ -6,6 +6,10 @@ export default ({ title, isActive, onClick }) => {
       { title }
       <style>
         {`
+          a:hover {
+            text-decoration: none;
+          }
+
           .endpoint {
             padding: 4px 20px;
             cursor: pointer;

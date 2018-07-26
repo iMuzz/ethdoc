@@ -17,14 +17,15 @@ import { Element, Link } from 'react-scroll';
 
 
 class DocumentationCtrl extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
       stepIndex: 0,
       didRun: false,
       steps: steps,
       active: 0,
+      connected: this.props.connected,
     }
 
     this.clickHandler = this.clickHandler.bind(this);

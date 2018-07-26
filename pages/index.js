@@ -24,6 +24,7 @@ class DocumentationCtrl extends React.Component {
       stepIndex: 0,
       didRun: false,
       steps: steps,
+      active: 0,
     }
 
     this.clickHandler = this.clickHandler.bind(this);
@@ -42,11 +43,11 @@ class DocumentationCtrl extends React.Component {
     return this.state.steps.map((step, i) => {
       return (
         <div onClick={() => { this.clickHandler(i); }}>
-          <Link to={`${i}`} spy={true} smooth={true}>
+          <Link to={`${i}`} spy={true} smooth={true} onClick={() => { this.setState({ active: i }) }}>
             <FunctionRow
               key={i}
               title={step.name}
-              isActive={i === this.state.stepIndex}
+              isActive={i === this.state.active}
             />
           </Link>
         </div>

@@ -33,10 +33,6 @@ class DocumentationCtrl extends React.Component {
     this.updateMethod = this.updateMethod.bind(this);
   }
 
-  componentDidUpdate() {
-
-  }  
-
   componentDidMount() {
     scrollSpy.update();
   }
@@ -105,7 +101,6 @@ class DocumentationCtrl extends React.Component {
           <InfiniteScroll
             dataLength={this.state.steps.length}
             hasMore={false}
-
           >
             {this.getItems()}
           </InfiniteScroll>

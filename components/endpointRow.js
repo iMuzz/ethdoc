@@ -13,6 +13,7 @@ export default ({ title, isActive, onClick }) => {
           .endpoint {
             padding: 4px 20px;
             cursor: pointer;
+            color: #182026;
             border-radius: 3px;
             margin: 3px 0px;
             transition: background-color .3s;

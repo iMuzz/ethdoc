@@ -29,7 +29,7 @@ class SimpleCard extends React.Component {
               border-radius: 6px;
               overflow: auto;
               animation-duration: .15s;
-              margin-bottom: 1.5em;
+              margin-bottom: 2em;
             }
           `}
         </style>

@@ -10,8 +10,11 @@ class EthdocCommand extends Command {
 }
 
 EthdocCommand.args = [
-  {name: 'firstArg'},
-  {name: 'secondArg'},
+  {
+    name: 'file',
+    required: true,
+    description: 'The solidity file you want to generate documentation for.',
+  },
 ]
 
 EthdocCommand.description = `Describe the command here

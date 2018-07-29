@@ -2,11 +2,17 @@ const {Command, flags} = require('@oclif/command')
 
 class EthdocCommand extends Command {
   async run() {
-    const {flags} = this.parse(EthdocCommand)
-    const name = flags.name || 'world'
-    this.log(`hello ${name} from ./src/index.js`)
+    // can get args as an object
+    const {args} = this.parse(EthdocCommand)
+
+    console.log(args)
   }
 }
+
+EthdocCommand.args = [
+  {name: 'firstArg'},
+  {name: 'secondArg'},
+]
 
 EthdocCommand.description = `Describe the command here
 ...

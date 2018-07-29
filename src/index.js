@@ -5,7 +5,7 @@ class EthdocCommand extends Command {
     // can get args as an object
     const {args} = this.parse(EthdocCommand)
 
-    console.log(args)
+    console.log(`The user passed in: ${args.file}`);
   }
 }
 
@@ -13,7 +13,7 @@ EthdocCommand.args = [
   {
     name: 'file',
     required: true,
-    description: 'The solidity file you want to generate documentation for.',
+    description: 'The solidity file you want to generate documentation for \'/yourpath/tokenRegistry.sol\'',
   },
 ]
 

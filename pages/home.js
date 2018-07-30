@@ -18,7 +18,7 @@ class HomePage extends React.Component {
             <div className="">
               <div className="row middle-xs end-xs">
                 <Logo></Logo>
-                <span className="logo"> Solidity Docs</span>
+                <span className="logo"> Solid Docs</span>
               </div>
             </div>
             <div className="intro">
@@ -65,6 +65,7 @@ class HomePage extends React.Component {
               line-height: normal;
               font-size: 30px;
               text-align: right;
+              margin-top: 10px;
             }
 
             .block-rtl {

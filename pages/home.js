@@ -14,7 +14,14 @@ class HomePage extends React.Component {
             Create documentation for your smart contracts in a matter of <strong>seconds</strong>.
             <div className="block-rtl">
               <button>View Demo</button>
-              <style> { button } </style>
+              <style>
+                { `
+                  ${button}
+                  button {
+                    box-shadow: 0px 2px 1px -1px #d2dfe2;
+                  }`
+                }
+              </style>
             </div>
           </div>
           <div className="col-xs-7 image">

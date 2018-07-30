@@ -9,9 +9,9 @@ class HomePage extends React.Component {
      return (
       <div className="home">
         <div className="row">
-          <div className="col-xs-2 col-xs-offset-3 intro">
+          <div className="col-xs-4 col-xs-offset-1 intro">
             Create documentation for your smart contracts in a matter of <strong>seconds</strong>.
-            <button className="demo">View Demo</button>
+            <div className="block-rtl"><button className="demo">View Demo</button></div>
           </div>
           <div className="col-xs-7 image">
             <Macbook />
@@ -49,8 +49,14 @@ class HomePage extends React.Component {
 
             }
 
+            .block-rtl {
+              direction: rtl;
+            }
+
             .demo {
+              display: block;
               padding: 8px 15px 8px 15px;
+              margin-top: 1em;
               border: 1px solid rgba(71, 98, 255, 0.5);
               border-radius: 5px;
               background: rgba(71, 98, 255, 1) !important;

@@ -1,5 +1,6 @@
 import Macbook from '../components/macbook';
 import { button } from '../styles/styles';
+import Logo from '../components/assets/solid-doc.svg.react';
 
 class HomePage extends React.Component {
   constructor(props) {
@@ -9,19 +10,30 @@ class HomePage extends React.Component {
   render() {
      return (
       <div className="home">
+        <div className="header">
+        </div>
+
         <div className="row">
-          <div className="col-xs-4 col-xs-offset-1 intro">
-            Create documentation for your smart contracts in a matter of <strong>seconds</strong>.
-            <div className="block-rtl">
-              <button>View Demo</button>
-              <style>
-                { `
-                  ${button}
-                  button {
-                    box-shadow: 0px 2px 1px -1px #d2dfe2;
-                  }`
-                }
-              </style>
+          <div className="col-xs-4 col-xs-offset-1">
+            <div className="">
+              <div className="row middle-xs end-xs">
+                <Logo></Logo>
+                <span className="logo"> Solidity Docs</span>
+              </div>
+            </div>
+            <div className="intro">
+              Create documentation for your smart contracts in a matter of <strong>seconds</strong>.
+              <div className="block-rtl">
+                <button>View Demo</button>
+                <style>
+                  { `
+                    ${button}
+                    button {
+                      box-shadow: 0px 2px 1px -1px #d2dfe2;
+                    }`
+                  }
+                </style>
+              </div>
             </div>
           </div>
           <div className="col-xs-7 image">
@@ -30,10 +42,14 @@ class HomePage extends React.Component {
         </div>
         <style jsx>
           {`
-
-            .row {
-              justify-content: center;
-              align-items: center;
+            .header {
+              padding: 50px;
+            }
+            .logo {
+              font-family: 'Titillium Web';
+              color: #8798FF;
+              font-size: 30px;
+              margin-left: 20px;
             }
 
             .home {

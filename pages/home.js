@@ -30,11 +30,6 @@ class HomePage extends React.Component {
         </div>
         <style jsx>
           {`
-            /* CSS */
-
-            html, body {
-              background: #fff;
-            }
 
             .row {
               justify-content: center;
@@ -42,9 +37,9 @@ class HomePage extends React.Component {
             }
 
             .home {
-              margin-left: 5%;
-              margin-right: 5%;
-              margin-top: 5%;
+              background-color: white;
+              width: 100%;
+              min-height: 100vh;
             }
 
             .intro {

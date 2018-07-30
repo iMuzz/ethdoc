@@ -108,6 +108,10 @@ class DocumentationCtrl extends React.Component {
 
         <style>
           {`
+            /* side dropshadows were being cutoff*/
+            .infinite-scroll-component {
+              padding: 0px 5px;
+            }
             .sidebar-container {
               top: 50px;
               left: 20px;

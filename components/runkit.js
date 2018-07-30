@@ -6,7 +6,6 @@ import { button } from '../styles/styles'
 // const Embed = require('react-runkit')
 // return (<Embed source={ source } ref='embed' onLoad={ this.run.bind(this) }/>);
  
-
 class Runkit extends React.Component {
   constructor(props) {
     super(props);
@@ -111,7 +110,7 @@ class Runkit extends React.Component {
             <button onClick={this.sendTransaction}>
               Run Code
             </button>
-            <style>{button}</style>
+            <style>{ button }</style>
             <style>
               {`
                 .runkit-footer {

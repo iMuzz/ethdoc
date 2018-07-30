@@ -45,10 +45,6 @@ class HomePage extends React.Component {
               text-align: right;
             }
 
-            .image {
-
-            }
-
             .block-rtl {
               direction: rtl;
             }
@@ -72,11 +68,15 @@ class HomePage extends React.Component {
               transition: color .05s ease-in-out, background .2s ease-in-out, border .1s ease-in-out, box-shadow .1s ease-in-out, transform .1s ease-in-out !important;
               cursor: pointer;
             }
-            
+
             .demo:hover {
               transform: translate(0px, 2px);
             }
-            
+
+            .demo:focus {
+              outline: none;
+            }
+
             .demo:active {
               color: rgba(210, 217, 255, 1) !important;
               background: rgba(71, 98, 255, 0.9) !important;

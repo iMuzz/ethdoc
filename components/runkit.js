@@ -2,35 +2,10 @@ import { highlight } from 'highlight.js';
 import AnimateHeight from 'react-animate-height';
 import generateCodeSample from '../lib/generateCodeSample';
 import ResultView from './errorCard';
+import { button } from '../styles/styles'
 // const Embed = require('react-runkit')
 // return (<Embed source={ source } ref='embed' onLoad={ this.run.bind(this) }/>);
  
-const buttonStyles = (
-  <style>
-  {`
-    button {
-      background-color: #4762ff;
-      padding: 10px 15px;
-      border: none;
-      color: white;
-      border-radius: 3px;
-      transition: all .3s;
-      font-size: 14px;
-      position: relative;
-    }
-
-    button:hover {
-      background-color: #6078FF;
-      padding: 10px 15px;
-      cursor: pointer;
-      top: -1px;
-    }
-    button:focus {
-      outline: none;
-    }
-  `}
-</style>
-);
 
 class Runkit extends React.Component {
   constructor(props) {
@@ -136,7 +111,7 @@ class Runkit extends React.Component {
             <button onClick={this.sendTransaction}>
               Run Code
             </button>
-            { buttonStyles }
+            <style>{button}</style>
             <style>
               {`
                 .runkit-footer {

@@ -1,100 +1,93 @@
-import React from 'react';
-import { Terminal, Browser } from 'react-window-ui'
-import classNames from 'classnames';
-import Anime from 'react-anime';
-import DocumentationCtrl from './index';
-import MacWindow from '../components/window';
+import Macbook from '../components/macbook';
 
 class HomePage extends React.Component {
-  constructor() {
-    super();
-
-    this.someFunc = this.someFunc.bind(this);
-    this.state = {
-      fadeOutLeft: false
-    }
-  }
-
-  someFunc() {
-    console.log('someFunc')
-  }
-
-  componentDidMount() {
-    this.videoElement.addEventListener("ended", () => {
-      this.setState({
-        fadeOutLeft: true
-      })
-    });
-
-    setTimeout(() => {
-      this.videoElement.play();
-    }, 4000)
+  constructor(props) {
+    super(props);
   }
 
   render() {
      return (
-      <div className="homepage row middle-xs center-xs">
-        <div className="window-container row center-xs">
-          <Terminal className={classNames('terminal animated', { fadeOutLeft: this.state.fadeOutLeft })}>
-            <video width="980"  ref={el => this.videoElement = el}>
-              <source src="https://dzwonsemrish7.cloudfront.net/items/253n140R1N0E32100s1p/term.mp4?X-CloudApp-Visitor-Id=2790687" type="video/mp4" />
-            </video>
-          </Terminal>
-          <MacWindow className={classNames('browser animated', { fadeInRight: this.state.fadeOutLeft })}>
-            <iframe className="embedded" src="http://localhost:3000"></iframe>
-          </MacWindow>
+      <div className="home">
+        <div className="row">
+          <div className="col-xs-4 col-xs-offset-1 intro">
+            Create documentation for your smart contracts in a matter of <strong>seconds</strong>.
+            <div className="block-rtl"><button className="demo">View Demo</button></div>
+          </div>
+          <div className="col-xs-7 image">
+            <Macbook />
+          </div>
         </div>
-        <style>
-          {`  
-            .animated {
-              animation-duration: .5s;
-            }
-            .homepage {
-              padding: 25px;
-              height: 100vh;
-              background-color: black;
-            }
-            .terminal, .browser {
-              position: absolute;
-              box-shadow: 0 2px 5px 0 rgba(51, 51, 79, 0.2);
-              border: none;
+        <style jsx>
+          {`
+            /* CSS */
+
+            html, body {
+              background: #fff;
             }
 
-            .terminal {
-              z-index: 3;
-              border: 1px solid #6f6f6f;
-              padding-top: 40px;
+            .row {
+              justify-content: center;
+              align-items: center;
             }
 
-            video {
-              position: relative;
-              left: 8px;
-              top: 4px;
+            .home {
+              margin-left: 5%;
+              margin-right: 5%;
+              margin-top: 5%;
             }
 
-            .embedded {
-              width: 100%;
-              height: 100%;
-              border: none;
-              border-radius: .5rem;
-              border-top-left-radius: 0px;
-              border-top-right-radius: 0px;
+            .intro {
+              font-family: 'Titillium Web';
+              font-style: normal;
+              font-weight: normal;
+              line-height: normal;
+              font-size: 30px;
+              text-align: right;
+            }
+
+            .image {
+
+            }
+
+            .block-rtl {
+              direction: rtl;
+            }
+
+            .demo {
+              display: block;
+              padding: 8px 15px 8px 15px;
+              margin-top: 1em;
+              border: 1px solid rgba(71, 98, 255, 0.5);
+              border-radius: 5px;
+              background: rgba(71, 98, 255, 1) !important;
+              box-shadow: 0px 2px 1px -1px #d2dfe2;
+              font-family: 'Titillium Web';
+              text-transform: uppercase;
+              font-weight: normal !important;
+              font-size: 14px;
+              color: #fff;
+              margin: 20 5 5 0;
+              border: 0 none;
+              line-height 16px;
+              transition: color .05s ease-in-out, background .2s ease-in-out, border .1s ease-in-out, box-shadow .1s ease-in-out, transform .1s ease-in-out !important;
+              cursor: pointer;
             }
             
-            .browser::before {
-              background-color: #eaeaea;
-              border: none
+            .demo:hover {
+              transform: translate(0px, 2px);
             }
-            .browser {
-              opacity: 0;
-              padding: 0;
-              width: 100%;
-              height: 100%;
+            
+            .demo:active {
+              color: rgba(210, 217, 255, 1) !important;
+              background: rgba(71, 98, 255, 0.9) !important;
+              box-shadow: 0px 2px 1px -1px rgba(71, 98, 255, 0.4);
+              transform: translate(0px, 5px);
             }
-            .window-container {
-              position: relative;
-              width: 1100px;
-              height: 700px;
+
+            @media (max-width: 800px) {
+              .homepage {
+                display: block;
+              }
             }
           `}
         </style>

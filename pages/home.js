@@ -36,7 +36,7 @@ class HomePage extends React.Component {
               </div>
             </div>
           </div>
-          <div className="col-xs-7 image">
+          <div className="col-xs-7 image animated fadeIn">
             <Macbook />
           </div>
         </div>

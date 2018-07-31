@@ -1,18 +1,45 @@
+/* eslint-disable */
+
 const {Command, flags} = require('@oclif/command')
+const {Compiler} = require('@0xproject/sol-compiler')
 
 class EthdocCommand extends Command {
   async run() {
-    // can get args as an object
+    // can gets args as an object
     const {args} = this.parse(EthdocCommand)
+    const {file} = args
 
-    console.log(`The user passed in: ${args.file}`);
+    const currPath = `${process.cwd()}/`
+    console.log(`\ncurrent PATH: ${currPath}\n`)
+    console.log(`current FILE: ${file}\n`)
+
+    const compilerOptions = {
+      contracts: ['TokenRegistry', 'Ownable_v1'],
+      artifactsDir: `./artifacts`,
+      contractsDir: `${currPath}/contracts`,
+      compilerSettings: {
+        outputSelection: {
+          ['*']: {
+            ['*']: ['abi', 'devdoc'],
+          },
+        },
+      },
+      solcVersion: '0.4.19',
+    }
+
+    const compiler = new Compiler(compilerOptions)
+    compiler.compileAsync().then((t) => {
+      console.log(`we're in here!`, t)
+    })
+
+    // console.log(`The user passed in: ${args.file}`);
   }
 }
 
 EthdocCommand.args = [
   {
     name: 'file',
-    required: true,
+    // required: true,
     description: 'The solidity file you want to generate documentation for \'/yourpath/tokenRegistry.sol\'',
   },
 ]

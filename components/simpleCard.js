@@ -31,7 +31,9 @@ class SimpleCard extends React.Component {
               height: 100%;
               overflow: auto;
               animation-duration: .15s;
+              transition: transform .1s ease-in-out;
             }
+
           `}
         </style>
       </div>

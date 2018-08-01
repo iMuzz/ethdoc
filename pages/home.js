@@ -1,100 +1,81 @@
-import React from 'react';
-import { Terminal, Browser } from 'react-window-ui'
-import classNames from 'classnames';
-import Anime from 'react-anime';
-import DocumentationCtrl from './index';
-import MacWindow from '../components/window';
+import Macbook from '../components/macbook';
+import { button } from '../styles/styles';
+import Logo from '../components/assets/solid-doc.svg.react';
 
 class HomePage extends React.Component {
-  constructor() {
-    super();
-
-    this.someFunc = this.someFunc.bind(this);
-    this.state = {
-      fadeOutLeft: false
-    }
-  }
-
-  someFunc() {
-    console.log('someFunc')
-  }
-
-  componentDidMount() {
-    this.videoElement.addEventListener("ended", () => {
-      this.setState({
-        fadeOutLeft: true
-      })
-    });
-
-    setTimeout(() => {
-      this.videoElement.play();
-    }, 4000)
+  constructor(props) {
+    super(props);
   }
 
   render() {
      return (
-      <div className="homepage row middle-xs center-xs">
-        <div className="window-container row center-xs">
-          <Terminal className={classNames('terminal animated', { fadeOutLeft: this.state.fadeOutLeft })}>
-            <video width="980"  ref={el => this.videoElement = el}>
-              <source src="https://dzwonsemrish7.cloudfront.net/items/253n140R1N0E32100s1p/term.mp4?X-CloudApp-Visitor-Id=2790687" type="video/mp4" />
-            </video>
-          </Terminal>
-          <MacWindow className={classNames('browser animated', { fadeInRight: this.state.fadeOutLeft })}>
-            <iframe className="embedded" src="http://localhost:3000"></iframe>
-          </MacWindow>
+      <div className="home">
+        <div className="header">
         </div>
-        <style>
-          {`  
-            .animated {
-              animation-duration: .5s;
+
+        <div className="row">
+          <div className="col-xs-4 col-xs-offset-1">
+            <div className="">
+              <div className="row middle-xs end-xs">
+                <Logo></Logo>
+                <span className="logo"> Solid Docs</span>
+              </div>
+            </div>
+            <div className="intro">
+              Create documentation for your smart contracts in a matter of <strong>seconds</strong>.
+              <div className="block-rtl">
+                <button>View Demo</button>
+                <style>
+                  { `
+                    ${button}
+                    button {
+                      box-shadow: 0px 2px 1px -1px #d2dfe2;
+                    }`
+                  }
+                </style>
+              </div>
+            </div>
+          </div>
+          <div className="col-xs-7 image animated fadeIn">
+            <Macbook />
+          </div>
+        </div>
+        <style jsx>
+          {`
+            .header {
+              padding: 50px;
             }
-            .homepage {
-              padding: 25px;
-              height: 100vh;
-              background-color: black;
-            }
-            .terminal, .browser {
-              position: absolute;
-              box-shadow: 0 2px 5px 0 rgba(51, 51, 79, 0.2);
-              border: none;
+            .logo {
+              font-family: 'Titillium Web';
+              color: #8798FF;
+              font-size: 30px;
+              margin-left: 20px;
             }
 
-            .terminal {
-              z-index: 3;
-              border: 1px solid #6f6f6f;
-              padding-top: 40px;
-            }
-
-            video {
-              position: relative;
-              left: 8px;
-              top: 4px;
-            }
-
-            .embedded {
+            .home {
+              background-color: white;
               width: 100%;
-              height: 100%;
-              border: none;
-              border-radius: .5rem;
-              border-top-left-radius: 0px;
-              border-top-right-radius: 0px;
+              min-height: 100vh;
             }
-            
-            .browser::before {
-              background-color: #eaeaea;
-              border: none
+
+            .intro {
+              font-family: 'Titillium Web';
+              font-style: normal;
+              font-weight: normal;
+              line-height: normal;
+              font-size: 30px;
+              text-align: right;
+              margin-top: 10px;
             }
-            .browser {
-              opacity: 0;
-              padding: 0;
-              width: 100%;
-              height: 100%;
+
+            .block-rtl {
+              direction: rtl;
             }
-            .window-container {
-              position: relative;
-              width: 1100px;
-              height: 700px;
+
+            @media (max-width: 800px) {
+              .homepage {
+                display: block;
+              }
             }
           `}
         </style>

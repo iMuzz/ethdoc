@@ -15,7 +15,6 @@ import contractInformation from './test.js';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import { Element, Link, scrollSpy } from 'react-scroll';
 
-
 class DocumentationCtrl extends React.Component {
   constructor(props) {
     super(props);
@@ -70,6 +69,7 @@ class DocumentationCtrl extends React.Component {
             fadeOut={this.state.fadeOut}
           >
             <FunctionContent
+              connected={this.state.connected}
               method={steps[i]}
               updateMethod={this.updateMethod}
               web3={this.props.web3}
@@ -127,7 +127,8 @@ class DocumentationCtrl extends React.Component {
               max-width: 1200px;
               margin: auto;
               display: flex;
-              align-items: flex-start
+              align-items: flex-start;
+              overflow: visible;
             }
             .response-container {
               height: 80vh

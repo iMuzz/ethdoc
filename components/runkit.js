@@ -3,7 +3,7 @@ import AnimateHeight from 'react-animate-height';
 import generateCodeSample from '../lib/generateCodeSample';
 import ResultView from './errorCard';
 
-import { Button } from '@blueprintjs/core';
+import Button from './ui/button';
 
 class Runkit extends React.Component {
 	constructor(props) {
@@ -81,28 +81,40 @@ class Runkit extends React.Component {
               .code-highlighting {
                 position: relative;
               }
+
               .code-highlight {
+								background-color: #0a1a36;
+								border-bottom-left-radius: 0px;
+								border-bottom-right-radius: 0px;
                 color: #b8bff2;
-                background-color: #0a1a36;
                 margin: 0px;
                 padding-top: 0px;
-                border-bottom-left-radius: 0px;
-                border-bottom-right-radius: 0px;
               }
+
               .hljs-keyword, .hljs-selector-tag {
                 color: #3296d3
               }
+
               .hljs-number {
                 color: #fa755a
               }
+
               .hljs-built_in, .hljs-builtin-name, .hljs-literal, .hljs-type, .hljs-params, .hljs-meta, .hljs-link {
                 color: #e39f48
               }
+
               .hljs-string, .hljs-symbol, .hljs-bullet, .hljs-addition {
                 color: #20b57e
               }
+
+							code {
+								font-family: IBM Plex Mono !important;
+								font-weight: 400;
+							}
+
               pre {
-                font-size: 15px;
+                font-size: 1em;
+								line-height: 1.5em;
               }
             `}
 					</style>
@@ -115,7 +127,7 @@ class Runkit extends React.Component {
 							{`
                 .runkit-footer {
                   background-color: #0a1a36;
-                  padding: 15px;
+                  padding: 5px 15px 15px 15px;
                   border-bottom-left-radius: 3px;
                   border-bottom-right-radius: 3px;
                   margin: 0px;

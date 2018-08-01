@@ -2,108 +2,112 @@ import React from 'react';
 import Web3 from 'web3';
 // import Link from 'next/link'
 
-import FunctionRow from '../components/endpointRow';
-import SimpleCard from '../components/simpleCard';
+import EndpointRow from '../components/endpointRow';
 import ErrorCard from '../components/errorCard';
-import Runkit from '../components/runkit';
 import FunctionContent from '../components/functionContent';
-import Web3Container from '../lib/web3Container';
+import Runkit from '../components/runkit';
 import steps from '../lib/hacks';
+import SimpleCard from '../components/simpleCard';
+import Web3Container from '../lib/web3Container';
 import contractInformation from './test.js';
 
-// TESTING
+// Implement scrolling list of endpoints.
 import InfiniteScroll from 'react-infinite-scroll-component';
 import { Element, Link } from 'react-scroll';
 
+// Display modal if web3 connection is not found.
+import { Alert } from '@blueprintjs/core';
 
 class DocumentationCtrl extends React.Component {
-  constructor(props) {
-    super(props);
+	constructor(props) {
+		super(props);
 
-    this.state = {
-      stepIndex: 0,
-      didRun: false,
-      steps: steps,
-      active: 0,
-      connected: this.props.connected,
-    }
+		this.state = {
+			active: 0,
+			alert: false,
+			connected: this.props.connected,
+			didRun: false,
+			stepIndex: 0,
+			steps: steps
+		};
 
-    this.clickHandler = this.clickHandler.bind(this);
-    this.renderEndpoints = this.renderEndpoints.bind(this);
-    this.updateMethod = this.updateMethod.bind(this);
-  }
+		this.handleAlert = this.handleAlert.bind(this);
+		this.renderCards = this.renderCards.bind(this);
+		this.renderEndpoints = this.renderEndpoints.bind(this);
+		this.updateMethod = this.updateMethod.bind(this);
+	}
 
-  clickHandler(i) {
-    this.setState({ fadeOut: true });
-    setTimeout(() => {
-      this.setState({ stepIndex: i, fadeOut: false });
-    }, 150);
-  }
+	// Show or hide alert.
+	handleAlert() {
+		return null;
+	}
 
-  renderEndpoints() {
-    return this.state.steps.map((step, i) => {
-      return (
-        <div onClick={() => { this.clickHandler(i); }}>
-          <Link to={`${i}`} spy={true} smooth={true} onClick={() => { this.setState({ active: i }) }}>
-            <FunctionRow
-              key={i}
-              title={step.name}
-              isActive={i === this.state.active}
-            />
-          </Link>
-        </div>
-      );
-    });
-  }
+	// Renders list of endpoints.
+	renderEndpoints() {
+		return this.state.steps.map((step, i) => {
+			return (
+				<div>
+					<Link
+						to={`${i}`}
+						spy={true}
+						smooth={true}
+						onClick={() => {
+							this.setState({ active: i });
+						}}>
+						<EndpointRow
+							key={i}
+							title={step.name}
+							isActive={i === this.state.active}
+						/>
+					</Link>
+				</div>
+			);
+		});
+	}
 
-  getItems() {
-    return this.state.steps.map((step, i) => {
-      return (
-        <Element name={`${i}`}>
-          <SimpleCard
-            body={<div></div>}
-            description={this.state.steps[i].devdoc.details}
-            fadeOut={this.state.fadeOut}
-          >
-            <FunctionContent
-              method={steps[i]}
-              updateMethod={this.updateMethod}
-              web3={this.props.web3}
-              contractAddress={contractInformation.contractAddress}
-              contractAbi={contractInformation.contractAbi}
-            />
-          </SimpleCard>
-        </Element>
-      )
-    });
-  }
+	// Generates cards for each endpoint
+	renderCards() {
+		return this.state.steps.map((step, i) => {
+			return (
+				<Element name={`${i}`}>
+					<SimpleCard
+						body={<div />}
+						description={this.state.steps[i].devdoc.details}
+						fadeOut={this.state.fadeOut}>
+						<FunctionContent
+							method={steps[i]}
+							updateMethod={this.updateMethod}
+							web3={this.props.web3}
+							contractAddress={contractInformation.contractAddress}
+							contractAbi={contractInformation.contractAbi}
+						/>
+					</SimpleCard>
+				</Element>
+			);
+		});
+	}
 
-  updateMethod(method) {
-    const currStep = this.state.steps[this.state.stepIndex];
+	updateMethod(method) {
+		const currStep = this.state.steps[this.state.stepIndex];
+		// This is really hacky. But it works for now!
+		const copy = JSON.parse(JSON.stringify(this.state.steps));
+		this.setState({ steps: copy });
+	}
 
-    // This is really hacky. But it works for now!
-    const copy = JSON.parse(JSON.stringify(this.state.steps));
+	render() {
+		return (
+			<div className="row doc-container around-xs">
+				<div className="col-xs-3 sidebar-container sticky-top">
+					{this.renderEndpoints()}
+				</div>
+				<div className="col-xs-9 content-container">
+					<InfiniteScroll dataLength={this.state.steps.length} hasMore={false}>
+						{this.renderCards()}
+					</InfiniteScroll>
+				</div>
 
-    this.setState({ steps: copy });
-  }
-
-  render() {
-     return (
-      <div className="row doc-container around-xs">
-        <div className="col-xs-3 sidebar-container sticky-top">
-          { this.renderEndpoints() }
-        </div>
-        <div className="col-xs-9 content-container">
-          <InfiniteScroll
-            dataLength={this.state.steps.length}
-            hasMore={false}
-          >
-            {this.getItems()}
-          </InfiniteScroll>
-        </div>
-
-        <style>
-          {`
+				<style>
+					{`
             .sidebar-container {
               top: 50px;
               left: 20px;
@@ -124,18 +128,15 @@ class DocumentationCtrl extends React.Component {
               height: 80vh
             }
           `}
-
-        </style>
-      </div>
-    );
-  }
+				</style>
+			</div>
+		);
+	}
 }
 
 export default () => (
-  <Web3Container
-    renderLoading={() => <div></div>}
-    render={(props) => (
-      <DocumentationCtrl {...props} />
-    )}
-  />
-)
+	<Web3Container
+		renderLoading={() => <div />}
+		render={props => <DocumentationCtrl {...props} />}
+	/>
+);

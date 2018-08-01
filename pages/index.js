@@ -110,7 +110,7 @@ class DocumentationCtrl extends React.Component {
 						<div className="alert-text">
 							Please check your <code>web3</code> connection. If you don't have
 							a <code>web3</code> client installed, try using
-							<a href="https://metamask.io/"> Metamask</a>!
+							<a href="https://metamask.io/"> Metamask</a>.
 						</div>
 					</Alert>
 					<InfiniteScroll dataLength={this.state.steps.length} hasMore={false}>
@@ -120,14 +120,24 @@ class DocumentationCtrl extends React.Component {
 
 				<style>
 					{`
+						a {
+							color: rgba(71, 98, 255, 1) !important;
+						}
+
+						.alert-text {
+							line-height: 1.5em !important;
+						}
+
             .sidebar-container {
               top: 50px;
               left: 20px;
               position: sticky;
             }
+
             .content-container {
               height: 100%;
             }
+
             .doc-container {
               padding: 50px 10px;
               position: relative;
@@ -136,13 +146,10 @@ class DocumentationCtrl extends React.Component {
               display: flex;
               align-items: flex-start
             }
+
             .response-container {
               height: 80vh
             }
-
-						.alert-text {
-							line-height: 1.5em !important;
-						}
           `}
 				</style>
 			</div>

@@ -12,6 +12,7 @@
   "license": "ISC",
   "dependencies": {
     "@blueprintjs/core": "^1.35.2",
+    "babel-plugin-inline-react-svg": "^0.5.4",
     "classnames": "^2.2.5",
     "express": "^4.16.3",
     "highlight.js": "^9.12.0",
@@ -24,7 +25,6 @@
     "react-infinite-scroll-component": "^4.1.0",
     "react-runkit": "^0.9.0",
     "react-scroll": "^1.7.10",
-    "react-window-ui": "^1.0.3",
     "web3": "^1.0.0-beta.35"
   },
   "devDependencies": {

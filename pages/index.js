@@ -105,14 +105,13 @@ class DocumentationCtrl extends React.Component {
 				<div className="col-xs-9 content-container">
 					<Alert
 						isOpen={this.state.alert}
-						onClose={() => this.setState({ alert: false })}
-						onCancel={() => this.setState({ alert: false })}
 						onConfirm={() => this.setState({ alert: false })}
-						cancelButtonText="I understand."
-						confirmButtonText="I have installed Metamask."
-						canEscapeKeyCancel={true}
-						canOutsideClickCancel={true}>
-						Please install Metamask.
+						confirmButtonText="Hide">
+						<div className="alert-text">
+							Please check your <code>web3</code> connection. If you don't have
+							a <code>web3</code> client installed, try using
+							<a href="https://metamask.io/"> Metamask</a>!
+						</div>
 					</Alert>
 					<InfiniteScroll dataLength={this.state.steps.length} hasMore={false}>
 						{this.renderCards()}
@@ -140,6 +139,10 @@ class DocumentationCtrl extends React.Component {
             .response-container {
               height: 80vh
             }
+
+						.alert-text {
+							line-height: 1.5em !important;
+						}
           `}
 				</style>
 			</div>

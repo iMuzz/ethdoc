@@ -1,6 +1,6 @@
 import Macbook from '../components/macbook';
-import { button } from '../styles/styles';
-import Logo from '../components/assets/solid-doc.svg.react';
+import Button from '../components/button';
+import Logo from '../components/logo';
 
 class HomePage extends React.Component {
   constructor(props) {
@@ -10,29 +10,13 @@ class HomePage extends React.Component {
   render() {
      return (
       <div className="home">
-        <div className="header">
-        </div>
-
-        <div className="row">
+        <div className="header"></div>
+        <div className="row row-center">
           <div className="col-xs-4 col-xs-offset-1">
-            <div className="">
-              <div className="row middle-xs end-xs">
-                <Logo></Logo>
-                <span className="logo"> Solid Docs</span>
-              </div>
-            </div>
             <div className="intro">
               Create documentation for your smart contracts in a matter of <strong>seconds</strong>.
               <div className="block-rtl">
-                <button>View Demo</button>
-                <style>
-                  { `
-                    ${button}
-                    button {
-                      box-shadow: 0px 2px 1px -1px #d2dfe2;
-                    }`
-                  }
-                </style>
+                <Button>View Demo</Button>
               </div>
             </div>
           </div>
@@ -56,6 +40,12 @@ class HomePage extends React.Component {
               background-color: white;
               width: 100%;
               min-height: 100vh;
+            }
+
+            .row-center {
+              display: flex !important;
+              align-items: center !important;
+              align-content: center !important
             }
 
             .intro {

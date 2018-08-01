@@ -48,7 +48,7 @@ class FunctionContent extends React.Component {
 	}
 
 	render() {
-		const { method } = this.props;
+		const { method, connected, handleAlert } = this.props;
 
 		return (
 			<div>
@@ -62,7 +62,12 @@ class FunctionContent extends React.Component {
 						updateMethod={this.props.updateMethod}
 					/>
 
-					<Runkit method={method} cta={this.sendTransaction} />
+					<Runkit
+						connected={connected}
+						cta={this.sendTransaction}
+						handleAlert={handleAlert}
+						method={method}
+					/>
 
 					<style>{`
             .content-padding {

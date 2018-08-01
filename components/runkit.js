@@ -2,102 +2,82 @@ import { highlight } from 'highlight.js';
 import AnimateHeight from 'react-animate-height';
 import generateCodeSample from '../lib/generateCodeSample';
 import ResultView from './errorCard';
-// const Embed = require('react-runkit')
-// return (<Embed source={ source } ref='embed' onLoad={ this.run.bind(this) }/>);
- 
-const buttonStyles = (
-  <style>
-  {`
-    button {
-      background-color: #4762ff;
-      padding: 10px 15px;
-      border: none;
-      color: white;
-      border-radius: 3px;
-      transition: all .3s;
-      font-size: 14px;
-      position: relative;
-    }
 
-    button:hover {
-      background-color: #6078FF;
-      padding: 10px 15px;
-      cursor: pointer;
-      top: -1px;
-    }
-    button:focus {
-      outline: none;
-    }
-  `}
-</style>
-);
+import { Button } from '@blueprintjs/core';
 
 class Runkit extends React.Component {
-  constructor(props) {
-    super(props);
+	constructor(props) {
+		super(props);
 
-    this.state = {
-      isOpen: false,
-      answer: undefined,
-    }
+		this.state = {
+			isOpen: false,
+			answer: undefined
+		};
 
-    this.sendTransaction = this.sendTransaction.bind(this);
-    this.renderAnswer = this.renderAnswer.bind(this);
-  }
+		this.renderAnswer = this.renderAnswer.bind(this);
+		this.sendTransaction = this.sendTransaction.bind(this);
+	}
 
-  run() {
-    this.refs.embed.evaluate()
-  }
+	componentWillReceiveProps(pre, next) {
+		this.setState({ isOpen: false });
+	}
 
-  componentWillReceiveProps(pre, next) {
-    this.setState({ isOpen: false })
-  }
+	renderAnswer({ answer, isTransaction, transactionHash }) {
+		if (isTransaction) {
+			return (
+				<div className="transaction">
+					<a
+						href={`https://ropsten.etherscan.io/tx/${transactionHash}`}
+						target="_blank">
+						<Button style={{ width: '100%' }}>View Transaction</Button>
+					</a>
+				</div>
+			);
+		} else {
+			return <div>{JSON.stringify(answer, null, 2)}</div>;
+		}
+	}
 
-  renderAnswer({ answer, isTransaction, transactionHash }) {
-    if (isTransaction) {
-      return (
-        <div className="transaction">
-          <a href={`https://ropsten.etherscan.io/tx/${transactionHash}`} target="_blank">
-            <button style={{ width: "100%" }}>
-              View Transaction
-            </button>
-          </a>
-          { buttonStyles }
-        </div>
-      );
-    } else {
-      return (
-        <div>
-          { JSON.stringify(answer, null, 2) }
-        </div>
-      );
-    }
-  }
+	run() {
+		this.refs.embed.evaluate();
+	}
 
-  sendTransaction() {
-    this.props.cta((response) => {
-      this.setState({
-        answer: this.renderAnswer(response),
-      }, () => {
-        this.setState({ isOpen: true });
-      });
-    });
-  }
-  
-  render() {
-    const { method } = this.props;
-    const source = generateCodeSample({ contractName: 'TokenRegistry', method})
-    return (
-      <div>
-        <div className="code-highlighting">
-          <pre className="code-highlight">
-            <code className={`hljs lang-javascript`}
-              dangerouslySetInnerHTML={{ __html: highlight('javascript', source).value}}
-            />
-          </pre>
+	sendTransaction() {
+		if (!this.props.connected) {
+			this.props.handleAlert(true);
+		} else {
+			this.props.cta(response => {
+				this.setState(
+					{
+						answer: this.renderAnswer(response)
+					},
+					() => {
+						this.setState({ isOpen: true });
+					}
+				);
+			});
+		}
+	}
 
-          <style>
-            {`
+	render() {
+		const { method } = this.props;
+		const source = generateCodeSample({
+			contractName: 'TokenRegistry',
+			method
+		});
+		return (
+			<div>
+				<div className="code-highlighting">
+					<pre className="code-highlight">
+						<code
+							className={`hljs lang-javascript`}
+							dangerouslySetInnerHTML={{
+								__html: highlight('javascript', source).value
+							}}
+						/>
+					</pre>
+					<style>
+						{`
               .code-highlighting {
                 position: relative;
               }
@@ -125,20 +105,14 @@ class Runkit extends React.Component {
                 font-size: 15px;
               }
             `}
-          </style>
-          <AnimateHeight
-            duration={ 300 }
-            height={ this.state.isOpen ? 'auto' : 0 }
-          >
-            <ResultView didRun answer={this.state.answer}/>
-          </AnimateHeight>
-          <div className="runkit-footer row end-xs">
-            <button onClick={this.sendTransaction}>
-              Run Code
-            </button>
-            { buttonStyles }
-            <style>
-              {`
+					</style>
+					<AnimateHeight duration={300} height={this.state.isOpen ? 'auto' : 0}>
+						<ResultView didRun answer={this.state.answer} />
+					</AnimateHeight>
+					<div className="runkit-footer row end-xs">
+						<Button onClick={this.sendTransaction}>Run Code</Button>
+						<style>
+							{`
                 .runkit-footer {
                   background-color: #0a1a36;
                   padding: 15px;
@@ -147,12 +121,12 @@ class Runkit extends React.Component {
                   margin: 0px;
                 }
               `}
-            </style>
-          </div>
-        </div>
-      </div>
-    );
-  }
+						</style>
+					</div>
+				</div>
+			</div>
+		);
+	}
 }
 
 export default Runkit;

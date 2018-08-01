@@ -38,8 +38,8 @@ class DocumentationCtrl extends React.Component {
 	}
 
 	// Show or hide alert.
-	handleAlert() {
-		return null;
+	handleAlert(status) {
+		this.setState({ alert: status });
 	}
 
 	// Renders list of endpoints.
@@ -75,6 +75,8 @@ class DocumentationCtrl extends React.Component {
 						description={this.state.steps[i].devdoc.details}
 						fadeOut={this.state.fadeOut}>
 						<FunctionContent
+							connected={this.state.connected}
+							handleAlert={this.handleAlert}
 							method={steps[i]}
 							updateMethod={this.updateMethod}
 							web3={this.props.web3}
@@ -101,6 +103,17 @@ class DocumentationCtrl extends React.Component {
 					{this.renderEndpoints()}
 				</div>
 				<div className="col-xs-9 content-container">
+					<Alert
+						isOpen={this.state.alert}
+						onClose={() => this.setState({ alert: false })}
+						onCancel={() => this.setState({ alert: false })}
+						onConfirm={() => this.setState({ alert: false })}
+						cancelButtonText="I understand."
+						confirmButtonText="I have installed Metamask."
+						canEscapeKeyCancel={true}
+						canOutsideClickCancel={true}>
+						Please install Metamask.
+					</Alert>
 					<InfiniteScroll dataLength={this.state.steps.length} hasMore={false}>
 						{this.renderCards()}
 					</InfiniteScroll>

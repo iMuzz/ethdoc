@@ -4,6 +4,9 @@ import FunctionParamTable from './functionParamTable';
 import FunctionDescription from './functionDescription';
 import Runkit from './runkit';
 
+// Avoid react-key-error on generated array of components
+const shortid = require('shortid');
+
 class FunctionContent extends React.Component {
   constructor(props) {
     super(props);
@@ -42,7 +45,6 @@ class FunctionContent extends React.Component {
 
   render() {
     const { method } = this.props;
-    console.log(this.props)
 
     return (
       <div>
@@ -59,7 +61,7 @@ class FunctionContent extends React.Component {
             updateMethod={this.props.updateMethod}
           />
 
-          <Runkit method={method} cta={this.sendTransaction}/>
+          <Runkit {...this.props} method={method} cta={this.sendTransaction}/>
 
           <style>{`
             .content-padding {

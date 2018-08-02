@@ -10,6 +10,7 @@ class HomePage extends React.Component {
 
 	render() {
 		return (
+      <>
 			<div className="home">
         <div className="container pbot">
           <div className="row">
@@ -82,12 +83,20 @@ class HomePage extends React.Component {
               text-decoration: none;
             }
 
+            .footer {
+              font-family: Titillium Web;
+            }
+
             .mtop {
               margin-top: 2em;
             }
 
             .pbot {
               padding-bottom: 2em;
+            }
+
+            .align-middle {
+              text-align: center;
             }
 
             .align-left {
@@ -115,7 +124,7 @@ class HomePage extends React.Component {
 
 						.home {
               background-color: white;
-              margin: 5%;
+              margin: 5% 5% 4% 5%;
               border-radius: 10px;
               box-shadow: 0px 2px 15px #e6e6e6;
 						}
@@ -196,6 +205,10 @@ class HomePage extends React.Component {
 					`}
 				</style>
 			</div>
+      <div className="footer pbot">
+        <p className="align-middle">made with ❤️by <a target="_blank" href="https://twitter.com/@faraaznishtar">@faraaznishtar</a> and <a target="_blank" href="https://twitter.com/@achalvs">@achalvs</a></p>
+      </div>
+    </>
 		);
 	}
 }

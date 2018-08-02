@@ -117,6 +117,9 @@ class DocumentationCtrl extends React.Component {
 						{this.renderCards()}
 					</InfiniteScroll>
 				</div>
+				<div className="footer mtop pbot">
+	        <p className="align-middle">made with ❤️by <a target="_blank" href="https://twitter.com/@faraaznishtar">@faraaznishtar</a> and <a target="_blank" href="https://twitter.com/@achalvs">@achalvs</a></p>
+	      </div>
 
 				<style>
 					{`
@@ -150,6 +153,14 @@ class DocumentationCtrl extends React.Component {
             .response-container {
               height: 80vh
             }
+
+						.footer {
+							font-family: Titillium Web;
+						}
+
+						.align-middle {
+							text-align: center;
+						}
           `}
 				</style>
 			</div>

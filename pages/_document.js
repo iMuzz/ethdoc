@@ -12,7 +12,7 @@ export default class MyDocument extends Document {
 		return (
 			<html>
 				<Head>
-					<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"> 
+					<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" /> 
 					<style>{`body { margin: 0; background-color: #f5f5fc; } /* custom! */`}</style>
 					<link
 						href="https://unpkg.com/@blueprintjs/core@^1.11.0/dist/blueprint.css"

@@ -4,6 +4,7 @@ import Editor from '../components/svg/editor.svg';
 import Terminal from '../components/svg/iterm.svg';
 import Logo from '../components/svg/logo.svg';
 import Footer from '../components/footer';
+import Window from '../components/svg/window.svg';
 
 class HomePage extends React.Component {
 	constructor(props) {
@@ -17,7 +18,7 @@ class HomePage extends React.Component {
         <div className="container pbot">
           <div className="row">
 
-            <div className="col-xs-12 col-md-6 intro">
+            <div className="col-xs-12 col-md-5 intro">
               <div className="logo">
                 <Logo />
               </div>
@@ -27,7 +28,7 @@ class HomePage extends React.Component {
                 <Button className="demo">View Demo</Button>
               </div>
             </div>
-            <div className="col-xs-12 col-md-6">
+            <div className="col-xs-12 col-md-7">
               <Laptop />
             </div>
           </div>
@@ -59,7 +60,7 @@ class HomePage extends React.Component {
           </div>
           <div className="row mtop">
             <div className="col-xs-12 col-md-4 block-rtl image">
-              <Terminal className="terminal" />
+              <Window className="browser" />
             </div>
             <div className="col-xs-12 col-md-8 step align-left">
               <div className="step-wrapper padding-left">
@@ -98,7 +99,7 @@ class HomePage extends React.Component {
             }
 
             .pbot {
-              padding-bottom: 2em;
+              padding-bottom: 7%;
             }
 
             .align-middle {
@@ -134,6 +135,14 @@ class HomePage extends React.Component {
               border-radius: 10px;
               box-shadow: 0px 2px 15px #e6e6e6;
 						}
+
+            .browser {
+              box-shadow: 0px 2px 10px #f2f2f2;
+              border: 1px solid #f5f5f5;
+              border-radius: 10px;
+              width: 500px;
+              height: auto;
+            }
 
             .terminal {
               filter: none;

@@ -15,9 +15,9 @@ class HomePage extends React.Component {
 		return (
 			<>
 				<div className="home">
-					<div className="container">
+					<div className="contain">
 						<div className="row center">
-							<div className="col-xs-12 col-sm-12 col-md-6 col-lg-6 intro">
+							<div className="col-xs-12 col-sm-6 col-md-6 col-lg-6 intro">
 								<div className="logo">
 									<Logo />
 								</div>
@@ -27,15 +27,15 @@ class HomePage extends React.Component {
 									<Button className="demo">View Demo</Button>
 								</div>
 							</div>
-							<div className="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+							<div className="col-xs-12 col-sm-6 col-md-6 col-lg-6 image">
 								<Laptop />
 							</div>
 						</div>
 						<div className="row center">
-							<div className="col-xs-12 col-sm-12 col-md-6 col-lg-6 image left">
+							<div className="col-xs-12 col-sm-6 col-md-6 col-lg-6 image left">
 								<Editor className="editor" />
 							</div>
-							<div className="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+							<div className="col-xs-12 col-sm-6 col-md-6 col-lg-6">
 								<div className="step-content right">
 									<h1 className="step-header">📚 Document your code.</h1>
 									<p className="step-text">
@@ -46,7 +46,7 @@ class HomePage extends React.Component {
 							</div>
 						</div>
 						<div className="row center">
-							<div className="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+							<div className="col-xs-12 col-sm-6 col-md-6 col-lg-6">
 								<div className="step-content left">
 									<h1 className="step-header">⚡️ Generate using CLI.</h1>
 									<p className="step-text">
@@ -55,15 +55,15 @@ class HomePage extends React.Component {
 									</p>
 								</div>
 							</div>
-							<div className="col-xs-12 col-sm-12 col-md-6 col-lg-6 image right">
+							<div className="col-xs-12 col-sm-6 col-md-6 col-lg-6 image right">
 								<Terminal className="terminal" />
 							</div>
 						</div>
 						<div className="row center">
-							<div className="col-xs-12 col-sm-12 col-md-6 col-lg-6 image left">
+							<div className="col-xs-12 col-sm-6 col-md-6 col-lg-6 image left">
 								<Window className="browser" />
 							</div>
-							<div className="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+							<div className="col-xs-12 col-sm-6 col-md-6 col-lg-6">
 								<div className="step-content right">
 									<h1 className="step-header">🎉 Voila! You're done.</h1>
 									<p className="step-text">
@@ -94,10 +94,6 @@ class HomePage extends React.Component {
 								text-decoration: none;
 							}
 
-							// CUSTOM SPACING
-
-
-
 							// ALIGNMENT
 
 							.align-middle {
@@ -120,31 +116,31 @@ class HomePage extends React.Component {
 							}
 
 							.block-rtl {
-                display: flex;
-                justify-content: flex-end;
-                text-align: right;
+								display: flex;
+								justify-content: flex-end;
+								text-align: right;
 							}
 
 							.block-ltr {
 								align-self: flex-start;
-                text-align: left;
+								text-align: left;
 							}
 
-							// STYLING ELEMENTS
+							// ELEMENTS
 
-              .container {
-                padding-bottom: 5em;
-              }
+							.contain {
+								padding-bottom: 5em;
+								font-family: Titillium Web;
+							}
 
 							.home {
 								background-color: white;
-								margin: 5% 5% 4% 5%;
+								margin: 5% 4% 4% 4%;
 								border-radius: 10px;
 								box-shadow: 0px 2px 15px #e6e6e6;
 							}
 
 							.intro {
-								font-family: 'Titillium Web';
 								font-style: normal;
 								font-weight: normal;
 								line-height: normal;
@@ -153,23 +149,22 @@ class HomePage extends React.Component {
 								max-width: 400px;
 							}
 
-              .demo {
-                margin-top: 0.75em;
-              }
-
-							.image {
-								max-width: 50%;
-                display: flex;
-                justify-content: center;
+							.demo {
+								margin-top: 0.75em;
 							}
 
-              .image.left {
-                justify-content: flex-end;
-              }
+							.image {
+								display: flex;
+								justify-content: center;
+							}
 
-              .image.right {
-                justify-content: flex-start;
-              }
+							.image.left {
+								justify-content: flex-end;
+							}
+
+							.image.right {
+								justify-content: flex-start;
+							}
 
 							.terminal {
 								filter: none;
@@ -177,16 +172,16 @@ class HomePage extends React.Component {
 							}
 
 							.editor {
-                max-width: 450px;
+								max-width: 450px;
 							}
 
-              .browser {
-                height: 75%;
-                width: 75%;
-                border-radius: 6px;
-                border: 1px solid #e8e8e8;
-                margin-top: 5em;
-              }
+							.browser {
+								height: 75%;
+								width: 75%;
+								border-radius: 6px;
+								border: 1px solid #e8e8e8;
+								margin-top: 5em;
+							}
 
 							// STEP LAYOUTS
 
@@ -200,15 +195,10 @@ class HomePage extends React.Component {
 								position: relative;
 							}
 
-              .step-content.left {
-                text-align: right;
-                padding: 0em 3em 0em 8em;
-              }
-
-              .step-content.right {
-                text-align: left;
-                padding: 0em 8em 0em 3em;
-              }
+							.step-content.left {
+								text-align: right;
+								padding: 0em 3em 0em 8em;
+							}
 
 							.step-header {
 								margin-top: 1rem;
@@ -227,6 +217,138 @@ class HomePage extends React.Component {
 							@media (max-width: 800px) {
 								.homepage {
 									display: block;
+								}
+							}
+
+							@media (max-width: 1250px) {
+								.contain {
+									padding-top: 5%;
+								}
+							}
+
+							@media (max-width: 1190px) {
+								.home {
+									margin: 3% 2% 3% 2%;
+								}
+							}
+							@media (max-width: 1128px) {
+								.intro {
+									font-size: 1.5em;
+								}
+
+								.editor {
+									max-width: 350px;
+									max-height: 300px;
+									margin-top: 3em;
+								}
+
+								.terminal {
+									max-width: 350px;
+									max-height: 300px;
+									margin-top: 2em;
+								}
+
+								.browser {
+									margin-top: 3em;
+								}
+							}
+
+							@media (max-width: 773px) {
+								.intro {
+									text-align: left;
+									max-width: 60% !important;
+									margin-left: auto;
+									margin-right: auto;
+									margin-top: 2em;
+									margin-bottom: 3em;
+								}
+
+								.block-rtl {
+									justify-content: flex-start;
+								}
+
+								.image {
+									justify-content: center;
+								}
+
+								.image.left {
+									justify-content: center;
+									order: 1;
+								}
+
+								.editor {
+									margin-bottom: 2em;
+								}
+
+								.terminal {
+									margin-bottom: 2em;
+								}
+
+								.browser {
+									max-width: 350px;
+								}
+
+								.step {
+									align-content: center;
+								}
+
+								.step-content {
+									justify-content: center;
+									padding: unset !important;
+									max-width: 60% !important;
+									margin-left: auto;
+									margin-right: auto;
+								}
+
+								.step-content.left {
+									order: 1;
+									text-align: left !important;
+								}
+
+								.image.right {
+									order: 2;
+									justify-content: center;
+								}
+
+								.step-content.right {
+									order: 2;
+								}
+							}
+
+							@media (max-width: 560px) {
+								.intro {
+									max-width: 80% !important;
+								}
+
+								.step-content {
+									max-width: 80% !important;
+								}
+							}
+
+							@media (max-width: 1190px) {
+								.step-content.left {
+									padding: 0em 2em 0em 5em;
+								}
+							}
+
+							.step-content.right {
+								text-align: left;
+								padding: 0em 15em 0em 3em;
+							}
+
+							@media (max-width: 1390px) {
+								.step-content.right {
+									padding: 0em 9em 0em 3em;
+								}
+							}
+
+							@media (max-width: 1190px) {
+								.step-content.right {
+									padding: 0em 4em 0em 2em;
+								}
+
+								.step-header {
+									font-size: 1.8rem !important;
 								}
 							}
 						`}

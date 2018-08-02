@@ -19,7 +19,7 @@ export default ({ className, onClick, children }) => (
 				line-height: 20px !important;
 				transition: color 0.2s ease-in-out, background 0.2s ease-in-out,
 					border 0.2s ease-in-out, box-shadow 0.2s ease-in-out,
-					transform 0.2s ease-in-out !important;
+					transform 0.1s ease-in-out !important;
 				user-select: none;
 			}
 
@@ -44,7 +44,7 @@ export default ({ className, onClick, children }) => (
 				color: rgba(210, 217, 255, 1) !important;
 				background: rgba(71, 98, 255, 0.9) !important;
 				box-shadow: 0px 2px 10px -1px rgba(71, 98, 255, 0)!important;
-				transform: translate(0px, 1px);
+				transform: translate(0px, 0px);
 			}
 		`}</style>
 	</Button>

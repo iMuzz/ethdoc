@@ -11,9 +11,9 @@ export default ({ className, onClick, children }) => (
 				cursor: pointer;
 				display: block;
 				font-family: 'Titillium Web';
-				font-weight: normal !important;
-				font-size: 12px !important;
-				padding: 4px 15px !important;
+				font-weight: 300 !important;
+				font-size: 15px !important;
+				padding: 8px 20px !important;
 				text-transform: uppercase;
 				line-height: 20px !important;
 				transition: color 0.2s ease-in-out, background 0.2s ease-in-out,

@@ -134,7 +134,6 @@ class DocumentationCtrl extends React.Component {
 						.alert-text {
 							line-height: 1.5em !important;
 						}
-
             .sidebar-container {
               top: 50px;
               left: 20px;
@@ -143,6 +142,7 @@ class DocumentationCtrl extends React.Component {
 
             .content-container {
               height: 100%;
+              margin-bottom: 25%;
             }
 
             .doc-container {

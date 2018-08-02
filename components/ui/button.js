@@ -13,8 +13,8 @@ export default ({ className, onClick, children }) => (
 				display: block;
 				font-family: 'Titillium Web';
 				font-weight: 300 !important;
-				font-size: 14px !important;
-				padding: 9px 15px 8px 14px !important;
+				font-size: 13px !important;
+				padding: 7px 15px 6px 14px !important;
 				text-transform: uppercase;
 				line-height: 20px !important;
 				transition: color 0.2s ease-in-out, background 0.2s ease-in-out,
@@ -33,6 +33,7 @@ export default ({ className, onClick, children }) => (
 
 			.pt-button:hover {
 				transform: translate(0px, -1.5px);
+				box-shadow: 0px 2px 16px -1px rgba(71, 98, 255, 0.42)!important;
 			}
 
 			.pt-button:focus {
@@ -42,7 +43,7 @@ export default ({ className, onClick, children }) => (
 			.pt-button:active {
 				color: rgba(210, 217, 255, 1) !important;
 				background: rgba(71, 98, 255, 0.9) !important;
-				box-shadow: 0px 2px 10px -1px rgba(0,0,0,0)!important;
+				box-shadow: 0px 2px 10px -1px rgba(71, 98, 255, 0)!important;
 				transform: translate(0px, 1px);
 			}
 		`}</style>

@@ -107,7 +107,13 @@ class DocumentationCtrl extends React.Component {
 					<Alert
 						isOpen={this.state.alert}
 						onConfirm={() => this.setState({ alert: false })}
-						confirmButtonText="Hide">
+						onCancel={() => this.setState({ alert: false })}
+						onClose={() => this.setState({ alert: false })}
+						confirmButtonText="Hide"
+						canEscapeKeyCancel={true}
+						canOutsideClickCancel={true}
+						transitionDuration={200}
+						>
 						<div className="alert-text">
 							Please check your <code>web3</code> connection. If you don't have
 							a <code>web3</code> client installed, try using

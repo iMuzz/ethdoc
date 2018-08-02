@@ -11,7 +11,7 @@ class HomePage extends React.Component {
 	render() {
 		return (
 			<div className="home">
-        <div className="container">
+        <div className="container pbot">
           <div className="row">
             <div className="col-xs-12 col-md-6 intro">
               Create documentation for your smart contracts in a matter of
@@ -84,6 +84,10 @@ class HomePage extends React.Component {
 
             .mtop {
               margin-top: 2em;
+            }
+
+            .pbot {
+              padding-bottom: 2em;
             }
 
             .align-left {

@@ -18,7 +18,7 @@ class HomePage extends React.Component {
         <div className="container pbot">
           <div className="row">
 
-            <div className="col-xs-12 col-md-6 intro">
+            <div className="col-xs-12 col-md-5 intro">
               <div className="logo">
                 <Logo />
               </div>
@@ -28,7 +28,7 @@ class HomePage extends React.Component {
                 <Button className="demo">View Demo</Button>
               </div>
             </div>
-            <div className="col-xs-12 col-md-6">
+            <div className="col-xs-12 col-md-7">
               <Laptop />
             </div>
           </div>
@@ -90,12 +90,6 @@ class HomePage extends React.Component {
               text-decoration: none;
             }
 
-            .browser {
-              box-shadow: 0px 2px 10px #f5f5f5;
-              border: 1px solid #f5f5f5;
-              border-radius: 10px;
-            }
-
             .footer {
               font-family: Titillium Web;
             }
@@ -105,7 +99,7 @@ class HomePage extends React.Component {
             }
 
             .pbot {
-              padding-bottom: 3em;
+              padding-bottom: 7%;
             }
 
             .align-middle {
@@ -141,6 +135,14 @@ class HomePage extends React.Component {
               border-radius: 10px;
               box-shadow: 0px 2px 15px #e6e6e6;
 						}
+
+            .browser {
+              box-shadow: 0px 2px 10px #f2f2f2;
+              border: 1px solid #f5f5f5;
+              border-radius: 10px;
+              width: 500px;
+              height: auto;
+            }
 
             .terminal {
               filter: none;

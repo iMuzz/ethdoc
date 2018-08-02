@@ -13,8 +13,8 @@ class Laptop extends React.Component {
         {`
           .macbook {
             padding-top: 10%;
-            width: 500px;
-            height: 400px;
+            width: 650px;
+            height: 500px;
           }
         `}
         </style>

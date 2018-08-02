@@ -24,7 +24,7 @@ class HomePage extends React.Component {
               </div>
               Create documentation for your smart contracts in a matter of
               <strong> seconds</strong>.
-              <div className="block-rtl">
+              <div className="block-rtl ptop">
                 <Button className="demo">View Demo</Button>
               </div>
             </div>
@@ -96,6 +96,10 @@ class HomePage extends React.Component {
 
             .mtop {
               margin-top: 2em;
+            }
+
+            .ptop {
+              padding-top: 3%;
             }
 
             .pbot {

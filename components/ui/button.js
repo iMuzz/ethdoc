@@ -6,24 +6,24 @@ export default ({ className, onClick, children }) => (
 		<style jsx global>{`
 			.pt-button {
 				background: rgba(71, 98, 255, 1) !important;
-				border: none !important;
-				border-radius: 5px;
 				box-shadow: none !important;
 				color: #fff !important;
 				cursor: pointer;
 				display: block;
 				font-family: 'Titillium Web';
 				font-weight: normal !important;
-				font-size: 14px;
-				line-height: 16px;
-				padding: 8px 15px 8px 15px;
-				transition: color 0.1s ease-in-out, background 0.2s ease-in-out,
-					border 0.1s ease-in-out, box-shadow 0.1s ease-in-out,
-					transform 0.1s ease-in-out !important;
+				font-size: 12px !important;
+				padding: 4px 15px !important;
+				text-transform: uppercase;
+				line-height: 20px !important;
+				transition: color 0.2s ease-in-out, background 0.2s ease-in-out,
+					border 0.2s ease-in-out, box-shadow 0.2s ease-in-out,
+					transform 0.2s ease-in-out !important;
+				user-select: none;
 			}
 
 			.pt-button:hover {
-				transform: translate(0px, -0.5px);
+				transform: translate(0px, -1.5px);
 			}
 
 			.pt-button:focus {

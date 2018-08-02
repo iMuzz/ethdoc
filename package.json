@@ -15,7 +15,7 @@
     "classnames": "^2.2.5",
     "express": "^4.16.3",
     "highlight.js": "^9.12.0",
-    "next": "^4.2.3",
+    "next": "^6.1.1",
     "react": "^16.4.1",
     "react-addons-css-transition-group": "^15.6.2",
     "react-animate-height": "^1.0.2",
@@ -24,10 +24,10 @@
     "react-infinite-scroll-component": "^4.1.0",
     "react-runkit": "^0.9.0",
     "react-scroll": "^1.7.10",
-    "react-window-ui": "^1.0.3",
     "web3": "^1.0.0-beta.29"
   },
   "devDependencies": {
+    "babel-plugin-inline-react-svg": "^0.5.4",
     "eslint": "^4.18.2",
     "eslint-config-airbnb": "^16.1.0",
     "eslint-config-standard": "^11.0.0",

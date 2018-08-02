@@ -10,6 +10,7 @@ import steps from '../lib/hacks';
 import SimpleCard from '../components/simpleCard';
 import Web3Container from '../lib/web3Container';
 import contractInformation from './test.js';
+import Footer from '../components/footer';
 
 // Implement scrolling list of endpoints.
 import InfiniteScroll from 'react-infinite-scroll-component';
@@ -117,10 +118,7 @@ class DocumentationCtrl extends React.Component {
 						{this.renderCards()}
 					</InfiniteScroll>
 				</div>
-				<div className="footer mtop pbot">
-	        <p className="align-middle">made with ❤️by <a target="_blank" href="https://twitter.com/@faraaznishtar">@faraaznishtar</a> and <a target="_blank" href="https://twitter.com/@achalvs">@achalvs</a></p>
-	      </div>
-
+				<Footer />
 				<style>
 					{`
 						a {
@@ -153,10 +151,6 @@ class DocumentationCtrl extends React.Component {
             .response-container {
               height: 80vh
             }
-
-						.footer {
-							font-family: Titillium Web;
-						}
 
 						.align-middle {
 							text-align: center;

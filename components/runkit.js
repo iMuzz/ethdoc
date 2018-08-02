@@ -122,7 +122,7 @@ class Runkit extends React.Component {
 						<ResultView didRun answer={this.state.answer} />
 					</AnimateHeight>
 					<div className="runkit-footer row end-xs">
-						<Button onClick={this.sendTransaction}>Run Code</Button>
+						<Button className="no-shadow" onClick={this.sendTransaction}>Run Code</Button>
 						<style>
 							{`
                 .runkit-footer {

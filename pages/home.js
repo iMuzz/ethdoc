@@ -2,6 +2,7 @@ import Button from '../components/ui/button';
 import Laptop from '../components/laptop';
 import Editor from '../components/svg/editor.svg';
 import Terminal from '../components/svg/iterm.svg';
+import Footer from '../components/footer';
 
 class HomePage extends React.Component {
 	constructor(props) {
@@ -205,9 +206,7 @@ class HomePage extends React.Component {
 					`}
 				</style>
 			</div>
-      <div className="footer pbot">
-        <p className="align-middle">made with ❤️by <a target="_blank" href="https://twitter.com/@faraaznishtar">@faraaznishtar</a> and <a target="_blank" href="https://twitter.com/@achalvs">@achalvs</a></p>
-      </div>
+      <Footer />
     </>
 		);
 	}

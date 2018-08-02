@@ -3,6 +3,7 @@ import Laptop from '../components/laptop';
 import Editor from '../components/svg/editor.svg';
 import Terminal from '../components/svg/iterm.svg';
 import Footer from '../components/footer';
+import Window from '../components/svg/window.svg';
 
 class HomePage extends React.Component {
 	constructor(props) {
@@ -54,7 +55,7 @@ class HomePage extends React.Component {
           </div>
           <div className="row mtop">
             <div className="col-xs-12 col-md-4 block-rtl image">
-              <Terminal className="terminal" />
+              <Window className="browser" />
             </div>
             <div className="col-xs-12 col-md-8 step align-left">
               <div className="step-wrapper padding-left">
@@ -84,6 +85,12 @@ class HomePage extends React.Component {
               text-decoration: none;
             }
 
+            .browser {
+              box-shadow: 0px 2px 10px #f5f5f5;
+              border: 1px solid #f5f5f5;
+              border-radius: 10px;
+            }
+
             .footer {
               font-family: Titillium Web;
             }
@@ -93,7 +100,7 @@ class HomePage extends React.Component {
             }
 
             .pbot {
-              padding-bottom: 2em;
+              padding-bottom: 3em;
             }
 
             .align-middle {

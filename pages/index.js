@@ -150,7 +150,7 @@ class DocumentationCtrl extends React.Component {
               position: relative;
               max-width: 1200px;
               margin: auto;
-							margin-bottom: 5em;
+							margin-bottom: 10em;
               display: flex;
               align-items: flex-start
             }

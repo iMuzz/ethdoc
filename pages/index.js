@@ -1,23 +1,21 @@
 import React from 'react';
 import Web3 from 'web3';
-// import Link from 'next/link'
+import NextLink from 'next/link'
 
-import EndpointRow from '../components/endpointRow';
-import ErrorCard from '../components/errorCard';
-import FunctionContent from '../components/functionContent';
-import Runkit from '../components/runkit';
-import steps from '../lib/hacks';
+import FunctionRow from '../components/endpointRow';
 import SimpleCard from '../components/simpleCard';
-import Web3Container from '../lib/web3Container';
-import contractInformation from './test.js';
-import Footer from '../components/footer';
-
-// Implement scrolling list of endpoints.
-import InfiniteScroll from 'react-infinite-scroll-component';
-import { Element, Link } from 'react-scroll';
-
-// Display modal if web3 connection is not found.
+import ErrorCard from '../components/errorCard';
+import Runkit from '../components/runkit';
+import FunctionContent from '../components/functionContent';
 import { Alert } from '@blueprintjs/core';
+import Footer from '../components/ui/footer';
+
+import Web3Container from '../lib/web3Container';
+import steps from '../lib/hacks';
+import contractInformation from './test.js';
+
+import InfiniteScroll from 'react-infinite-scroll-component';
+import { Element, Link, scrollSpy } from 'react-scroll';
 
 class DocumentationCtrl extends React.Component {
 	constructor(props) {
@@ -38,6 +36,10 @@ class DocumentationCtrl extends React.Component {
 		this.updateMethod = this.updateMethod.bind(this);
 	}
 
+	componentDidMount() {
+		scrollSpy.update();
+	}
+
 	// Show or hide alert.
 	handleAlert(status) {
 		this.setState({ alert: status });
@@ -49,16 +51,17 @@ class DocumentationCtrl extends React.Component {
 			return (
 				<div>
 					<Link
-						to={`${i}`}
+						to={`${step.name}`}
 						spy={true}
+						hashSpy={true}
 						smooth={true}
-						onClick={() => {
-							this.setState({ active: i });
+						onSetActive={() => {
+							this.setState({ active: step.name });
 						}}>
-						<EndpointRow
+						<FunctionRow
 							key={i}
 							title={step.name}
-							isActive={i === this.state.active}
+							isActive={step.name == this.state.active}
 						/>
 					</Link>
 				</div>
@@ -70,7 +73,7 @@ class DocumentationCtrl extends React.Component {
 	renderCards() {
 		return this.state.steps.map((step, i) => {
 			return (
-				<Element name={`${i}`}>
+				<Element name={`${step.name}`}>
 					<SimpleCard
 						body={<div />}
 						description={this.state.steps[i].devdoc.details}
@@ -107,11 +110,8 @@ class DocumentationCtrl extends React.Component {
 					<Alert
 						isOpen={this.state.alert}
 						onConfirm={() => this.setState({ alert: false })}
-						onCancel={() => this.setState({ alert: false })}
 						onClose={() => this.setState({ alert: false })}
 						confirmButtonText="Hide"
-						canEscapeKeyCancel={true}
-						canOutsideClickCancel={true}
 						transitionDuration={200}
 						>
 						<div className="alert-text">
@@ -150,6 +150,7 @@ class DocumentationCtrl extends React.Component {
               position: relative;
               max-width: 1200px;
               margin: auto;
+							margin-bottom: 5em;
               display: flex;
               align-items: flex-start
             }
@@ -157,20 +158,19 @@ class DocumentationCtrl extends React.Component {
             .response-container {
               height: 80vh
             }
-
-						.align-middle {
-							text-align: center;
-						}
           `}
-				</style>
-			</div>
-		);
-	}
+
+        </style>
+      </div>
+    );
+  }
 }
 
 export default () => (
-	<Web3Container
-		renderLoading={() => <div />}
-		render={props => <DocumentationCtrl {...props} />}
-	/>
-);
+  <Web3Container
+    renderLoading={() => <div></div>}
+    render={(props) => (
+      <DocumentationCtrl {...props} />
+    )}
+  />
+)

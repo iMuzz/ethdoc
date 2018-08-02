@@ -40,7 +40,7 @@ class HomePage extends React.Component {
               <div className="step-wrapper padding-left">
                 <div className="step-content">
                   <h1 className="step-header">📚 Document your code.</h1>
-                  <p className="step-text">Use the <a>Ethereum Natural Specification</a> form to write comments in your files.</p>
+                  <p className="step-text">Use the <a target="_blank" href="https://github.com/ethereum/wiki/wiki/Ethereum-Natural-Specification-Format">Ethereum Natural Specification</a> format to write comments in your files.</p>
                 </div>
               </div>
             </div>

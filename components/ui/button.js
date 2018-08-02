@@ -7,7 +7,7 @@ export default ({ className, onClick, children }) => (
 			.pt-button {
 				background: rgba(71, 98, 255, 1) !important;
 				box-shadow: 0px 2px 10px -1px rgba(71, 98, 255, 0.36)!important;
-				border-radius: 6px !important;
+				border-radius: 3px !important;
 				color: #fff !important;
 				cursor: pointer;
 				display: block;

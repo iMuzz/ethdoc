@@ -2,7 +2,7 @@ import Button from '../components/ui/button';
 import Laptop from '../components/laptop';
 import Editor from '../components/svg/editor.svg';
 import Terminal from '../components/svg/iterm.svg';
-import Logo from '../components/svg/logo.svg';
+import Logo from '../components/svg/logo-dark.svg';
 import Footer from '../components/footer';
 import Window from '../components/svg/window.svg';
 

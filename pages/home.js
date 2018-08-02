@@ -2,6 +2,7 @@ import Button from '../components/ui/button';
 import Laptop from '../components/laptop';
 import Editor from '../components/svg/editor.svg';
 import Terminal from '../components/svg/iterm.svg';
+import Logo from '../components/svg/logo.svg';
 import Footer from '../components/footer';
 
 class HomePage extends React.Component {
@@ -15,7 +16,11 @@ class HomePage extends React.Component {
 			<div className="home">
         <div className="container pbot">
           <div className="row">
+
             <div className="col-xs-12 col-md-6 intro">
+              <div className="logo">
+                <Logo />
+              </div>
               Create documentation for your smart contracts in a matter of
               <strong> seconds</strong>.
               <div className="block-rtl">

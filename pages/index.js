@@ -1,172 +1,367 @@
-import React from 'react';
-import Web3 from 'web3';
-import NextLink from 'next/link';
-
-import { Alert } from '@blueprintjs/core';
-import EndpointRow from '../components/endpointRow';
-import ErrorCard from '../components/errorCard';
+import Button from '../components/ui/button';
+import Laptop from '../components/laptop';
+import Editor from '../components/svg/editor.svg';
+import Terminal from '../components/svg/iterm.svg';
+import Logo from '../components/svg/logo-dark.svg';
 import Footer from '../components/ui/footer';
-import FunctionContent from '../components/functionContent';
-import Runkit from '../components/runkit';
-import SimpleCard from '../components/simpleCard';
+import Window from '../components/svg/window.svg';
 
-import contractInformation from './test.js';
-import steps from '../lib/hacks';
-import Web3Container from '../lib/web3Container';
+import Link from 'next/link';
 
-import InfiniteScroll from 'react-infinite-scroll-component';
-import { Element, Link, scrollSpy } from 'react-scroll';
-
-class DocumentationCtrl extends React.Component {
+class HomePage extends React.Component {
 	constructor(props) {
 		super(props);
-
-		this.state = {
-			active: 0,
-			alert: false,
-			connected: this.props.connected,
-			didRun: false,
-			stepIndex: 0,
-			steps: steps
-		};
-
-		this.handleAlert = this.handleAlert.bind(this);
-		this.renderCards = this.renderCards.bind(this);
-		this.renderEndpoints = this.renderEndpoints.bind(this);
-		this.updateMethod = this.updateMethod.bind(this);
-	}
-
-	componentDidMount() {
-		scrollSpy.update();
-	}
-
-	// Show or hide alert.
-	handleAlert(status) {
-		this.setState({ alert: status });
-	}
-
-	// Renders list of endpoints.
-	renderEndpoints() {
-		return this.state.steps.map((step, i) => {
-			return (
-				<div>
-					<Link
-						to={`${step.name}`}
-						spy={true}
-						hashSpy={true}
-						smooth={true}
-						onSetActive={() => {
-							this.setState({ active: step.name });
-						}}>
-						<EndpointRow
-							key={i}
-							title={step.name}
-							isActive={step.name == this.state.active}
-						/>
-					</Link>
-				</div>
-			);
-		});
-	}
-
-	// Generates cards for each endpoint
-	renderCards() {
-		return this.state.steps.map((step, i) => {
-			return (
-				<Element name={`${step.name}`}>
-					<SimpleCard
-						body={<div />}
-						description={this.state.steps[i].devdoc.details}
-						fadeOut={this.state.fadeOut}>
-						<FunctionContent
-							connected={this.state.connected}
-							handleAlert={this.handleAlert}
-							method={steps[i]}
-							updateMethod={this.updateMethod}
-							web3={this.props.web3}
-							contractAddress={contractInformation.contractAddress}
-							contractAbi={contractInformation.contractAbi}
-						/>
-					</SimpleCard>
-				</Element>
-			);
-		});
-	}
-
-	updateMethod(method) {
-		const currStep = this.state.steps[this.state.stepIndex];
-		// This is really hacky. But it works for now!
-		const copy = JSON.parse(JSON.stringify(this.state.steps));
-		this.setState({ steps: copy });
 	}
 
 	render() {
 		return (
-			<div className="row doc-container around-xs">
-				<div className="col-xs-3 sidebar-container sticky-top">
-					{this.renderEndpoints()}
-				</div>
-				<div className="col-xs-9 content-container">
-					<Alert
-						isOpen={this.state.alert}
-						onConfirm={() => this.setState({ alert: false })}
-						onClose={() => this.setState({ alert: false })}
-						confirmButtonText="Hide"
-						transitionDuration={200}>
-						<div className="alert-text">
-							Please check your <code>web3</code> connection. If you don't have
-							a <code>web3</code> client installed, try using
-							<a href="https://metamask.io/"> Metamask</a>.
+			<>
+				<div className="home">
+					<div className="contain">
+						<div className="row center">
+							<div className="col-xs-12 col-sm-6 col-md-6 col-lg-6 intro">
+								<div className="logo">
+									<Logo />
+								</div>
+								Create documentation for your smart contracts in a matter of
+								<strong> seconds</strong>.
+								<div className="block-rtl demo">
+									<Link href="/demo">
+										<Button className="demo">View Demo</Button>
+									</Link>
+								</div>
+							</div>
+							<div className="col-xs-12 col-sm-6 col-md-6 col-lg-6 image">
+								<Laptop />
+							</div>
 						</div>
-					</Alert>
-					<InfiniteScroll dataLength={this.state.steps.length} hasMore={false}>
-						{this.renderCards()}
-					</InfiniteScroll>
+						<div className="row center">
+							<div className="col-xs-12 col-sm-6 col-md-6 col-lg-6 image left">
+								<Editor className="editor" />
+							</div>
+							<div className="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+								<div className="step-content right">
+									<h1 className="step-header">📚 Document your code.</h1>
+									<p className="step-text">
+										Use the <a>Ethereum Natural Specification</a> form to write
+										comments in your files.
+									</p>
+								</div>
+							</div>
+						</div>
+						<div className="row center">
+							<div className="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+								<div className="step-content left">
+									<h1 className="step-header">⚡️ Generate using CLI.</h1>
+									<p className="step-text">
+										Use the command line interface to create docs with just a
+										couple commands.
+									</p>
+								</div>
+							</div>
+							<div className="col-xs-12 col-sm-6 col-md-6 col-lg-6 image right">
+								<Terminal className="terminal" />
+							</div>
+						</div>
+						<div className="row center">
+							<div className="col-xs-12 col-sm-6 col-md-6 col-lg-6 image left">
+								<Window className="browser" />
+							</div>
+							<div className="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+								<div className="step-content right">
+									<h1 className="step-header">🎉 Voila! You're done.</h1>
+									<p className="step-text">
+										You just automatically generated a UI for your smart
+										contract.
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+					<style jsx>
+						{`
+							html,
+							body {
+								background: #fff !important;
+								font-family: Titillium Web;
+							}
+
+							// LINK STYLING
+
+							a {
+								color: #6078ff;
+								transition: color 0.2s;
+							}
+
+							a:hover {
+								color: #8595ef;
+								text-decoration: none;
+							}
+
+							// ALIGNMENT
+
+							.align-middle {
+								text-align: center;
+							}
+
+							.align-left {
+								text-align: left;
+								justify-content: flex-start;
+							}
+
+							.align-right {
+								text-align: right;
+								justify-content: flex-end;
+							}
+
+							.row.center {
+								justify-content: center;
+								align-items: center;
+							}
+
+							.block-rtl {
+								display: flex;
+								justify-content: flex-end;
+								text-align: right;
+							}
+
+							.block-ltr {
+								align-self: flex-start;
+								text-align: left;
+							}
+
+							// ELEMENTS
+
+							.contain {
+								padding-bottom: 5em;
+								font-family: Titillium Web;
+							}
+
+							.home {
+								background-color: white;
+								margin: 5% 4% 4% 4%;
+								border-radius: 10px;
+								box-shadow: 0px 2px 15px #e6e6e6;
+							}
+
+							.intro {
+								font-style: normal;
+								font-weight: normal;
+								line-height: normal;
+								font-size: 2em;
+								text-align: right;
+								max-width: 400px;
+							}
+
+							.demo {
+								margin-top: 0.75em;
+							}
+
+							.image {
+								display: flex;
+								justify-content: center;
+							}
+
+							.image.left {
+								justify-content: flex-end;
+							}
+
+							.image.right {
+								justify-content: flex-start;
+							}
+
+							.terminal {
+								filter: none;
+								max-width: 450px;
+							}
+
+							.editor {
+								max-width: 450px;
+							}
+
+							.browser {
+								height: 75%;
+								width: 75%;
+								border-radius: 6px;
+								border: 1px solid #e8e8e8;
+								margin-top: 5em;
+							}
+
+							// STEP LAYOUTS
+
+							.step {
+								font-family: Titillium Web !important;
+								max-width: 600px;
+								display: flex;
+							}
+
+							.step-content {
+								position: relative;
+							}
+
+							.step-content.left {
+								text-align: right;
+								padding: 0em 3em 0em 8em;
+							}
+
+							.step-header {
+								margin-top: 1rem;
+								font-size: 2.2rem;
+								line-height: 2.5rem;
+							}
+
+							.step-text {
+								font-size: 1.1rem;
+								font-weight: 300;
+								line-height: 1.6rem;
+							}
+
+							// RESPONSIVE QUERIES
+
+							@media (max-width: 800px) {
+								.homepage {
+									display: block;
+								}
+							}
+
+							@media (max-width: 1250px) {
+								.contain {
+									padding-top: 5%;
+								}
+							}
+
+							@media (max-width: 1190px) {
+								.home {
+									margin: 3% 2% 3% 2%;
+								}
+							}
+							@media (max-width: 1128px) {
+								.intro {
+									font-size: 1.5em;
+								}
+
+								.editor {
+									max-width: 350px;
+									max-height: 300px;
+									margin-top: 3em;
+								}
+
+								.terminal {
+									max-width: 350px;
+									max-height: 300px;
+									margin-top: 2em;
+								}
+
+								.browser {
+									margin-top: 3em;
+								}
+							}
+
+							@media (max-width: 773px) {
+								.intro {
+									text-align: left;
+									max-width: 60% !important;
+									margin-left: auto;
+									margin-right: auto;
+									margin-top: 2em;
+									margin-bottom: 3em;
+								}
+
+								.block-rtl {
+									justify-content: flex-start;
+								}
+
+								.image {
+									justify-content: center;
+								}
+
+								.image.left {
+									justify-content: center;
+									order: 1;
+								}
+
+								.editor {
+									margin-bottom: 2em;
+								}
+
+								.terminal {
+									margin-bottom: 2em;
+								}
+
+								.browser {
+									max-width: 350px;
+								}
+
+								.step {
+									align-content: center;
+								}
+
+								.step-content {
+									justify-content: center;
+									padding: unset !important;
+									max-width: 60% !important;
+									margin-left: auto;
+									margin-right: auto;
+								}
+
+								.step-content.left {
+									order: 1;
+									text-align: left !important;
+								}
+
+								.image.right {
+									order: 2;
+									justify-content: center;
+								}
+
+								.step-content.right {
+									order: 2;
+								}
+							}
+
+							@media (max-width: 560px) {
+								.intro {
+									max-width: 80% !important;
+								}
+
+								.step-content {
+									max-width: 80% !important;
+								}
+							}
+
+							@media (max-width: 1190px) {
+								.step-content.left {
+									padding: 0em 2em 0em 5em;
+								}
+							}
+
+							.step-content.right {
+								text-align: left;
+								padding: 0em 15em 0em 3em;
+							}
+
+							@media (max-width: 1390px) {
+								.step-content.right {
+									padding: 0em 9em 0em 3em;
+								}
+							}
+
+							@media (max-width: 1190px) {
+								.step-content.right {
+									padding: 0em 4em 0em 2em;
+								}
+
+								.step-header {
+									font-size: 1.8rem !important;
+								}
+							}
+						`}
+					</style>
 				</div>
 				<Footer />
-				<style>
-					{`
-						a {
-							color: rgba(71, 98, 255, 1) !important;
-						}
-
-						.alert-text {
-							line-height: 1.5em !important;
-						}
-
-            .sidebar-container {
-              top: 50px;
-              left: 20px;
-              position: sticky;
-            }
-
-            .content-container {
-              height: 100%;
-            }
-
-            .doc-container {
-              padding: 50px 10px;
-              position: relative;
-              max-width: 1200px;
-              margin: auto;
-							margin-bottom: 10em;
-              display: flex;
-              align-items: flex-start
-            }
-
-            .response-container {
-              height: 80vh
-            }
-          `}
-				</style>
-			</div>
+			</>
 		);
 	}
 }
 
-export default () => (
-	<Web3Container
-		renderLoading={() => <div />}
-		render={props => <DocumentationCtrl {...props} />}
-	/>
-);
+export default HomePage;

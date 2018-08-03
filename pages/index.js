@@ -8,6 +8,8 @@ import Window from '../components/svg/window.svg';
 
 import Link from 'next/link';
 
+import { Feature } from '../components/landing';
+
 class HomePage extends React.Component {
 	constructor(props) {
 		super(props);
@@ -47,6 +49,7 @@ class HomePage extends React.Component {
 								</div>
 							</div>
 						</div>
+
 						<div className="row center">
 							<div className="col-xs-12 col-sm-6 col-md-6 col-lg-6">
 								<div className="step-content left">
@@ -61,6 +64,7 @@ class HomePage extends React.Component {
 								<Terminal className="terminal" />
 							</div>
 						</div>
+
 						<div className="row center">
 							<div className="col-xs-12 col-sm-6 col-md-6 col-lg-6 image left">
 								<Window className="browser" />
@@ -75,7 +79,32 @@ class HomePage extends React.Component {
 								</div>
 							</div>
 						</div>
+
+						<div className="row center feature-section">
+							<div className="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+								<Feature
+									title="Generated Code Snippets"
+									url={'https://status.im/dist/img/new-site/browse_icon.png'}
+									description={'Automaticaly generate runnable javascript that interacts with your contract.'}
+								/>
+							</div>
+							<div className="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+								<Feature
+									title="Read/Write to Chain"
+									url={'https://status.im/dist/img/new-site/send_icon.png'}
+									description={'Start interacting with your smart contract right from your documentation.'}
+								/>
+							</div>
+							<div className="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+								<Feature
+									title="Open Source"
+									url={'https://status.im/dist/img/new-site/buy_icon.png'}
+									description={'The entire project is avaiable for free under the MIT Open Source License.'}
+								/>
+							</div>
+						</div>
 					</div>
+
 					<style jsx>
 						{`
 							html,
@@ -212,6 +241,11 @@ class HomePage extends React.Component {
 								font-size: 1.1rem;
 								font-weight: 300;
 								line-height: 1.6rem;
+							}
+
+							.feature-section {
+								margin-top: 5em;
+								padding: 0em 3em;
 							}
 
 							// RESPONSIVE QUERIES

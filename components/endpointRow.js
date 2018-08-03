@@ -1,16 +1,19 @@
 import classNames from 'classnames';
 
 export default ({ title, isActive, onClick }) => {
-  return (
-    <div className={classNames('endpoint', { active: isActive})} onClick={onClick}>
-      { title }
-      <style>
-        {`
+	return (
+		<div
+			className={classNames('endpoint', { active: isActive })}
+			onClick={onClick}>
+			{title}
+			<style>
+				{`
           a:hover {
             text-decoration: none;
           }
 
           .endpoint {
+            color: #182026;
             padding: 4px 20px;
             cursor: pointer;
             color: #182026;
@@ -28,8 +31,7 @@ export default ({ title, isActive, onClick }) => {
             font-weight: 600;
           }
         `}
-      </style>
-    </div>
-
-  );
-} 
+			</style>
+		</div>
+	);
+};

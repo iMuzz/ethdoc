@@ -1,44 +1,46 @@
 {
-  "name": "readme-ethereum",
-  "version": "1.0.0",
-  "description": "Documentation Generation from contract ABI",
-  "main": "index.js",
-  "scripts": {
-    "dev": "node server.js",
-    "build": "next build",
-    "start": "next start",
-    "export": "next export"
-  },
-  "author": "Faraaz Nishtar",
-  "license": "ISC",
-  "dependencies": {
-    "@blueprintjs/core": "^1.35.2",
-    "classnames": "^2.2.5",
-    "express": "^4.16.3",
-    "highlight.js": "^9.12.0",
-    "next": "^6.1.1",
-    "react": "^16.4.1",
-    "react-addons-css-transition-group": "^15.6.2",
-    "react-animate-height": "^1.0.2",
-    "react-anime": "^2.1.0",
-    "react-dom": "^16.4.1",
-    "react-infinite-scroll-component": "^4.1.0",
-    "react-runkit": "^0.9.0",
-    "react-scroll": "^1.7.10",
-    "react-window-ui": "^1.0.3",
-    "web3": "^1.0.0-beta.35"
-  },
-  "devDependencies": {
-    "eslint": "^4.18.2",
-    "eslint-config-airbnb": "^16.1.0",
-    "eslint-config-standard": "^11.0.0",
-    "eslint-plugin-import": "^2.9.0",
-    "eslint-plugin-jsx-a11y": "^6.0.3",
-    "eslint-plugin-node": "^6.0.1",
-    "eslint-plugin-promise": "^3.7.0",
-    "eslint-plugin-react": "^7.7.0",
-    "eslint-plugin-standard": "^3.0.1",
-    "react-svg-loader": "^2.1.0",
-    "react-svg-loader-cli": "^2.1.0"
-  }
+	"name": "readme-ethereum",
+	"version": "1.0.0",
+	"description": "Documentation Generation from contract ABI",
+	"main": "index.js",
+	"scripts": {
+		"dev": "node server.js",
+		"build": "next build",
+		"start": "next start",
+		"export": "next export"
+	},
+	"author": "Faraaz Nishtar",
+	"license": "ISC",
+	"dependencies": {
+		"@blueprintjs/core": "^1.35.2",
+		"classnames": "^2.2.5",
+		"express": "^4.16.3",
+		"highlight.js": "^9.12.0",
+		"next": "^6.1.1",
+		"react": "^16.4.1",
+		"react-addons-css-transition-group": "^15.6.2",
+		"react-animate-height": "^1.0.2",
+		"react-anime": "^2.1.0",
+		"react-dom": "^16.4.1",
+		"react-infinite-scroll-component": "^4.1.0",
+		"react-runkit": "^0.9.0",
+		"react-scroll": "^1.7.10",
+		"styled-jsx": "^2.2.7",
+		"typedarray-to-buffer": "^3.1.5",
+		"web3": "^1.0.0-beta.35"
+	},
+	"devDependencies": {
+		"babel-plugin-inline-react-svg": "^0.5.4",
+		"eslint": "^4.18.2",
+		"eslint-config-airbnb": "^16.1.0",
+		"eslint-config-standard": "^11.0.0",
+		"eslint-plugin-import": "^2.9.0",
+		"eslint-plugin-jsx-a11y": "^6.0.3",
+		"eslint-plugin-node": "^6.0.1",
+		"eslint-plugin-promise": "^3.7.0",
+		"eslint-plugin-react": "^7.7.0",
+		"eslint-plugin-standard": "^3.0.1",
+		"react-svg-loader": "^2.1.0",
+		"react-svg-loader-cli": "^2.1.0"
+	}
 }

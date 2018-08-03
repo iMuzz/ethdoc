@@ -17,10 +17,6 @@ import Web3Container from '../lib/web3Container';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import { Element, Link, scrollSpy } from 'react-scroll';
 
-// TESTING
-import InfiniteScroll from 'react-infinite-scroll-component';
-import { Element, Link, scrollSpy } from 'react-scroll';
-
 class DocumentationCtrl extends React.Component {
 	constructor(props) {
 		super(props);

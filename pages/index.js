@@ -26,9 +26,7 @@ class HomePage extends React.Component {
 								Create documentation for your smart contracts in a matter of
 								<strong> seconds</strong>.
 								<div className="block-rtl demo">
-									<Link href="/demo">
-										<Button className="demo">View Demo</Button>
-									</Link>
+									<Button className="demo">View Demo</Button>
 								</div>
 							</div>
 							<div className="col-xs-12 col-sm-6 col-md-6 col-lg-6 image">

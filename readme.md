@@ -3,7 +3,7 @@
 </h2>
 
 <p align="center">
-  <i>Create beautiful automagically generated documentation for Ethereum smart contracts.</i>
+  <i>Create beautiful automatically generated documentation for Ethereum smart contracts.</i>
   <br/>
   <br/>
   <img src="https://user-images.githubusercontent.com/7297269/44291274-32d9d000-a232-11e8-93a8-9180ee85399e.png" alt="ETHDoc" width="800" />
@@ -14,7 +14,7 @@ This repository contains the source code for the frontend portion of [**EthDoc**
 <br />
 
 ## Getting Started
-The easiest way to get started with EthDoc is through the [CLI](https://github.com/iMuzz/ethdoc-cli).
+The easiest way to get started with EthDoc is through the [CLI](https://github.com/iMuzz/ethdoc-cli). Follow the instructions below to get started!
 
 ##### 1. Install NPM Package
 ```

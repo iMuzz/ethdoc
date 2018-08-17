@@ -43,8 +43,8 @@ class HomePage extends React.Component {
 								<div className="step-content right">
 									<h1 className="step-header">📚 Document your code.</h1>
 									<p className="step-text">
-										Use the <a>Ethereum Natural Specification</a> form to write
-										comments in your files.
+										Use <a href="https://github.com/ethereum/wiki/wiki/Ethereum-Natural-Specification-Format" target="_blank">Ethereum Natural Specification</a> format to write
+										inline comments in your Solidity files.
 									</p>
 								</div>
 							</div>

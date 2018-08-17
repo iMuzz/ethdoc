@@ -2,7 +2,7 @@ export default () => (
 	<>
 		<div className="footer mtop-2em pbot">
 			<p className="align-middle">
-				made with ❤️by{' '}
+				Made with ❤️by{' '}
 				<a target="_blank" href="https://twitter.com/@faraaznishtar">
 					@faraaznishtar
 				</a>{' '}

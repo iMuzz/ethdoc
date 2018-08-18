@@ -66,3 +66,6 @@ $ npm run dev
 ```
 
 Navigate to http://localhost:3000 to see your changes. All changes are automatically reflected in the browser without having to refresh thanks to Next.js 😍
+
+## License
+[MIT](https://github.com/iMuzz/ethdoc/blob/master/LICENSE)

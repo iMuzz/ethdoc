@@ -1,3 +1,9 @@
+<h3 align="center">
+  ⚠️ EthDoc is still a work in progress and has not yet had a V1 release ⚠️ 
+</h3>
+
+<br />
+
 <h2 align="center">
 <img src="https://file-qdxymcjlzd.now.sh/" alt="">
 </h2>

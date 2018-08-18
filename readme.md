@@ -1,5 +1,5 @@
 <h3 align="center">
-  ⚠️ EthDoc is still a work in progress and has not yet had a V1 release ⚠️ 
+  ⚠️ EthDoc is still a work in progress and has not yet had a V1 release. The instructions below still don't work! ⚠️ 
 </h3>
 
 <br />

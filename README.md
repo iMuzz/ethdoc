@@ -1,5 +1,5 @@
 <h3 align="center">
-  ⚠️ EthDoc is still a work in progress and has not yet had a V1 release ⚠️ 
+  ⚠️ EthDoc is still a work in progress and has not yet had a V1 release. The instructions below still don't work! ⚠️ 
 </h3>
 
 <br />
@@ -9,7 +9,7 @@
 </h2>
 
 <p align="center">
-  <i>Create beautiful automatically generated documentation for Ethereum smart contracts.</i>
+  <i>Automatically generate beautiful documentation for your Ethereum smart contracts.</i>
   <br/>
   <br/>
   <img src="https://user-images.githubusercontent.com/7297269/44291274-32d9d000-a232-11e8-93a8-9180ee85399e.png" alt="ETHDoc" width="800" />

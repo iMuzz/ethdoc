@@ -1,0 +1,668 @@
+{
+  "schemaVersion": "2.0.0",
+  "contractName": "TokenRegistry",
+  "compilerOutput": {
+    "abi": [
+      {
+        "constant": false,
+        "inputs": [
+          {
+            "name": "_token",
+            "type": "address"
+          },
+          {
+            "name": "_index",
+            "type": "uint256"
+          }
+        ],
+        "name": "removeToken",
+        "outputs": [],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "constant": true,
+        "inputs": [
+          {
+            "name": "_name",
+            "type": "string"
+          }
+        ],
+        "name": "getTokenAddressByName",
+        "outputs": [
+          {
+            "name": "",
+            "type": "address"
+          }
+        ],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "constant": true,
+        "inputs": [
+          {
+            "name": "_symbol",
+            "type": "string"
+          }
+        ],
+        "name": "getTokenAddressBySymbol",
+        "outputs": [
+          {
+            "name": "",
+            "type": "address"
+          }
+        ],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "constant": false,
+        "inputs": [
+          {
+            "name": "_token",
+            "type": "address"
+          },
+          {
+            "name": "_swarmHash",
+            "type": "bytes"
+          }
+        ],
+        "name": "setTokenSwarmHash",
+        "outputs": [],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "constant": true,
+        "inputs": [
+          {
+            "name": "_token",
+            "type": "address"
+          }
+        ],
+        "name": "getTokenMetaData",
+        "outputs": [
+          {
+            "name": "",
+            "type": "address"
+          },
+          {
+            "name": "",
+            "type": "string"
+          },
+          {
+            "name": "",
+            "type": "string"
+          },
+          {
+            "name": "",
+            "type": "uint8"
+          },
+          {
+            "name": "",
+            "type": "bytes"
+          },
+          {
+            "name": "",
+            "type": "bytes"
+          }
+        ],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "constant": true,
+        "inputs": [],
+        "name": "owner",
+        "outputs": [
+          {
+            "name": "",
+            "type": "address"
+          }
+        ],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "constant": false,
+        "inputs": [
+          {
+            "name": "_token",
+            "type": "address"
+          },
+          {
+            "name": "_name",
+            "type": "string"
+          },
+          {
+            "name": "_symbol",
+            "type": "string"
+          },
+          {
+            "name": "_decimals",
+            "type": "uint8"
+          },
+          {
+            "name": "_ipfsHash",
+            "type": "bytes"
+          },
+          {
+            "name": "_swarmHash",
+            "type": "bytes"
+          }
+        ],
+        "name": "addToken",
+        "outputs": [],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "constant": false,
+        "inputs": [
+          {
+            "name": "_token",
+            "type": "address"
+          },
+          {
+            "name": "_name",
+            "type": "string"
+          }
+        ],
+        "name": "setTokenName",
+        "outputs": [],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "constant": true,
+        "inputs": [
+          {
+            "name": "",
+            "type": "address"
+          }
+        ],
+        "name": "tokens",
+        "outputs": [
+          {
+            "name": "token",
+            "type": "address"
+          },
+          {
+            "name": "name",
+            "type": "string"
+          },
+          {
+            "name": "symbol",
+            "type": "string"
+          },
+          {
+            "name": "decimals",
+            "type": "uint8"
+          },
+          {
+            "name": "ipfsHash",
+            "type": "bytes"
+          },
+          {
+            "name": "swarmHash",
+            "type": "bytes"
+          }
+        ],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "constant": true,
+        "inputs": [
+          {
+            "name": "",
+            "type": "uint256"
+          }
+        ],
+        "name": "tokenAddresses",
+        "outputs": [
+          {
+            "name": "",
+            "type": "address"
+          }
+        ],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "constant": true,
+        "inputs": [
+          {
+            "name": "_name",
+            "type": "string"
+          }
+        ],
+        "name": "getTokenByName",
+        "outputs": [
+          {
+            "name": "",
+            "type": "address"
+          },
+          {
+            "name": "",
+            "type": "string"
+          },
+          {
+            "name": "",
+            "type": "string"
+          },
+          {
+            "name": "",
+            "type": "uint8"
+          },
+          {
+            "name": "",
+            "type": "bytes"
+          },
+          {
+            "name": "",
+            "type": "bytes"
+          }
+        ],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "constant": true,
+        "inputs": [],
+        "name": "getTokenAddresses",
+        "outputs": [
+          {
+            "name": "",
+            "type": "address[]"
+          }
+        ],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "constant": false,
+        "inputs": [
+          {
+            "name": "_token",
+            "type": "address"
+          },
+          {
+            "name": "_ipfsHash",
+            "type": "bytes"
+          }
+        ],
+        "name": "setTokenIpfsHash",
+        "outputs": [],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "constant": true,
+        "inputs": [
+          {
+            "name": "_symbol",
+            "type": "string"
+          }
+        ],
+        "name": "getTokenBySymbol",
+        "outputs": [
+          {
+            "name": "",
+            "type": "address"
+          },
+          {
+            "name": "",
+            "type": "string"
+          },
+          {
+            "name": "",
+            "type": "string"
+          },
+          {
+            "name": "",
+            "type": "uint8"
+          },
+          {
+            "name": "",
+            "type": "bytes"
+          },
+          {
+            "name": "",
+            "type": "bytes"
+          }
+        ],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "constant": false,
+        "inputs": [
+          {
+            "name": "_token",
+            "type": "address"
+          },
+          {
+            "name": "_symbol",
+            "type": "string"
+          }
+        ],
+        "name": "setTokenSymbol",
+        "outputs": [],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "constant": false,
+        "inputs": [
+          {
+            "name": "newOwner",
+            "type": "address"
+          }
+        ],
+        "name": "transferOwnership",
+        "outputs": [],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "anonymous": false,
+        "inputs": [
+          {
+            "indexed": true,
+            "name": "token",
+            "type": "address"
+          },
+          {
+            "indexed": false,
+            "name": "name",
+            "type": "string"
+          },
+          {
+            "indexed": false,
+            "name": "symbol",
+            "type": "string"
+          },
+          {
+            "indexed": false,
+            "name": "decimals",
+            "type": "uint8"
+          },
+          {
+            "indexed": false,
+            "name": "ipfsHash",
+            "type": "bytes"
+          },
+          {
+            "indexed": false,
+            "name": "swarmHash",
+            "type": "bytes"
+          }
+        ],
+        "name": "LogAddToken",
+        "type": "event"
+      },
+      {
+        "anonymous": false,
+        "inputs": [
+          {
+            "indexed": true,
+            "name": "token",
+            "type": "address"
+          },
+          {
+            "indexed": false,
+            "name": "name",
+            "type": "string"
+          },
+          {
+            "indexed": false,
+            "name": "symbol",
+            "type": "string"
+          },
+          {
+            "indexed": false,
+            "name": "decimals",
+            "type": "uint8"
+          },
+          {
+            "indexed": false,
+            "name": "ipfsHash",
+            "type": "bytes"
+          },
+          {
+            "indexed": false,
+            "name": "swarmHash",
+            "type": "bytes"
+          }
+        ],
+        "name": "LogRemoveToken",
+        "type": "event"
+      },
+      {
+        "anonymous": false,
+        "inputs": [
+          {
+            "indexed": true,
+            "name": "token",
+            "type": "address"
+          },
+          {
+            "indexed": false,
+            "name": "oldName",
+            "type": "string"
+          },
+          {
+            "indexed": false,
+            "name": "newName",
+            "type": "string"
+          }
+        ],
+        "name": "LogTokenNameChange",
+        "type": "event"
+      },
+      {
+        "anonymous": false,
+        "inputs": [
+          {
+            "indexed": true,
+            "name": "token",
+            "type": "address"
+          },
+          {
+            "indexed": false,
+            "name": "oldSymbol",
+            "type": "string"
+          },
+          {
+            "indexed": false,
+            "name": "newSymbol",
+            "type": "string"
+          }
+        ],
+        "name": "LogTokenSymbolChange",
+        "type": "event"
+      },
+      {
+        "anonymous": false,
+        "inputs": [
+          {
+            "indexed": true,
+            "name": "token",
+            "type": "address"
+          },
+          {
+            "indexed": false,
+            "name": "oldIpfsHash",
+            "type": "bytes"
+          },
+          {
+            "indexed": false,
+            "name": "newIpfsHash",
+            "type": "bytes"
+          }
+        ],
+        "name": "LogTokenIpfsHashChange",
+        "type": "event"
+      },
+      {
+        "anonymous": false,
+        "inputs": [
+          {
+            "indexed": true,
+            "name": "token",
+            "type": "address"
+          },
+          {
+            "indexed": false,
+            "name": "oldSwarmHash",
+            "type": "bytes"
+          },
+          {
+            "indexed": false,
+            "name": "newSwarmHash",
+            "type": "bytes"
+          }
+        ],
+        "name": "LogTokenSwarmHashChange",
+        "type": "event"
+      }
+    ],
+    "devdoc": {
+      "author": "Amir Bandeali - <amir@0xProject.com>, Will Warren - <will@0xProject.com>",
+      "methods": {
+        "addToken(address,string,string,uint8,bytes,bytes)": {
+          "details": "Allows owner to add a new token to the registry.",
+          "params": {
+            "_decimals": "Number of decimals, divisibility of new token.",
+            "_ipfsHash": "IPFS hash of token icon.",
+            "_name": "Name of new token.",
+            "_swarmHash": "Swarm hash of token icon.",
+            "_symbol": "Symbol for new token.",
+            "_token": "Address of new token."
+          }
+        },
+        "getTokenAddressByName(string)": {
+          "details": "Provides a registered token's address when given the token name.",
+          "params": {
+            "_name": "Name of registered token."
+          },
+          "return": "Token's address."
+        },
+        "getTokenAddressBySymbol(string)": {
+          "details": "Provides a registered token's address when given the token symbol.",
+          "params": {
+            "_symbol": "Symbol of registered token."
+          },
+          "return": "Token's address."
+        },
+        "getTokenAddresses()": {
+          "details": "Returns an array containing all token addresses.",
+          "return": "Array of token addresses."
+        },
+        "getTokenByName(string)": {
+          "details": "Provides a registered token's metadata, looked up by name.",
+          "params": {
+            "_name": "Name of registered token."
+          },
+          "return": "Token metadata."
+        },
+        "getTokenBySymbol(string)": {
+          "details": "Provides a registered token's metadata, looked up by symbol.",
+          "params": {
+            "_symbol": "Symbol of registered token."
+          },
+          "return": "Token metadata."
+        },
+        "getTokenMetaData(address)": {
+          "details": "Provides a registered token's metadata, looked up by address.",
+          "params": {
+            "_token": "Address of registered token."
+          },
+          "return": "Token metadata."
+        },
+        "removeToken(address,uint256)": {
+          "details": "Allows owner to remove an existing token from the registry.",
+          "params": {
+            "_token": "Address of existing token."
+          }
+        },
+        "setTokenIpfsHash(address,bytes)": {
+          "details": "Allows owner to modify an existing token's IPFS hash.",
+          "params": {
+            "_ipfsHash": "New IPFS hash.",
+            "_token": "Address of existing token."
+          }
+        },
+        "setTokenName(address,string)": {
+          "details": "Allows owner to modify an existing token's name.",
+          "params": {
+            "_name": "New name.",
+            "_token": "Address of existing token."
+          }
+        },
+        "setTokenSwarmHash(address,bytes)": {
+          "details": "Allows owner to modify an existing token's Swarm hash.",
+          "params": {
+            "_swarmHash": "New Swarm hash.",
+            "_token": "Address of existing token."
+          }
+        },
+        "setTokenSymbol(address,string)": {
+          "details": "Allows owner to modify an existing token's symbol.",
+          "params": {
+            "_symbol": "New symbol.",
+            "_token": "Address of existing token."
+          }
+        }
+      },
+      "title": "Token Registry - Stores metadata associated with ERC20 tokens. See ERC22 https://github.com/ethereum/EIPs/issues/22"
+    },
+    "evm": {}
+  },
+  "sources": {
+    "Ownable_v1.sol": {
+      "id": 0
+    },
+    "TokenRegistry.sol": {
+      "id": 1
+    }
+  },
+  "sourceCodes": {
+    "Ownable_v1.sol": "pragma solidity ^0.4.11;\n\n/*\n * Ownable\n *\n * Base contract with an owner.\n * Provides onlyOwner modifier, which prevents function from running if it is called by anyone other than the owner.\n */\n\ncontract Ownable_v1 {\n    address public owner;\n\n    function Ownable_v1() {\n        owner = msg.sender;\n    }\n\n    modifier onlyOwner() {\n        require(msg.sender == owner);\n        _;\n    }\n\n    function transferOwnership(address newOwner) onlyOwner {\n        if (newOwner != address(0)) {\n            owner = newOwner;\n        }\n    }\n}\n",
+    "TokenRegistry.sol": "/*\n\n  Copyright 2017 ZeroEx Intl.\n\n  Licensed under the Apache License, Version 2.0 (the \"License\");\n  you may not use this file except in compliance with the License.\n  You may obtain a copy of the License at\n\n    http://www.apache.org/licenses/LICENSE-2.0\n\n  Unless required by applicable law or agreed to in writing, software\n  distributed under the License is distributed on an \"AS IS\" BASIS,\n  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n  See the License for the specific language governing permissions and\n  limitations under the License.\n\n*/\n\npragma solidity ^0.4.11;\n\nimport { Ownable_v1 as Ownable } from \"./Ownable_v1.sol\";\n\n/// @title Token Registry - Stores metadata associated with ERC20 tokens. See ERC22 https://github.com/ethereum/EIPs/issues/22\n/// @author Amir Bandeali - <amir@0xProject.com>, Will Warren - <will@0xProject.com>\ncontract TokenRegistry is Ownable {\n\n    event LogAddToken(\n        address indexed token,\n        string name,\n        string symbol,\n        uint8 decimals,\n        bytes ipfsHash,\n        bytes swarmHash\n    );\n\n    event LogRemoveToken(\n        address indexed token,\n        string name,\n        string symbol,\n        uint8 decimals,\n        bytes ipfsHash,\n        bytes swarmHash\n    );\n\n    event LogTokenNameChange(address indexed token, string oldName, string newName);\n    event LogTokenSymbolChange(address indexed token, string oldSymbol, string newSymbol);\n    event LogTokenIpfsHashChange(address indexed token, bytes oldIpfsHash, bytes newIpfsHash);\n    event LogTokenSwarmHashChange(address indexed token, bytes oldSwarmHash, bytes newSwarmHash);\n\n    mapping (address => TokenMetadata) public tokens;\n    mapping (string => address) tokenBySymbol;\n    mapping (string => address) tokenByName;\n\n    address[] public tokenAddresses;\n\n    struct TokenMetadata {\n        address token;\n        string name;\n        string symbol;\n        uint8 decimals;\n        bytes ipfsHash;\n        bytes swarmHash;\n    }\n\n    modifier tokenExists(address _token) {\n        require(tokens[_token].token != address(0));\n        _;\n    }\n\n    modifier tokenDoesNotExist(address _token) {\n        require(tokens[_token].token == address(0));\n        _;\n    }\n\n    modifier nameDoesNotExist(string _name) {\n        require(tokenByName[_name] == address(0));\n        _;\n    }\n\n    modifier symbolDoesNotExist(string _symbol) {\n        require(tokenBySymbol[_symbol] == address(0));\n        _;\n    }\n\n    modifier addressNotNull(address _address) {\n        require(_address != address(0));\n        _;\n    }\n\n\n    /// @dev Allows owner to add a new token to the registry.\n    /// @param _token Address of new token.\n    /// @param _name Name of new token.\n    /// @param _symbol Symbol for new token.\n    /// @param _decimals Number of decimals, divisibility of new token.\n    /// @param _ipfsHash IPFS hash of token icon.\n    /// @param _swarmHash Swarm hash of token icon.\n    function addToken(\n        address _token,\n        string _name,\n        string _symbol,\n        uint8 _decimals,\n        bytes _ipfsHash,\n        bytes _swarmHash)\n        public\n        onlyOwner\n        tokenDoesNotExist(_token)\n        addressNotNull(_token)\n        symbolDoesNotExist(_symbol)\n        nameDoesNotExist(_name)\n    {\n        tokens[_token] = TokenMetadata({\n            token: _token,\n            name: _name,\n            symbol: _symbol,\n            decimals: _decimals,\n            ipfsHash: _ipfsHash,\n            swarmHash: _swarmHash\n        });\n        tokenAddresses.push(_token);\n        tokenBySymbol[_symbol] = _token;\n        tokenByName[_name] = _token;\n        LogAddToken(\n            _token,\n            _name,\n            _symbol,\n            _decimals,\n            _ipfsHash,\n            _swarmHash\n        );\n    }\n\n    /// @dev Allows owner to remove an existing token from the registry.\n    /// @param _token Address of existing token.\n    function removeToken(address _token, uint _index)\n        public\n        onlyOwner\n        tokenExists(_token)\n    {\n        require(tokenAddresses[_index] == _token);\n\n        tokenAddresses[_index] = tokenAddresses[tokenAddresses.length - 1];\n        tokenAddresses.length -= 1;\n\n        TokenMetadata storage token = tokens[_token];\n        LogRemoveToken(\n            token.token,\n            token.name,\n            token.symbol,\n            token.decimals,\n            token.ipfsHash,\n            token.swarmHash\n        );\n        delete tokenBySymbol[token.symbol];\n        delete tokenByName[token.name];\n        delete tokens[_token];\n    }\n\n    /// @dev Allows owner to modify an existing token's name.\n    /// @param _token Address of existing token.\n    /// @param _name New name.\n    function setTokenName(address _token, string _name)\n        public\n        onlyOwner\n        tokenExists(_token)\n        nameDoesNotExist(_name)\n    {\n        TokenMetadata storage token = tokens[_token];\n        LogTokenNameChange(_token, token.name, _name);\n        delete tokenByName[token.name];\n        tokenByName[_name] = _token;\n        token.name = _name;\n    }\n\n    /// @dev Allows owner to modify an existing token's symbol.\n    /// @param _token Address of existing token.\n    /// @param _symbol New symbol.\n    function setTokenSymbol(address _token, string _symbol)\n        public\n        onlyOwner\n        tokenExists(_token)\n        symbolDoesNotExist(_symbol)\n    {\n        TokenMetadata storage token = tokens[_token];\n        LogTokenSymbolChange(_token, token.symbol, _symbol);\n        delete tokenBySymbol[token.symbol];\n        tokenBySymbol[_symbol] = _token;\n        token.symbol = _symbol;\n    }\n\n    /// @dev Allows owner to modify an existing token's IPFS hash.\n    /// @param _token Address of existing token.\n    /// @param _ipfsHash New IPFS hash.\n    function setTokenIpfsHash(address _token, bytes _ipfsHash)\n        public\n        onlyOwner\n        tokenExists(_token)\n    {\n        TokenMetadata storage token = tokens[_token];\n        LogTokenIpfsHashChange(_token, token.ipfsHash, _ipfsHash);\n        token.ipfsHash = _ipfsHash;\n    }\n\n    /// @dev Allows owner to modify an existing token's Swarm hash.\n    /// @param _token Address of existing token.\n    /// @param _swarmHash New Swarm hash.\n    function setTokenSwarmHash(address _token, bytes _swarmHash)\n        public\n        onlyOwner\n        tokenExists(_token)\n    {\n        TokenMetadata storage token = tokens[_token];\n        LogTokenSwarmHashChange(_token, token.swarmHash, _swarmHash);\n        token.swarmHash = _swarmHash;\n    }\n\n    /*\n     * Web3 call functions\n     */\n\n    /// @dev Provides a registered token's address when given the token symbol.\n    /// @param _symbol Symbol of registered token.\n    /// @return Token's address.\n    function getTokenAddressBySymbol(string _symbol) constant returns (address) {\n        return tokenBySymbol[_symbol];\n    }\n\n    /// @dev Provides a registered token's address when given the token name.\n    /// @param _name Name of registered token.\n    /// @return Token's address.\n    function getTokenAddressByName(string _name) constant returns (address) {\n        return tokenByName[_name];\n    }\n\n    /// @dev Provides a registered token's metadata, looked up by address.\n    /// @param _token Address of registered token.\n    /// @return Token metadata.\n    function getTokenMetaData(address _token)\n        public\n        constant\n        returns (\n            address,  //tokenAddress\n            string,   //name\n            string,   //symbol\n            uint8,    //decimals\n            bytes,    //ipfsHash\n            bytes     //swarmHash\n        )\n    {\n        TokenMetadata memory token = tokens[_token];\n        return (\n            token.token,\n            token.name,\n            token.symbol,\n            token.decimals,\n            token.ipfsHash,\n            token.swarmHash\n        );\n    }\n\n    /// @dev Provides a registered token's metadata, looked up by name.\n    /// @param _name Name of registered token.\n    /// @return Token metadata.\n    function getTokenByName(string _name)\n        public\n        constant\n        returns (\n            address,  //tokenAddress\n            string,   //name\n            string,   //symbol\n            uint8,    //decimals\n            bytes,    //ipfsHash\n            bytes     //swarmHash\n        )\n    {\n        address _token = tokenByName[_name];\n        return getTokenMetaData(_token);\n    }\n\n    /// @dev Provides a registered token's metadata, looked up by symbol.\n    /// @param _symbol Symbol of registered token.\n    /// @return Token metadata.\n    function getTokenBySymbol(string _symbol)\n        public\n        constant\n        returns (\n            address,  //tokenAddress\n            string,   //name\n            string,   //symbol\n            uint8,    //decimals\n            bytes,    //ipfsHash\n            bytes     //swarmHash\n        )\n    {\n        address _token = tokenBySymbol[_symbol];\n        return getTokenMetaData(_token);\n    }\n\n    /// @dev Returns an array containing all token addresses.\n    /// @return Array of token addresses.\n    function getTokenAddresses()\n        public\n        constant\n        returns (address[])\n    {\n        return tokenAddresses;\n    }\n}\n"
+  },
+  "sourceTreeHashHex": "0xe28bd29697fccb8213f865528a3488f1c05b6da52522084f05d51a3aa821b602",
+  "compiler": {
+    "name": "solc",
+    "version": "soljson-v0.4.19+commit.c4cbbb05.js",
+    "settings": {
+      "outputSelection": {
+        "*": {
+          "*": [
+            "abi",
+            "devdoc"
+          ]
+        }
+      }
+    }
+  },
+  "networks": {}
+}

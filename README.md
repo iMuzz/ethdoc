@@ -1,4 +1,4 @@
-⚠️This tool is in **alpha**  and has not yet been officially released. The instructions below will not work. ⚠️
+⚠️This tool is in **alpha**  and has not yet been officially released. The instructions below will not work.
 
 <br />
 
@@ -65,13 +65,11 @@ $ npm run dev
 
 Navigate to http://localhost:3000 to see your changes. All changes are automatically reflected in the browser without having to refresh thanks to Next.js 😍
 
-<br />
 
 ### Contributors
 - Faraaz Nishtar ([iMuzz](https://github.com/iMuzz))
 - Achal Srinivasan ([achalvs](https://github.com/achalvs))
 
-<br />
 
 ## License
 [MIT](https://github.com/iMuzz/ethdoc/blob/master/LICENSE)

@@ -9,8 +9,8 @@ app.prepare()
 .then(() => {
   const server = express()
 
-  server.get('/home', (req, res) => {
-    app.render(req, res, '/home')
+  server.get('/demo', (req, res) => {
+    app.render(req, res, '/demo')
   })
 
   server.get('/*', (req, res) => {

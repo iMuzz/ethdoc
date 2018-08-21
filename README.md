@@ -1,6 +1,4 @@
-<h3 align="center">
-  ⚠️ EthDoc is still a work in progress and has not yet had a V1 release. The instructions below still don't work! ⚠️ 
-</h3>
+⚠️This tool is in **alpha**  and has not yet been officially released. The instructions below will not work.
 
 <br />
 
@@ -66,6 +64,12 @@ $ npm run dev
 ```
 
 Navigate to http://localhost:3000 to see your changes. All changes are automatically reflected in the browser without having to refresh thanks to Next.js 😍
+
+
+### Contributors
+- Faraaz Nishtar ([iMuzz](https://github.com/iMuzz))
+- Achal Srinivasan ([achalvs](https://github.com/achalvs))
+
 
 ## License
 [MIT](https://github.com/iMuzz/ethdoc/blob/master/LICENSE)

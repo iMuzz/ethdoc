@@ -13,12 +13,12 @@
   <img src="https://user-images.githubusercontent.com/7297269/44291274-32d9d000-a232-11e8-93a8-9180ee85399e.png" alt="ETHDoc" width="800" />
 </p>
 
-This repository contains the source code for the frontend portion of [**EthDoc**](https://ethdoc.io). An Open Source developer tool that generates documentation for Smart Contracts using [Ethereum Natural Specification Format](https://github.com/ethereum/wiki/wiki/Ethereum-Natural-Specification-Format). The project is split into two parts, the [CLI](https://github.com/iMuzz/ethdoc-cli) and frontend (the repo you're currently on).
+This repository contains the source code for the frontend portion of [**Ethdoc**](https://ethdoc.io). An Open Source developer tool that generates documentation for Smart Contracts using [Ethereum Natural Specification Format](https://github.com/ethereum/wiki/wiki/Ethereum-Natural-Specification-Format). The project is split into two parts, the [CLI](https://github.com/iMuzz/ethdoc-cli) and frontend (the repo you're currently on).
 
 <br />
 
 ## Getting Started
-The easiest way to get started with EthDoc is through the [CLI](https://github.com/iMuzz/ethdoc-cli). Follow the instructions below to get started!
+The easiest way to get started with Ethdoc is through the [CLI](https://github.com/iMuzz/ethdoc-cli). Follow the instructions below to get started!
 
 ##### 1. Install NPM Package
 ```
@@ -30,7 +30,7 @@ $ npm install ethdoc --save
 ```
 $ ethdoc init
 ```
-This may take a few minutes. You only have to run this command the first time you integrate EthDoc into an Ethereum Project.
+This may take a few minutes. You only have to run this command the first time you integrate ethdoc into an Ethereum Project.
 
 ##### 3. Generate documentation
 
@@ -51,7 +51,7 @@ $ ethdoc generate otherDirectory/ -s
 
 ## Development
 
-EthDoc was built using [Next.js](https://github.com/zeit/next.js/) which is a framework created by the awesome people over at [Zeit](https://zeit.co/)!
+Ethdoc was built using [Next.js](https://github.com/zeit/next.js/) which is a framework created by the awesome people over at [Zeit](https://zeit.co/)!
 
 ##### 1. Install Dependencies
 ```

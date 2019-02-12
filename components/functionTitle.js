@@ -1,15 +1,15 @@
 // import classNames from 'classnames';
 
-import PropTypes from 'prop-types';
-import SimpleHeader from './simpleHeader';
+import PropTypes from 'prop-types'
+import SimpleHeader from './simpleHeader'
 
 class FunctionTitle extends React.Component {
   _renderInput(input) {
-    const { name, type } = input;
+    const { name, type } = input
     return (
       <span className="input">
-        <span className="type">{ type } </span>
-        <span className="name">{ name }</span>
+        <span className="type">{type} </span>
+        <span className="name">{name}</span>
         <style>
           {`
             .input {
@@ -18,37 +18,34 @@ class FunctionTitle extends React.Component {
           `}
         </style>
       </span>
-    );
+    )
   }
 
   _renderInputs(inputs) {
     return inputs.map((input, i) => {
-      const isNotLastInput = !(inputs.length - 1 === i);
+      const isNotLastInput = !(inputs.length - 1 === i)
       return (
         <span className="input-container">
-          { this._renderInput(input) }
-          {(isNotLastInput) && (
-            <span>,</span>
-          )}
+          {this._renderInput(input)}
+          {isNotLastInput && <span>,</span>}
         </span>
       )
     })
   }
 
   render() {
-    const { name, inputs } = this.props;
+    const { name, inputs } = this.props
     return (
       <SimpleHeader>
-        { name }({ this._renderInputs(inputs) })
+        {name}({this._renderInputs(inputs)})
       </SimpleHeader>
-    );
+    )
   }
 }
 
 FunctionTitle.propTypes = {
   name: PropTypes.string.isRequired,
   inputs: PropTypes.array,
-};
+}
 
-
-export default FunctionTitle;
+export default FunctionTitle

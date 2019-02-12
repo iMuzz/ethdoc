@@ -1,33 +1,32 @@
 // import classNames from 'classnames';
-import PropTypes from 'prop-types';
+import PropTypes from 'prop-types'
 import { Popover } from '@blueprintjs/core'
 
 class FunctionParamTable extends React.Component {
-
   constructor(props) {
-    super(props);
+    super(props)
 
     this.state = {
       isPopoverOpen: true,
     }
-    this.renderParamRows = this.renderParamRows.bind(this);
-    this.handleInputChange = this.handleInputChange.bind(this);
-    this.disablePopover = this.disablePopover.bind(this);
+    this.renderParamRows = this.renderParamRows.bind(this)
+    this.handleInputChange = this.handleInputChange.bind(this)
+    this.disablePopover = this.disablePopover.bind(this)
   }
 
   disablePopover() {
     this.setState({
-      isPopoverOpen: true
-    });
+      isPopoverOpen: true,
+    })
   }
 
   handleInputChange(e, i) {
-    i.value = e.target.value;
-    this.props.updateMethod(e.target.value);
+    i.value = e.target.value
+    this.props.updateMethod(e.target.value)
   }
 
   renderParamRows() {
-    const { params } = this.props;
+    const { params } = this.props
 
     return this.props.inputs.map((input, i) => {
       const argumentInput = (
@@ -35,43 +34,39 @@ class FunctionParamTable extends React.Component {
           className="eth-input"
           type="text"
           placeholder={input.name}
-          onChange={(e) => this.handleInputChange(e, input)}
+          onChange={e => this.handleInputChange(e, input)}
           onClick={this.disablePopover}
         />
-      );
+      )
 
       return (
         <div className="row param-row margin-override" key={input.name}>
           <div className="col-xs-3 padding-override">
-            <strong>
-              { input.name }
-            </strong>
+            <strong>{input.name}</strong>
           </div>
-          <div className="col-xs-2 padding-override">
-            { input.type }
-          </div>
+          <div className="col-xs-2 padding-override">{input.type}</div>
 
-          <div className="col-xs-4 padding-override">
-            { params[input.name] }
-          </div>
+          <div className="col-xs-4 padding-override">{params[input.name]}</div>
 
           <div className="col-xs-3 padding-override">
-            { i === 0 ? (
-            <Popover content={
-                <div className='popover-content'>
-                  Fill out these fields to run the code below!
-                </div>
-              }
-              className='popover-override'
-              defaultIsOpen
-              autoFocus={false}
-              enforceFocus={false}
-              isOpen={!this.state.isPopoverOpen}
+            {i === 0 ? (
+              <Popover
+                content={
+                  <div className="popover-content">
+                    Fill out these fields to run the code below!
+                  </div>
+                }
+                className="popover-override"
+                defaultIsOpen
+                autoFocus={false}
+                enforceFocus={false}
+                isOpen={!this.state.isPopoverOpen}
               >
-              { argumentInput }
-            </Popover>
-
-            ) : argumentInput }
+                {argumentInput}
+              </Popover>
+            ) : (
+              argumentInput
+            )}
           </div>
 
           <style>{`
@@ -115,13 +110,15 @@ class FunctionParamTable extends React.Component {
             }
           `}</style>
         </div>
-      );
+      )
     })
   }
 
   render() {
-    const { inputs, params } = this.props;
-    if (inputs.length === 0 || params === undefined) { return (<span />)}
+    const { inputs, params } = this.props
+    if (inputs.length === 0 || params === undefined) {
+      return <span />
+    }
     return (
       <div>
         <div className="params-table">
@@ -129,30 +126,22 @@ class FunctionParamTable extends React.Component {
             <div className="row margin-override">
               <div className="col-xs-3 padding-override">
                 <div className="title">
-                  <strong>
-                    Name
-                  </strong>
+                  <strong>Name</strong>
                 </div>
               </div>
               <div className="col-xs-2 padding-override">
                 <div className="title">
-                  <strong>
-                    Type
-                  </strong>
+                  <strong>Type</strong>
                 </div>
               </div>
               <div className="col-xs-4 padding-override">
                 <div className="title">
-                  <strong>
-                    Description
-                  </strong>
+                  <strong>Description</strong>
                 </div>
               </div>
               <div className="col-xs-3 padding-override">
                 <div className="title">
-                  <strong>
-                    Input
-                  </strong>
+                  <strong>Input</strong>
                 </div>
               </div>
               <style>
@@ -168,7 +157,7 @@ class FunctionParamTable extends React.Component {
             </div>
           </div>
 
-          { this.renderParamRows() }
+          {this.renderParamRows()}
 
           <style>
             {`
@@ -189,12 +178,12 @@ class FunctionParamTable extends React.Component {
           </style>
         </div>
       </div>
-    );
+    )
   }
 }
 
 FunctionParamTable.propTypes = {
   inputs: PropTypes.array,
-};
+}
 
-export default FunctionParamTable;
+export default FunctionParamTable

@@ -1,14 +1,10 @@
-import { Spinner } from '@blueprintjs/core';
+import { Spinner } from '@blueprintjs/core'
 
 export default ({ loading, button, didRun, answer }) => {
   return (
     <div className="error-card">
       <pre className="">
-        { didRun && (
-          <code className="animated fadeIn">
-            { answer }
-          </code>
-        )}
+        {didRun && <code className="animated fadeIn">{answer}</code>}
       </pre>
       <style>
         {`
@@ -38,6 +34,5 @@ export default ({ loading, button, didRun, answer }) => {
         `}
       </style>
     </div>
-
-  );
-} 
+  )
+}

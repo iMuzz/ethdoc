@@ -1,25 +1,23 @@
-import PropTypes from 'prop-types';
+import PropTypes from 'prop-types'
 
 class FunctionDescription extends React.Component {
   render() {
-    const { details } = this.props;
+    const { details } = this.props
     return (
       <div className="details">
-        { details }
-          <style>{`
+        {details}
+        <style>{`
             .details {
               margin-bottom: 15px;
             }
           `}</style>
       </div>
-
-    );
+    )
   }
 }
 
 FunctionDescription.propTypes = {
-  name: PropTypes.string
-};
+  name: PropTypes.string,
+}
 
-
-export default FunctionDescription;
+export default FunctionDescription

@@ -2,9 +2,9 @@ class SimpleHeader extends React.Component {
   render() {
     return (
       <div className="simple-header">
-        { this.props.children }
-      <style>
-        {`
+        {this.props.children}
+        <style>
+          {`
           .simple-header{ 
             padding: 20px;
             border-bottom: 1px solid #ebebf3;
@@ -13,8 +13,8 @@ class SimpleHeader extends React.Component {
         `}
         </style>
       </div>
-    );
+    )
   }
 }
 
-export default SimpleHeader;
+export default SimpleHeader

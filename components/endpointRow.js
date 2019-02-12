@@ -1,13 +1,14 @@
-import classNames from 'classnames';
+import classNames from 'classnames'
 
 export default ({ title, isActive, onClick }) => {
-	return (
-		<div
-			className={classNames('endpoint', { active: isActive })}
-			onClick={onClick}>
-			{title}
-			<style>
-				{`
+  return (
+    <div
+      className={classNames('endpoint', { active: isActive })}
+      onClick={onClick}
+    >
+      {title}
+      <style>
+        {`
           a:hover {
             text-decoration: none;
           }
@@ -31,7 +32,7 @@ export default ({ title, isActive, onClick }) => {
             font-weight: 600;
           }
         `}
-			</style>
-		</div>
-	);
-};
+      </style>
+    </div>
+  )
+}

@@ -1,5 +1,5 @@
-import TokenRegistry from './TokenRegistry.json';
+import TokenRegistry from './TokenRegistry.json'
 
 export default {
-  TokenRegistry
-};
+  TokenRegistry,
+}

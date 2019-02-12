@@ -1,16 +1,16 @@
-import Macbook from '../components/svg/macbook.svg';
+import Macbook from '../components/svg/macbook.svg'
 
 export default class Laptop extends React.Component {
-	constructor(props) {
-		super(props);
-	}
+  constructor(props) {
+    super(props)
+  }
 
-	render() {
-		return (
-			<div>
-				<Macbook className="macbook" />
-				<style>
-					{`
+  render() {
+    return (
+      <div>
+        <Macbook className="macbook" />
+        <style>
+          {`
           .macbook {
             padding-top: 10%;
             width: 650px;
@@ -54,8 +54,8 @@ export default class Laptop extends React.Component {
             }
           }
         `}
-				</style>
-			</div>
-		);
-	}
+        </style>
+      </div>
+    )
+  }
 }

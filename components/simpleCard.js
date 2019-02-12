@@ -1,26 +1,31 @@
-import classNames from 'classnames';
-import SimpleHeader from './simpleHeader';
+import classNames from 'classnames'
+import SimpleHeader from './simpleHeader'
 
 class SimpleCard extends React.Component {
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
       addClass: true,
-    };
+    }
   }
 
   componentWillReceiveProps() {
     if (!this.props.fadeOut) {
-      this.setState({ addClass: true });
+      this.setState({ addClass: true })
     }
   }
 
   render() {
-    const { content, body, description, children } = this.props;
+    const { content, body, description, children } = this.props
 
     return (
-      <div className={classNames('simple-card animated', { fadeIn: this.state.addClass, fadeOut: this.props.fadeOut })} >
-        { children }
+      <div
+        className={classNames('simple-card animated', {
+          fadeIn: this.state.addClass,
+          fadeOut: this.props.fadeOut,
+        })}
+      >
+        {children}
         <style>
           {`
             .simple-card {
@@ -35,8 +40,8 @@ class SimpleCard extends React.Component {
           `}
         </style>
       </div>
-    );
+    )
   }
 }
 
-export default SimpleCard;
+export default SimpleCard
